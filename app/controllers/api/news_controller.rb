@@ -1,8 +1,6 @@
-class Api::NewsController < ApplicationController
-  before_action :autenticate_user
-  respond_to :json
-
+class Api::NewsController < Api::ApiController
+  # Define POST method to receive News /api/news
   def index
-    
+    @news = News.where(public: true).last(5)
   end
 end
