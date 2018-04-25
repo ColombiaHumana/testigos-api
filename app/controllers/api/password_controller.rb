@@ -1,10 +1,27 @@
 # frozen_string_literal: true
 
-class Api::PasswordController < ApplicationController
+module Api
+  # Api Password Controller
+  class PasswordController < ApplicationController
+    protect_from_forgery with: :null_session
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    # Generate ResetToken to user by email POST /api/password_reset
+    def create
+      user = User.find_by!(email_params)
+      return unless user
+      token = user.reset_tokens.create
+      PasswordMailer.reset(token).deliver_later
+      render json: { ok: true }, status: :created
+    end
 
-  # Generate ResetToken to user by email
-  def create
-    User.find_by(email: params[:email]).reset_tokens.create
+    private
+
+    def email_params
+      params.require(:password_reset).permit(:email)
+    end
+
+    def record_not_found
+      head 404
+    end
   end
-
 end

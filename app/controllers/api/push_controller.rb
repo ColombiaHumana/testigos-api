@@ -1,13 +1,16 @@
 # frozen_string_literal: true
 
-class Api::PushController < Api::ApiController
+module Api
+  # Push notifications controller
+  class PushController < Api::ApiController
+    def register
+      current_user.update(push_params)
+    end
 
-  def register
-    current_user.update(push_token: params['token']['value'])
-  end
+    private
 
-
-  def push_params
-      params.require(:token).permit(:value)
+    def push_params
+      params.require(:token).permit(:push_token)
+    end
   end
 end
