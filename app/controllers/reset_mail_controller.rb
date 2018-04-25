@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ResetMailController < ApplicationController
   before_action :set_reset_mail, only: [:show, :update]
 
@@ -6,7 +8,7 @@ class ResetMailController < ApplicationController
   end
 
   def update
-    
+
   end
 
   private

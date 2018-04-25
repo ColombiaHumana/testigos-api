@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'factory_bot_rails'
 require 'support/factory_bot'

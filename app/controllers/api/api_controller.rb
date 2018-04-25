@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::ApiController < ApplicationController
   include Knock::Authenticable
   before_action :authenticate_user

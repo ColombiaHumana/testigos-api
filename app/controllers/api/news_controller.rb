@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::NewsController < Api::ApiController
   # Define POST method to receive News /api/news
   def index

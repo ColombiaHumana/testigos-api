@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::PushController < Api::ApiController
 
   def register

@@ -1,5 +1,6 @@
-class Api::PasswordController < ApplicationController
+# frozen_string_literal: true
 
+class Api::PasswordController < ApplicationController
 
   # Generate ResetToken to user by email
   def create
