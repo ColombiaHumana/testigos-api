@@ -26,6 +26,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails', '~> 1.3', require: false
+  gem 'capistrano-rails-console', require: false
+  gem 'capistrano-rvm'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
