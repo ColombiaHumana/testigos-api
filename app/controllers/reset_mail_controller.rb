@@ -4,9 +4,15 @@
 class ResetMailController < ApplicationController
   before_action :set_reset_mail, only: %i[show update]
 
-  def show; end
+  def show
+    raise ActionController::RoutingError, 'Not Found' if @reset_mail.used?
+  end
 
-  def update; end
+  def update
+    password = rand(36**8).to_s(36)
+    @reset_email.user.update password: password, password_confirmation: password
+    @reset_email.update used: true
+  end
 
   private
 
