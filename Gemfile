@@ -6,11 +6,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.0'
 
 gem 'activeadmin'
-gem 'active_admin_flat_skin'
+gem 'active_admin_flat_skin', git: "https://github.com/ayann/active_admin_flat_skin.git"
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
+gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'knock'
 gem 'pg', '>= 0.18', '< 2.0'
