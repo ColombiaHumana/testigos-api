@@ -9,7 +9,7 @@ set :deploy_to, '/app'
 set :ssh_options, verify_host_key: :secure
 set :linked_files, fetch(:linked_files, []).push(
   'config/database.yml',
-  'config/secrets.yml'
+  'config/master.key'
 )
 set :linked_dirs, fetch(:linked_dirs, []).push(
   'log',
