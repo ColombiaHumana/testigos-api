@@ -74,57 +74,37 @@ Headers:
 ```json
 {
     "user": {
-        "name": "Gustavo Petro",
+        "name": "User",
         "email": "user@example.org",
-        "coordinator": true,
+        "coordinator": false,
+        "department": {
+            "id": 1,
+            "name": "ANTIOQUIA"
+        },
+        "municipality": {
+            "id": 1,
+            "name": "MEDELLIN"
+        },
+        "zone": {
+            "id": 1,
+            "name": "01COMUNA 1 POPULAR"
+        },
+        "post": {
+            "id": 1,
+            "name": "SEC. ESC. LA ESPERANZA No 2"
+        },
         "tables": [
             {
                 "id": 3,
-                "name": "Mesa 3",
-                "department": {
-                    "id": 1,
-                    "name": "ANTIOQUIA"
-                },
-                "municipality": {
-                    "id": 1,
-                    "name": "MEDELLIN"
-                },
-                "zone": {
-                    "id": 1,
-                    "name": "01COMUNA 1 POPULAR"
-                }
+                "name": "Mesa 3"
             },
             {
                 "id": 2,
-                "name": "Mesa 2",
-                "department": {
-                    "id": 1,
-                    "name": "ANTIOQUIA"
-                },
-                "municipality": {
-                    "id": 1,
-                    "name": "MEDELLIN"
-                },
-                "zone": {
-                    "id": 1,
-                    "name": "01COMUNA 1 POPULAR"
-                }
+                "name": "Mesa 2"
             },
             {
                 "id": 1,
-                "name": "Mesa 1",
-                "department": {
-                    "id": 1,
-                    "name": "ANTIOQUIA"
-                },
-                "municipality": {
-                    "id": 1,
-                    "name": "MEDELLIN"
-                },
-                "zone": {
-                    "id": 1,
-                    "name": "01COMUNA 1 POPULAR"
-                }
+                "name": "Mesa 1"
             }
         ]
     }
