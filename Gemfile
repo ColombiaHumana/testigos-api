@@ -9,6 +9,7 @@ gem 'activeadmin'
 gem 'active_admin_flat_skin', git: "https://github.com/ayann/active_admin_flat_skin.git"
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'cancan'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'font-awesome-rails'
