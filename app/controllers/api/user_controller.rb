@@ -2,7 +2,7 @@
 
 module Api
   # GET user details
-  class ReportsController < Api::ApiController
+  class UserController < Api::ApiController
     # GET user details /api/user
     def show
       @user = current_user

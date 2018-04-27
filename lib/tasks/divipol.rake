@@ -10,35 +10,26 @@ namespace :divipol do
         name: centro['departamento']
       ).first_or_create
       municipality = Municipality.where(
-        cod_department: centro['dd'],
         cod_municipality: centro['mm'],
         department: department,
         name: centro['municipio']
       ).first_or_create
       zone = Zone.where(
-        department: department,
         municipality: municipality,
         name: centro['comuna']
       ).first_or_create
       post = Post.create(
-        address: centro['direccion'],
-        cod_post: centro['pp'],
-        department: department,
-        mens: centro['hombres'],
-        municipality: municipality,
         name: centro['puesto'],
-        mesas: centro['mesas'],
-        womens: centro['mujeres'],
-        zone: zone
+        cod_post: centro['pp'],
+        zone: zone,
+        males: centro['hombres'],
+        females: centro['mujeres'],
+        address: centro['direccion']
       )
-      post.mesas.times do |i|
+      centro['mesas'].to_i.times do |i|
         mesa = i + 1
         post.tables.create!(
-          department: department,
-          municipality: municipality,
-          table_number: mesa,
-          zone: zone,
-          name: "Mesa #{mesa}"
+          cod_table: mesa
         )
       end
     end

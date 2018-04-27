@@ -73,32 +73,61 @@ Headers:
 
 ```json
 {
-  "user": {
-    "name": "Gustavo Petro",
-    "email": "user@example.org",
-    "coordinator": true,
-    "post": {
-      "id": 1,
-      "name": "Nombre del puesto",
-      "department": {
-        "id": 1,
-        "name": "Bogotá DC"
-      },
-      "municipality": {
-        "id": 1,
-        "name": "Bogotá"
-      },
-      "zone": {
-        "id": 1,
-        "name": "Zona 01"
-      },
-      "tables": [
-        {"id": 1, "name": "Mesa 1"},
-        {"id": 2, "name": "Mesa 2"},
-        {"id": 3, "name": "Mesa 3"}
-      ]
+    "user": {
+        "name": "Gustavo Petro",
+        "email": "user@example.org",
+        "coordinator": true,
+        "tables": [
+            {
+                "id": 3,
+                "name": "Mesa 3",
+                "department": {
+                    "id": 1,
+                    "name": "ANTIOQUIA"
+                },
+                "municipality": {
+                    "id": 1,
+                    "name": "MEDELLIN"
+                },
+                "zone": {
+                    "id": 1,
+                    "name": "01COMUNA 1 POPULAR"
+                }
+            },
+            {
+                "id": 2,
+                "name": "Mesa 2",
+                "department": {
+                    "id": 1,
+                    "name": "ANTIOQUIA"
+                },
+                "municipality": {
+                    "id": 1,
+                    "name": "MEDELLIN"
+                },
+                "zone": {
+                    "id": 1,
+                    "name": "01COMUNA 1 POPULAR"
+                }
+            },
+            {
+                "id": 1,
+                "name": "Mesa 1",
+                "department": {
+                    "id": 1,
+                    "name": "ANTIOQUIA"
+                },
+                "municipality": {
+                    "id": 1,
+                    "name": "MEDELLIN"
+                },
+                "zone": {
+                    "id": 1,
+                    "name": "01COMUNA 1 POPULAR"
+                }
+            }
+        ]
     }
-  }
 }
 ```
 
@@ -220,7 +249,9 @@ Payload:
 ```json
 {
   "issue": {
-    "id": 1
+    "id": 1,
+    "table_id": 1,
+    "user_id": 1
   }
 }
 ```
@@ -234,7 +265,9 @@ Headers:
   "ok": true,
   "issue": {
     "name": "Jurados de Votación",
-    "id": 1
+    "id": 1,
+    "table_id": 1,
+    "user_id": 1
   }
 }
 ```

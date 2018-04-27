@@ -3,7 +3,7 @@ class CreateZones < ActiveRecord::Migration[5.2]
     create_table :zones do |t|
       t.string :name
       t.integer :cod_zone
-      t.references :municipaly, foreign_key: true
+      t.references :municipality, foreign_key: true
 
       t.timestamps
     end
