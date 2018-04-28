@@ -1,0 +1,38 @@
+---
+es:
+  roles:
+    reader: Lector
+    moderator: Moderador
+    manager: Administrador
+  activerecord:
+    models:
+      admin_user:
+        one: Administrador
+        other: Administradores
+      user:
+        one: Testigo
+        other: Testigos
+      news:
+        one: Noticia
+        other: Noticias
+    attributes:
+      password: Contraseña
+      password_confirmation: Verificación de contraseña
+      admin_user:
+        reader: Lector
+        moderator: Moderador
+        manager: Administrador
+        role:
+          one: Rol
+          other: Roles
+
+      user:
+        name: Nombres
+        post: Puesto
+        municipality: Municipio
+        department: Departamento
+        table: Mesa
+      news:
+        title: Título
+        content: Contenido
+        public: Publicado

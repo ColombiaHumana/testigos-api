@@ -4,4 +4,8 @@ class Zone < ApplicationRecord
   has_many :tables, through: :posts
   has_many :users, through: :tables
   delegate :department, to: :municipaly
+
+  def to_s
+    self.name
+  end
 end
