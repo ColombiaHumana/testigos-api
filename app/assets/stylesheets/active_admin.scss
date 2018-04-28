@@ -3,18 +3,17 @@
 // To view the variables that Active Admin provides, take a look at
 // `app/assets/stylesheets/active_admin/mixins/_variables.scss` in the
 // Active Admin source.
-
-$panelBorder: #babdc5;
-$skinActiveColor: #622066;
-$bodyColor: rgba(236, 240, 241, 0.48);
-$skinBlack: rgb(55, 71, 79);
-$panelHeaderBck: $skinBlack;
-$skinBlackLight: rgb(69, 90, 100);
-$textGray: rgb(174, 179, 181);
-$skinTextColor: #1e2a33;
-$skinTextActiveColor: white;
-$skinTextTable: #7f8c8d;
-$skinHeaderBck: #1e2a33;
+$panelBorder: #babdc5 !default;
+$skinActiveColor: #622066 !default;
+$bodyColor: rgba(236, 240, 241, 0.48) !default;
+$skinTextColor: #1e2a33 !default;
+$skinTextActiveColor: white !default;
+$skinTextTable: #7f8c8d !default;
+$skinHeaderBck: #272727 !default;
+$skinBlack: rgb(55, 71, 79) !default;
+$panelHeaderBck: $skinBlack !default;
+$skinBlackLight: rgb(69, 90, 100) !default;
+$textGray: rgb(174, 179, 181) !default;
 // For example, to change the sidebar width:
 // $sidebar-width: 242px;
 @import "font-awesome";
@@ -26,3 +25,11 @@ $skinHeaderBck: #1e2a33;
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+.panel{
+  h3{
+    color: #fff !important;
+  }
+}
+.breadcrumb{
+  display: none;
+}
