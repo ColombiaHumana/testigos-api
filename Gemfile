@@ -10,9 +10,12 @@ gem 'active_admin_flat_skin', git: "https://github.com/ayann/active_admin_flat_s
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cancan'
+gem 'chartkick'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'foundation-rails'
+gem 'autoprefixer-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'knock'
 gem 'pg', '>= 0.18', '< 2.0'

@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Estadísticas" do
-
+          render partial: 'statistics'
         end
       end
     end

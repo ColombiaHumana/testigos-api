@@ -25,8 +25,44 @@ $textGray: rgb(174, 179, 181) !default;
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
+
+@mixin clearfix {
+  &:after {
+    display: table;
+    clear: both;
+    content: '';
+  }
+}
 .panel{
   h3{
     color: #fff !important;
+  }
+}
+.statistics{
+  color: #fff;
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+  @include clearfix;
+  .item{
+    text-align: center;
+    background-color: $panelHeaderBck;
+    width: calc((100% - 54px * 2) / 3);
+    margin-top: 24px;
+    margin-right: 24px;
+    padding: 10px;
+    float: left;
+    &:nth-child(3n+3){
+      margin-right: 0;
+      float: right;
+    }
+    .icon{
+      font-size: 3em;
+    }
+    .number{
+      margin-top: 10px;
+      font-size: 2em;
+    }
   }
 }
