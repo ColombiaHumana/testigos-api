@@ -4,4 +4,8 @@ class Table < ApplicationRecord
   delegate :zone, to: :post
   delegate :municipality, to: :zone
   delegate :department, to: :municipality
+
+  def to_s
+    "Mesa #{self.cod_table}"
+  end
 end
