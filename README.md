@@ -158,9 +158,9 @@ Payload:
 ```json
 {
   "result": {
-    "table": 1,
+    "table_id": 1,
     "votes": {
-      "total_mesa": 300,
+      "total_mesa": 3200,
       "petro": 150,
       "promotores": 10,
       "duque": 10,
@@ -176,7 +176,7 @@ Payload:
       "votos_no_marcados": 10,
       "total": 300
     },
-    "e14_url": "https://uploaded_image"
+    "image": "https://uploaded_image"
   }
 }
 ```
@@ -188,28 +188,29 @@ Headers:
 
 ```json
 {
- "ok": true,
- "result": {
-   "table": 1,
-   "votes": {
-     "total_mesa": 300,
-     "petro": 150,
-     "promotores": 10,
-     "duque": 10,
-     "la_calle": 10,
-     "trujillo": 10,
-     "fajardo": 10,
-     "morales": 10,
-     "piedad": 10,
-     "vargas": 10,
-     "votos_validos": 300,
-     "votos_blancos": 10,
-     "votos_nulos": 10,
-     "votos_no_marcados": 10,
-     "total": 300
-   },
-   "e14_url": "https://uploaded_image"
- }
+    "ok": true,
+    "result": {
+        "id": 5,
+        "table": 1,
+        "votes": {
+            "total_mesa": 3200,
+            "petro": 150,
+            "promotores": 10,
+            "duque": 10,
+            "la_calle": 10,
+            "trujillo": 10,
+            "fajardo": 10,
+            "morales": 10,
+            "piedad": 10,
+            "vargas": 10,
+            "votos_validos": 300,
+            "votos_blancos": 10,
+            "votos_nulos": 10,
+            "votos_no_marcados": 10,
+            "total": 300
+        },
+        "image": "https://uploaded_image"
+    }
 }
 ```
 
