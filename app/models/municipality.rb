@@ -3,6 +3,7 @@ class Municipality < ApplicationRecord
   has_many :zones
   has_many :posts, through: :zones
   has_many :tables, through: :posts
+  has_many :reports, through: :tables
   has_many :users, through: :tables
 
   def to_s
