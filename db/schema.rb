@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_28_223213) do
+ActiveRecord::Schema.define(version: 2018_04_30_053128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,17 @@ ActiveRecord::Schema.define(version: 2018_04_28_223213) do
     t.index ["user_id"], name: "index_reset_tokens_on_user_id"
   end
 
+  create_table "results", force: :cascade do |t|
+    t.jsonb "votes"
+    t.bigint "table_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.index ["table_id"], name: "index_results_on_table_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
   create_table "tables", force: :cascade do |t|
     t.integer "cod_table"
     t.bigint "post_id"
@@ -156,6 +167,8 @@ ActiveRecord::Schema.define(version: 2018_04_28_223213) do
   add_foreign_key "reports", "tables"
   add_foreign_key "reports", "users"
   add_foreign_key "reset_tokens", "users"
+  add_foreign_key "results", "tables"
+  add_foreign_key "results", "users"
   add_foreign_key "tables", "posts"
   add_foreign_key "tables", "users"
   add_foreign_key "users", "posts"
