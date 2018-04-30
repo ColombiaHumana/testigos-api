@@ -7,6 +7,7 @@ class AdminAbility
       can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can :read, User
       can :read, News
+      can :read, Issue
     end
 
     if user.role?('moderador')
