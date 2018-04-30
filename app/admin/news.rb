@@ -1,4 +1,5 @@
 ActiveAdmin.register News do
+  permit_params :title, :content, :public
   menu priority: 3
   index do
     selectable_column
