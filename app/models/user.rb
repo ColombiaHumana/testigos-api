@@ -6,6 +6,7 @@ class User < ApplicationRecord
   delegate :department, to: :municipality
   has_many :reset_tokens
   has_many :tables
+  has_many :results
 
   def to_s
     self.name
