@@ -9,4 +9,7 @@ ActiveAdmin.register Report do
     column :issue
     column :user
   end
+
+  filter :user
+  filter :issue
 end
