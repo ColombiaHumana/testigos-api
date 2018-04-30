@@ -9,6 +9,9 @@ es:
       admin_user:
         one: Administrador
         other: Administradores
+      issue:
+        one: Incidencia
+        other: Incidencias
       user:
         one: Testigo
         other: Testigos
@@ -36,3 +39,5 @@ es:
         title: Título
         content: Contenido
         public: Publicado
+      issue:
+        name: Tipo
