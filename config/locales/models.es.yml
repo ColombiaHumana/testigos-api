@@ -12,6 +12,9 @@ es:
       issue:
         one: Incidencia
         other: Incidencias
+      report:
+        one: Reporte
+        other: Reportes
       user:
         one: Testigo
         other: Testigos
@@ -28,7 +31,6 @@ es:
         role:
           one: Rol
           other: Roles
-
       user:
         name: Nombres
         post: Puesto
@@ -41,3 +43,10 @@ es:
         public: Publicado
       issue:
         name: Tipo
+      report:
+        post: Puesto
+        municipality: Municipio
+        department: Departamento
+        table: Mesa
+        issue: Incidencia
+        user: Testigo

@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+  permit_params :name, :password, :password_confirmation, :email
   menu priority: 5
   index do
     id_column
