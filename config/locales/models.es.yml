@@ -47,6 +47,7 @@ es:
         post: Puesto
         municipality: Municipio
         department: Departamento
+        zone: Zona
         table: Mesa
         issue: Incidencia
         user: Testigo
