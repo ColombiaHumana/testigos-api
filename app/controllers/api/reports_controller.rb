@@ -5,7 +5,7 @@ module Api
   class ReportsController < Api::ApiController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     def create
-      @report = current_user.tables.find(params[:report][:table_id]).reports.where(type).first_or_create
+      @report = current_user.tables.find(params[:report][:table_id]).reports.where(issue: params[:report][:issue_id], user: current_user).first_or_create
       raise ActiveRecord::RecordNotFound unless @report
       render status: :created
     end

@@ -4,10 +4,10 @@ class AdminAbility
   def initialize(user)
     can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
     if user.role?('lector')
-      can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
       can :read, User
       can :read, News
       can :read, Issue
+      can :read, Report
     end
 
     if user.role?('moderador')
