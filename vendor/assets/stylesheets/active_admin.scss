@@ -40,29 +40,20 @@ $textGray: rgb(174, 179, 181) !default;
 }
 .statistics{
   color: #fff;
+  background-color: $panelHeaderBck;
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
   &:before,
   &:after {
     box-sizing: border-box;
   }
-  @include clearfix;
-  .item{
-    text-align: center;
-    background-color: $panelHeaderBck;
-    width: calc((100% - 54px * 2) / 3);
-    margin-top: 24px;
-    margin-right: 24px;
-    padding: 10px;
-    float: left;
-    &:nth-child(3n+3){
-      margin-right: 0;
-      float: right;
-    }
-    .icon{
-      font-size: 3em;
-    }
-    .number{
-      margin-top: 10px;
-      font-size: 2em;
-    }
+  .icon{
+    font-size: 4em;
+    margin: 10px;
+  }
+  .number{
+    margin-top: 10px;
+    font-size: 2em;
   }
 }
