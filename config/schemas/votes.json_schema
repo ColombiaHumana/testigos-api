@@ -1,0 +1,98 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "properties": {
+    "total_mesa": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "petro": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "promotores": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "duque": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "la_calle": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "trujillo": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "fajardo":{
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "morales": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "piedad": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "vargas": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "votos_validos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "votos_blancos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "votos_nulos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "votos_no_marcados": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3000
+    }
+  },
+  "required": [
+    "total_mesa",
+    "petro",
+    "promotores",
+    "duque",
+    "la_calle",
+    "trujillo",
+    "fajardo",
+    "morales",
+    "piedad",
+    "vargas",
+    "votos_validos",
+    "votos_blancos",
+    "votos_nulos",
+    "votos_no_marcados",
+    "total"
+  ]
+}
