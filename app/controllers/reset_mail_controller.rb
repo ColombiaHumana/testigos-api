@@ -12,6 +12,7 @@ class ResetMailController < ApplicationController
     password = rand(36**8).to_s(36)
     @reset_email.user.update password: password, password_confirmation: password
     @reset_email.update used: true
+    PasswordMailer.password(@reset_email.user, password).deliver_later
   end
 
   private

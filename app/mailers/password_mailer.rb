@@ -7,8 +7,9 @@ class PasswordMailer < ApplicationMailer
     mail to: token.user.email, subject: 'Reconfigurar contraseña'
   end
 
-  def password(user)
+  def password(user, password)
     @user = user
+    @password = password
     mail to: user.email, subject: 'Nueva contraseña'
   end
 end
