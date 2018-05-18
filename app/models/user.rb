@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  validate :document, presence: true, uniqueness: true
+  validates :document, presence: true, uniqueness: true
   belongs_to :post, required: false
   delegate :zone, to: :post
   delegate :municipality, to: :zone
@@ -11,5 +11,10 @@ class User < ApplicationRecord
 
   def to_s
     self.name
+  end
+
+  def self.from_token_request(request)
+    username = request.params["auth"] && request.params['auth']['document']
+    self.find_by document: username
   end
 end
