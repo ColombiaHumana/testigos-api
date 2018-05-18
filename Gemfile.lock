@@ -5,6 +5,14 @@ GIT
     active_admin_flat_skin (0.1.2)
       font-awesome-rails (~> 4.6, >= 4.6.3.0)
 
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 42428f4a3e5478380f399f5d53feeaee88657d00
+  branch: master
+  specs:
+    faker (1.8.7)
+      i18n (>= 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -353,6 +361,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   factory_bot_rails (~> 4.0)
+  faker!
   font-awesome-rails
   foundation-rails
   jbuilder (~> 2.5)

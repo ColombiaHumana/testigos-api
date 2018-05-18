@@ -3,12 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe 'PasswordReset', type: :request do
-  before :all do
-    @user = create(:user)
-  end
 
   describe 'POST /password_reset' do
     it 'Generate password reset' do
+      @user = create(:user)
       post password_reset_path, params: {
         password_reset: { email: @user.email }
       }
