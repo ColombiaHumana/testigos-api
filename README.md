@@ -11,7 +11,7 @@ Payload:
 ```json
 {
   "auth": {
-    "email": "testing@example.org",
+    "document": "109556633",
     "password": "123456789"
   }
 }
