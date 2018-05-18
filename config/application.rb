@@ -34,5 +34,6 @@ module TestigosApi
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOW-FROM https://petro.com.co'
     }
+    config.active_job.queue_adapter = :sidekiq
   end
 end
