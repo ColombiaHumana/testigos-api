@@ -57,3 +57,12 @@ $textGray: rgb(174, 179, 181) !default;
     font-size: 2em;
   }
 }
+.ui-tabs-nav li a{
+  border-radius: 0;
+  box-shadow: none;
+  color: #fff;
+  background: $panelHeaderBck;
+  &:active{
+    background: $skinActiveColor;
+  }
+}

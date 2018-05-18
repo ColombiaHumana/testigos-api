@@ -1,0 +1,77 @@
+<div id="container"></div>
+<script src="https://code.highcharts.com/mapdata/countries/co/co-all.js"></script>
+
+<script type="text/javascript">
+// Prepare demo data
+// Data is joined to map using value of 'hc-key' property by default.
+// See API docs for 'joinBy' for more info on linking data and map.
+var data = [
+  ['co-sa',0],
+  ['co-ca',0],
+  ['co-na',0],
+  ['co-ch',0],
+  ['co-3653',0],
+  ['co-to',0],
+  ['co-cq',0],
+  ['co-hu',0],
+  ['co-pu',0],
+  ['co-am',0],
+  ['co-bl',0],
+  ['co-vc',0],
+  ['co-su',0],
+  ['co-at',0],
+  ['co-ce',0],
+  ['co-lg',0],
+  ['co-ma',0],
+  ['co-ar',0],
+  ['co-ns',0],
+  ['co-cs',0],
+  ['co-gv',0],
+  ['co-me',0],
+  ['co-vp',0],
+  ['co-vd',0],
+  ['co-an',2],
+  ['co-co',1],
+  ['co-by',0],
+  ['co-st',0],
+  ['co-cl',0],
+  ['co-cu',0],
+  ['co-1136',0],
+  ['co-ri',0],
+  ['co-qd',0],
+  ['co-gn',0]
+];
+
+// Create the chart
+Highcharts.mapChart('container', {
+  chart: {
+      map: 'countries/co/co-all'
+  },
+
+  title: {
+      text: ''
+  },
+
+  mapNavigation: {
+      enabled: true,
+      buttonOptions: {
+          verticalAlign: 'bottom'
+      }
+  },
+
+  colorAxis: {
+      min: 0,
+      maxColor: '#43A047'
+  },
+
+  series: [{
+      data: data,
+      name: 'Testigos',
+      states: {
+          hover: {
+              color: '#BADA55'
+          }
+      }
+  }]
+});
+</script>
