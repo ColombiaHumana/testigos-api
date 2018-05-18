@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  validate :document, presence: true, uniqueness: true
   belongs_to :post, required: false
   delegate :zone, to: :post
   delegate :municipality, to: :zone
