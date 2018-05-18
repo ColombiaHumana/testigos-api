@@ -26,4 +26,11 @@ json.user do
       json.name "Mesa #{table.cod_table}"
     end
   end
+  json.users do
+    json.array! @user.post.users.where.not(id: @user.id) do | user |
+      json.id user.id
+      json.name user.name
+      json.document user.document
+    end
+  end if @user.coordinator?
 end
