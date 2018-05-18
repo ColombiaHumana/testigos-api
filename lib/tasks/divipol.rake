@@ -16,7 +16,8 @@ namespace :divipol do
       ).first_or_create
       zone = Zone.where(
         municipality: municipality,
-        name: centro['comuna']
+        name: centro['comuna'],
+        cod_zone: centro['zz']
       ).first_or_create
       post = Post.create(
         name: centro['puesto'],
