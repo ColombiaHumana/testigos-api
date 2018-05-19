@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_200903) do
+ActiveRecord::Schema.define(version: 2018_05_18_232416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_200903) do
     t.bigint "document"
     t.boolean "coordinator"
     t.bigint "post_id"
+    t.boolean "online", default: false
     t.index ["document"], name: "index_users_on_document"
     t.index ["post_id"], name: "index_users_on_post_id"
   end
