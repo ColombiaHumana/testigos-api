@@ -1,4 +1,5 @@
 class Result < ApplicationRecord
+  after_commit :send_to_spek
   belongs_to :table
   belongs_to :user, required: :false
 
@@ -22,4 +23,10 @@ class Result < ApplicationRecord
     :votos_nulos,
     :votos_no_marcados,
     :total
+
+  private
+
+  def send_to_spek
+    SpekJob.perform_later(self)
+  end
 end

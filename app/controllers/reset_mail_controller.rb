@@ -9,6 +9,7 @@ class ResetMailController < ApplicationController
   end
 
   def update
+    raise ActionController::RoutingError, 'Not Found' if @reset_mail.used?
     password = rand(36**8).to_s(36)
     @reset_email.user.update password: password, password_confirmation: password
     @reset_email.update used: true
@@ -22,6 +23,6 @@ class ResetMailController < ApplicationController
   end
 
   def token_params
-    params.require(:reset_token).permit(:token)
+    params.permit(:token)
   end
 end
