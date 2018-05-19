@@ -31,6 +31,11 @@ json.user do
       json.id user.id
       json.name user.name
       json.document user.document
+      json.tables do
+        json.array! user.tables do | table |
+          json.name "Mesa #{table.cod_table}"
+        end
+      end
     end
   end if @user.coordinator?
 end
