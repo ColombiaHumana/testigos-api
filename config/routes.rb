@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post 'issue' => 'api/reports#create', as: :create_issue
     post 'password_reset' => 'api/password#create', as: :password_reset
     post 'user_token' => 'user_token#create', as: :user_token
+    post 'user' => 'api/user#update', as: :user_online
     post 'results' => 'api/results#create', as: :create_result
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
