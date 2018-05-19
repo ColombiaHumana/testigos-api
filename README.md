@@ -113,6 +113,54 @@ Headers:
 
 En caso de que el usuario no esté autenticado, devolverá un (401 - Unauthorized) como código de respuesta en el header
 
+En caso de que el usuario sea coordinador, este endpoint devuelve los datos de los usuarios presentes en el puesto.
+
+```json
+{
+    "user": {
+        "name": "User",
+        "email": "user@example.org",
+        "coordinator": true,
+        "department": {
+            "id": 1,
+            "name": "ANTIOQUIA"
+        },
+        "municipality": {
+            "id": 1,
+            "name": "MEDELLIN"
+        },
+        "zone": {
+            "id": 1,
+            "name": "01COMUNA 1 POPULAR"
+        },
+        "post": {
+            "id": 1,
+            "name": "SEC. ESC. LA ESPERANZA No 2"
+        },
+        "tables": [
+            {
+                "id": 3,
+                "name": "Mesa 3"
+            },
+            {
+                "id": 2,
+                "name": "Mesa 2"
+            },
+            {
+                "id": 1,
+                "name": "Mesa 1"
+            }
+        ],
+        "users": [
+            {
+                "id": 1,
+                "name": "Demo User",
+                "document": 12345678
+            }
+        ]
+    }
+}
+```
 
 ### Get News
 
