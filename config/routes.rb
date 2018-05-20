@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
   post '/' => 'application#index'
   get '/token/:token' => 'reset_mail#update', as: :token_show
-  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
+  authenticate :admin_user do
+    mount Sidekiq::Web => 'admin/sidekiq'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
