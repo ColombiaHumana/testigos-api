@@ -1,3 +1,15 @@
 // Place all the styles related to the ResetMail controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "foundation-emails";
+.top-bar{
+  background-color: #622066;
+  padding: 20px 0;
+}
+.top-bar img{
+  width: 160px;
+}
+.grid-x p{
+  padding-top: 20px;
+}
