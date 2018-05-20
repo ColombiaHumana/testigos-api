@@ -1,17 +1,49 @@
-<div style="width: 600px;margin-left: auto;margin-right: auto;background: #f1f1f1;font-family: sans-serif;">
-  <div style="height: 100px;background: #622066;">
-    <img style="padding-top: 20px;margin-left: auto;margin-right: auto;display: block;" src="https://petro.com.co/wp-content/uploads/2018/02/petroblanco_tb.png" alt="Petro Presidente"/>
-  </div>
-  <div>
-    <h1 style="padding: 0 40px 0 40px;">Hola</h1>
-    <p style="padding: 0 40px 0 40px;text-align: justify;">
-      Hemos recibido una solicitud para reinicializar la contraseña, si no lo haz solicitado, ignora este email, en caso contrario ingresa al siguiente enlace:
-    </p>
-    <p style="padding: 0 40px 0 40px;text-align: justify;">
-      <%= token_show_url(@token, host: Rails.application.credentials.app_host) %>
-    </p>
-    <p style="padding:0 40px 40px 40px;text-align:justify;text-align: justify;">
-      Atte: Equipo de la Colombia Humana
-    </p>
-  </div>
-</div>
+
+<table align="center" class="container float-center">
+  <tbody>
+    <tr>
+      <td>
+        <br>
+        <table class="row">
+          <tbody>
+            <tr>
+              <th class="small-12 large-12 columns first last">
+                <table>
+                  <tr>
+                    <th class="cuerpo">
+                      <h4 class="titulo">Hola, <%= @token.user.name.titleize %></h4>
+                      <p>Hemos recibido una solicitud de reinicio de contraseña. Para continuar con su petición haga click en el siguiente botón:</p>
+                      <a class="b_rc" href="<%= token_show_url(@token, host: Rails.application.credentials.app_host) %>">Reiniciar contraseña</a>
+                      <p>Si usted no ha solicitado reiniciar su contraseña, por favor ignore este mensaje.</p>
+                      <a href="https://twitter.com/intent/tweet?hashtags=PetroPresidente&original_referer=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&ref_src=twsrc%5Etfw&related=colombiahumana_%2CMovimientoMAIS&text=Yo%20soy%20testigo%20electoral%20y%20custodio%20de%20la%20esperanza%20de%20la%20Colombia%20Humana.%20Tu%20tambi%C3%A9n%20puedes%20ser%20parte%20del%20cambio%2C%20inscr%C3%ADbete%3A%20&url=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&via=petrogustavo"><h5 class="firma">#PetroPresidente</h5></a>
+                    </th>
+                    <th class="expander"></th>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        <center data-parsed="" class="pie">
+          <table align="center" class="menu float-center">
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co">petro.com.co</a>
+                    </th>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co/politica-de-datos/">política de datos</a>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </center>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<img alt="seguimiento" src="https://www.google-analytics.com/collect?v=1&t=event&tid=UA-113384581-1&cid=12345678.12345678&dh=mail.petro.com.co&ec=email&ea=open&el=reinicio_contrasena"/>

@@ -11,9 +11,9 @@ class ResetMailController < ApplicationController
   def update
     raise ActionController::RoutingError, 'Not Found' if @reset_mail.used?
     password = rand(36**8).to_s(36)
-    @reset_email.user.update password: password, password_confirmation: password
-    @reset_email.update used: true
-    PasswordMailer.password(@reset_email.user, password).deliver_later
+    @reset_mail.user.update password: password, password_confirmation: password
+    @reset_mail.update used: true
+    PasswordMailer.password(@reset_mail.user, password).deliver_later
   end
 
   private
