@@ -7,6 +7,7 @@ ruby '2.5.0'
 
 gem 'activeadmin'
 gem 'active_admin_flat_skin', git: "https://github.com/ayann/active_admin_flat_skin.git"
+gem 'autoprefixer-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cancan'
@@ -14,12 +15,14 @@ gem 'chartkick'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'foundation_emails'
 gem 'foundation-rails'
-gem 'autoprefixer-rails'
+gem 'inky-rb', require: 'inky'
 gem 'jbuilder', '~> 2.5'
 gem 'activerecord_json_validator'
 gem 'knock'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'premailer-rails'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'rest-client'
@@ -43,6 +46,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.3', require: false
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rvm'
+  gem 'capistrano-sidekiq'
   gem "letter_opener"
   gem 'letter_opener_web', '~> 1.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
