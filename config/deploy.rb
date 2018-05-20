@@ -22,5 +22,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
   'public/uploads'
 )
 set :rvm_type, :user
+set :pty,  false
 set :rvm_ruby_version, '2.5.0'
 set :passenger_restart_with_touch, true
