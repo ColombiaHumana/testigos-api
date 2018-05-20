@@ -4,16 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
-
+    <div class="top-bar">
+        <a class="float-center" href="https://petro.com.co"><img alt="Petro Presidente" src="https://petro.com.co/wp-content/uploads/2018/04/logo_mail.png"/></a>
+    </div>
     <%= yield %>
-    <%= javascript_include_tag "application" %>
+
   </body>
 </html>
