@@ -5,8 +5,13 @@ ActiveAdmin.register_page "Incidencias" do
       column do
         panel "Incidencias" do
           render 'graph', { issues: Report.joins(:issue).group('issues.name').count }
+        end # end panel
+      end # end colum
+      column do
+        panel "Incidencias por tipo" do
+
         end
-      end
-    end
-  end
+      end # end column
+    end # end columns
+  end # end content
 end
