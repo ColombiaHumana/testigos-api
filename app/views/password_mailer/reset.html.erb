@@ -13,7 +13,7 @@
                     <th class="cuerpo">
                       <h4 class="titulo">Hola, <%= @token.user.name.titleize %></h4>
                       <p>Hemos recibido una solicitud de reinicio de contraseña. Para continuar con su petición haga click en el siguiente botón:</p>
-                      <a class="b_rc" href="<%= token_show_url(@token, host: Rails.application.credentials.app_host) %>">Reiniciar contraseña</a>
+                      <a class="b_rc" href="<%= token_show_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>">Reiniciar contraseña</a>
                       <p>Si usted no ha solicitado reiniciar su contraseña, por favor ignore este mensaje.</p>
                       <a href="https://twitter.com/intent/tweet?hashtags=PetroPresidente&original_referer=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&ref_src=twsrc%5Etfw&related=colombiahumana_%2CMovimientoMAIS&text=Yo%20soy%20testigo%20electoral%20y%20custodio%20de%20la%20esperanza%20de%20la%20Colombia%20Humana.%20Tu%20tambi%C3%A9n%20puedes%20ser%20parte%20del%20cambio%2C%20inscr%C3%ADbete%3A%20&url=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&via=petrogustavo"><h5 class="firma">#PetroPresidente</h5></a>
                     </th>
