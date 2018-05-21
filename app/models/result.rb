@@ -1,5 +1,5 @@
 class Result < ApplicationRecord
-  after_commit :send_to_spek
+  after_commit :send_to_spek, on: :create
   belongs_to :table
   belongs_to :user, required: :false
 
