@@ -8,14 +8,9 @@ ActiveAdmin.register_page "Dashboard" do
     #
     columns do
       column do
-        panel "Tiempo real" do
-
-        end
-      end
-
-      column do
-        panel "Estadísticas" do
-          # render partial: 'statistics'
+        panel "Votos totales" do
+          data = Result.all.pluck(:votes).reduce({}) { |h, acc| acc.merge(h) {|_k, o, n| o+n } }.without('promotores','total','total_mesa','votos_nulos', 'votos_blancos', 'votos_validos', 'votos_no_marcados')
+          render 'bar_graph', { data: data}
         end
       end
     end
