@@ -4,6 +4,29 @@ ActiveAdmin.register_page "Muestreo" do
 
     columns do
       column do
+        panel "Testigos de muestreo logueados por departamento" do
+          data = [
+            {
+              name: "Online",
+              data: Department.all.collect { |x| [x.name, x.users.where(online: true).count] }
+            },
+            {
+              name: "Offline",
+              data: Department.all.collect { |x| [x.name, x.users.where(online: false).count] }
+            }
+          ]
+          render 'bar_graph', { data: data }
+          # table_for Department.joins(:users).where('users.online = true').group(['departments.id', 'departments.name']).count.each do
+          #   column("Departamento") {| department | department[0][1] }
+          #   column("Logueados") { | department | department.last }
+          #   column("Porcentaje") { | department | "#{department.last * 100 / (Department.find(department[0][0]).users.count.nonzero? || 1)} %" }
+          # end
+        end # End panel
+      end
+    end
+
+    columns do
+      column do
         panel "Testigos de muestreo logueados" do
           columns do
             column do
@@ -21,6 +44,10 @@ ActiveAdmin.register_page "Muestreo" do
             end
           end
         end # End panel
+
+      end # End column
+
+      column do
         panel "Testigos en el mapa" do
           columns do
             column do
@@ -28,16 +55,6 @@ ActiveAdmin.register_page "Muestreo" do
             end
           end
         end
-      end # End column
-
-      column do
-        panel "Testigos de muestreo logueados por departamento" do
-          table_for Department.all do
-            column("Departamento") {| department | department.name }
-            column("Logueados") { | department | department.users.where(online: true).count }
-            column("Porcentaje") { | department | "#{ department.users.where(online: true).count * 100 / (department.users.count.nonzero? || 1)} %" }
-          end
-        end # End panel
       end # End column
     end # End columns
   end
