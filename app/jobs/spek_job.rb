@@ -12,13 +12,13 @@ class SpekJob < ApplicationJob
         departamento: result.table.department.cod_department
       },
       conteo: [
-        { numero: 1, nombre: "GustavoPetro", votos: 100 },
-        { numero: 2, nombre: "IvanDuque", votos: 100 },
-        { numero: 3, nombre: "SergioFajardo", votos: 100 },
-        { numero: 4, nombre: "HumbertoDelaCalle", votos: 100 }
+        { numero: 1, nombre: "GustavoPetro", votos: result.petro },
+        { numero: 2, nombre: "IvanDuque", votos: result.duque },
+        { numero: 3, nombre: "SergioFajardo", votos: result.fajardo },
+        { numero: 4, nombre: "HumbertoDelaCalle", votos: result.la_calle }
       ],
       clave: Rails.application.credentials.spek_password,
-      imagen: "https://pbs.twimg.com/media/DYLbFd4WkAAzB-z.jpg"
+      imagen: result.image
     }.to_json
     RestClient.post( Rails.application.credentials.spek_url,
       json,
