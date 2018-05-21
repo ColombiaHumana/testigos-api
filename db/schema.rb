@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_18_232416) do
+ActiveRecord::Schema.define(version: 2018_05_21_170014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_232416) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "coordinator_id"
     t.index ["cod_post"], name: "index_posts_on_cod_post"
     t.index ["zone_id"], name: "index_posts_on_zone_id"
   end
@@ -171,6 +172,7 @@ ActiveRecord::Schema.define(version: 2018_05_18_232416) do
   end
 
   add_foreign_key "municipalities", "departments"
+  add_foreign_key "posts", "users", column: "coordinator_id"
   add_foreign_key "posts", "zones"
   add_foreign_key "reports", "departments"
   add_foreign_key "reports", "issues"
