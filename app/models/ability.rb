@@ -5,9 +5,11 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
-    can :read, :all
+
+    can :read, User, id: user.id
+
     if user.coordinator?
-      can :update, User
+      can :update, User, post: { id: user.puesto.id }
     end
 
     if user.online?
