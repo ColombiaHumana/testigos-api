@@ -4,6 +4,7 @@ json.user do
   json.name @user.name
   json.email @user.email
   json.coordinator @user.coordinator
+  json.online @user.online
   json.department do
     json.id @user.department.id
     json.name @user.department.name
@@ -19,6 +20,9 @@ json.user do
   json.post do
     json.id @user.post.id
     json.name @user.post.name
+    json.coordinator do
+      json.name @user.post.coordinator.name
+    end
   end
   json.tables do
     json.array! @user.tables do |table|
