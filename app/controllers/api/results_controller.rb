@@ -5,7 +5,7 @@ module Api
   class ResultsController < Api::ApiController
     def create
       table = current_user.tables.find(params[:result][:table_id])
-      @result = table.result || table.create_result(user: current_user, votes: params[:result][:votes], image: params[:result][:image])
+      @result = table.result || Result.create(result_params)
       raise ActiveRecord::RecordNotFound unless @result.valid?
       render status: :created
     end
@@ -13,7 +13,7 @@ module Api
     private
 
     def result_params
-      params.require(:result).permit(:votes, :image)
+      params.require(:result).permit(:table_id, :votes, :image).merge(user_id: current_user.id)
     end
   end
 end

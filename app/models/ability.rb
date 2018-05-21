@@ -6,5 +6,15 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     can :read, :all
+    cannot :manage, :all
+    if user.coordinator?
+      can :update, User
+    end
+
+    if user.online?
+      can :create, Report, table: { id: user.table_ids }
+      can :create, Result, table: { id: user.table_ids }
+    end
+
   end
 end

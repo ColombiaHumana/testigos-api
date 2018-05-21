@@ -4,18 +4,15 @@ module Api
   # Report table controller
   class ReportsController < Api::ApiController
     def create
-      @report = current_user.tables.find(params[:report][:table_id]).reports.where(issue: params[:report][:issue_id], user: current_user).first_or_create
+      @report = current_user.tables.find(report_params['table_id']).reports.where(report_params).first_or_create
       raise ActiveRecord::RecordNotFound unless @report
       render status: :created
     end
 
     private
-    def table
-      params.require(:report).permit(:table_id)
-    end
 
-    def type
-      params.require(:report).permit(:issue_id)
+    def report_params
+      params.require(:report).permit(:issue_id, :table_id).merge(user_id: current_user.id)
     end
   end
 end
