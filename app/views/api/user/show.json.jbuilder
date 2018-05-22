@@ -20,9 +20,9 @@ json.user do
   json.post do
     json.id @user.post.id
     json.name @user.post.name
-    json.coordinator do
-      json.name @user.post.coordinator.name
-    end
+    # json.coordinator do
+    #   json.name @user.post.coordinator.name
+    # end
   end
   json.tables do
     json.array! @user.tables do |table|
