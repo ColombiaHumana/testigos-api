@@ -12,10 +12,10 @@ class Ability
       can :update, User, post: { id: user.puesto.id }
     end
 
-    if user.online?
-      can :create, Report, table: { id: user.table_ids }
-      can :create, Result, table: { id: user.table_ids }
-    end
+    # if user.online?
+    can :create, Report, table: { id: user.table_ids }
+    can :create, Result, table: { id: user.table_ids }
+    # end
 
   end
 end
