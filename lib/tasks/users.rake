@@ -5,7 +5,6 @@ namespace :users do
   task load: :environment do
     rows_csv = File.read(Rails.root.join('vendor', 'divipol', 'users.csv'))
     csv = CSV.parse(rows_csv, headers: true)
-    n = 0
     csv.each do | row |
       begin
         department = Department.find_by(cod_department: row['dd'])
