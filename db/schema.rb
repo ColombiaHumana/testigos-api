@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_170014) do
+ActiveRecord::Schema.define(version: 2018_05_22_182235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_170014) do
 
   create_table "posts", force: :cascade do |t|
     t.string "name"
-    t.integer "cod_post"
+    t.string "cod_post"
     t.bigint "zone_id"
     t.integer "males"
     t.integer "females"
@@ -100,17 +100,9 @@ ActiveRecord::Schema.define(version: 2018_05_21_170014) do
     t.bigint "table_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "department_id"
-    t.bigint "municipality_id"
-    t.bigint "zone_id"
-    t.bigint "post_id"
-    t.index ["department_id"], name: "index_reports_on_department_id"
     t.index ["issue_id"], name: "index_reports_on_issue_id"
-    t.index ["municipality_id"], name: "index_reports_on_municipality_id"
-    t.index ["post_id"], name: "index_reports_on_post_id"
     t.index ["table_id"], name: "index_reports_on_table_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
-    t.index ["zone_id"], name: "index_reports_on_zone_id"
   end
 
   create_table "reset_tokens", force: :cascade do |t|
@@ -154,7 +146,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_170014) do
     t.string "push_token"
     t.string "name"
     t.bigint "document"
-    t.boolean "coordinator"
+    t.boolean "coordinator", default: false
     t.bigint "post_id"
     t.boolean "online", default: false
     t.index ["document"], name: "index_users_on_document"
@@ -174,13 +166,9 @@ ActiveRecord::Schema.define(version: 2018_05_21_170014) do
   add_foreign_key "municipalities", "departments"
   add_foreign_key "posts", "users", column: "coordinator_id"
   add_foreign_key "posts", "zones"
-  add_foreign_key "reports", "departments"
   add_foreign_key "reports", "issues"
-  add_foreign_key "reports", "municipalities"
-  add_foreign_key "reports", "posts"
   add_foreign_key "reports", "tables"
   add_foreign_key "reports", "users"
-  add_foreign_key "reports", "zones"
   add_foreign_key "reset_tokens", "users"
   add_foreign_key "results", "tables"
   add_foreign_key "results", "users"
