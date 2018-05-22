@@ -16,7 +16,6 @@ class Result < ApplicationRecord
     :trujillo,
     :fajardo,
     :morales,
-    :piedad,
     :vargas,
     :votos_validos,
     :votos_blancos,

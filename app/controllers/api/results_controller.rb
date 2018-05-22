@@ -27,7 +27,6 @@ module Api
         :trujillo,
         :fajardo,
         :morales,
-        :piedad,
         :vargas,
         :votos_validos,
         :votos_blancos,
