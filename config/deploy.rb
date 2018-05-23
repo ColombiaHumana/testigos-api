@@ -27,3 +27,4 @@ set :rvm_type, :user
 set :pty,  false
 set :rvm_ruby_version, '2.5.0'
 set :passenger_restart_with_touch, true
+set :sidekiq_config, 'config/sidekiq.yml'
