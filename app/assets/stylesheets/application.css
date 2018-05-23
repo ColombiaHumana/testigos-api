@@ -12,5 +12,6 @@
  *
  *= require_self
  *= require foundation_and_overrides
- *= require reset_mail.scss
+ * require reset_mail.scss
+ *= require errors.scss
  */
