@@ -3,4 +3,4 @@
 :queues:
   - default
   - mailers
-  - resets
+  - [resets, 3]
