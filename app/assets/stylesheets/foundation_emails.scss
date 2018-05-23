@@ -76,3 +76,124 @@ table.button table td:hover{
   box-shadow:  0 2px 3px #bfbfbf;
   font-weight: 600;
 }
+
+.header {
+  background: #622066;
+}
+
+.header .columns {
+  padding-bottom: 0;
+}
+
+.header p {
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.header .wrapper-inner {
+  padding: 20px; /*controls the height of the header*/
+}
+
+.header .container {
+  background: #622066;
+}
+
+.header .container img{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper.secondary {
+  background: #f3f3f3;
+}
+
+.titulo{
+  text-align: left;
+  font-weight: bold;
+}
+
+.firma{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.pie{
+  background-color: #f3f3f3;
+}
+
+.enlace-foo{
+  color: #8a8a8a !important;
+}
+
+.enlace-foo:hover{
+  color: #622066 !important;
+}
+
+.c2a{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.c2a a{
+  background-color: #622066;
+}
+
+.c2a a:hover{
+  background-color: #4d1a50;
+}
+
+table.button table td{
+  background-color: #622066;
+  border-color: #4d1a50;
+}
+
+table.button table td:hover{
+  background-color: #4d1a50;
+  border-color: #622066;
+}
+
+.cuerpo p, .cuerpo ol{
+  line-height: 1.5em;
+}
+.lugar span{
+  display: block;
+}
+.lugar{
+  margin-bottom: 10px;
+}
+.cuerpo img{
+  margin: 20px 0;
+}
+.cuerpo ol li{
+  margin-bottom: 5px;
+}
+.cuerpo a{
+  color: #622066;
+}
+
+.b_rc{
+  display: block;
+  width: 300px;
+  background: #663090;
+  color: #fff !important;
+  border-radius: 5px;
+  padding: 20px 0;
+  text-align: center;
+  margin: 30px auto;
+  box-shadow:  0 2px 3px #bfbfbf;
+  font-weight: 600;
+  font-size: 24px;
+}
+  #bizq{
+      padding-right: 10px;
+  }
+  #bder{
+      padding-left: 10px;
+  }
+  #bizq img{
+      box-shadow:  0 2px 3px #bfbfbf;
+  }
+  #bder img{
+      box-shadow:  0 2px 3px #bfbfbf;
+  }

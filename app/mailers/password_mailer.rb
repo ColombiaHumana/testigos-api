@@ -12,4 +12,9 @@ class PasswordMailer < ApplicationMailer
     @password = password
     mail to: user.email, subject: 'Nueva contraseña'
   end
+
+  def create(token)
+    @token = token
+    mail to: @token.user.email, subject: 'Simulacro de la aplicación de testigos'
+  end
 end
