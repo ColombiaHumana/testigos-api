@@ -29,4 +29,20 @@ namespace :users do
     end
 
   end
+  task emails: :environment do
+    emails_csv = File.read(Rails.root.join('vendor', 'divipol', 'emails.csv'))
+    csv = CSV.parse(emails_csv, headers: true)
+    csv.each do |row|
+      begin
+        user = User.find_by(document: row['cedula'])
+        if Devise::email_regexp.match?(row['email']) && user.email != row['email']
+          user.update email: row['email']
+          token = user.reset_tokens.create
+          PasswordMailer.create(token).deliver_later
+        end
+      rescue
+        next
+      end
+    end
+  end
 end
