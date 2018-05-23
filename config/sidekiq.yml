@@ -1,6 +1,6 @@
 ---
 :concurrency: 20
 :queues:
+  - [resets, 3]
   - default
   - mailers
-  - [resets, 3]
