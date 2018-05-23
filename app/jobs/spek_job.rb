@@ -31,5 +31,8 @@ class SpekJob < ApplicationJob
       json,
       { content_type: :json, accept: :json }
     )
+    rescue_from RestClient::PreconditionFailed do |e|
+      puts e
+    end
   end
 end
