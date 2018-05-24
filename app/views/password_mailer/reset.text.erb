@@ -5,10 +5,13 @@ Hemos recibido una solicitud de reinicio de
 contraseña. Para continuar con su petición haga click en el
 siguiente enlace:
 
-<%= token_show_url(@token, host: Rails.application.credentials.app_host) %>
+<%= token_show_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>
 
 Si usted no ha solicitado reiniciar su
 contraseña, por favor ignore este mensaje.
 
 #PetroPresidente
-----------------
+
+---
+#PetroPresidente https://petro.com.co
+Política de datos: https://petro.com.co/politica-de-datos/

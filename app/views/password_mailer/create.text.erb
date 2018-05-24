@@ -1,9 +1,13 @@
 Hola, <%= @token.user.name %>
 
-Vamos a hacer una prueba de la aplicación Android de Testigos, si tienes
-Android te agradecemos tu colaboración. Para Iphone realizaremos una prueba
-en los próximos días.
+Ya puedes generar tu contraseña para usar la aplicación de Testigos de la
+Colombia Humana. Para generar tu contraseña haz click en el siguiente
 
+==========================================================================
+
+<%= token_show_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>
+
+==========================================================================
 
 La aplicación la puedes encontrar en las cuenta oficiales:
 
@@ -14,31 +18,14 @@ App Store:
 https://itunes.apple.com/co/app/testigos-colombia-humana/id1380254731?mt=8
 
 
-Para generar tu contraseña haz click en el siguiente enlace:
-
-==========================================================================
-
-<%= token_show_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>
-
-==========================================================================
-
-
-El simulacro busca recrear de manera controlada, el preconteo de votos que
-tendrá lugar el próximo 27 de mayo a partir de las 4PM. Por tal razón el
-miércoles 23 de mayo a las 6PM, digita y envía a través de la APP los
-siguientes resultados electorales de prueba de una o máximo dos mesas:
-
-https://petro.com.co/wp-content/uploads/2018/05/2-mesas.png
-
-También debes tomar una foto al formulario E14 de ejemplo y trasmitirlo.
-
-La guía completa para el simulacro y el formulario E14 de ejemplo lo
-encontrarás en https://petro.com.co/simulacro
+En las próximas horas recibirás un correo invitándote a participar en un nuevo
+simulacro, por favor atento a revisar tu correo.
 
 En caso de problemas puedes pedir apoyo al siguiente mail: app@petro.com.co
 
 Tu apoyo hace la diferencia para alcanzar una Colombia más humana. Mil gracias.
 
+#PetroPresidente
 
 ---
 #PetroPresidente https://petro.com.co

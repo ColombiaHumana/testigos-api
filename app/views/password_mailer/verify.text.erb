@@ -1,0 +1,14 @@
+Hola, <%= @token.user.name.titleize %>
+
+Estás a un paso de confirmar tu usuario en la aplicación de testigos. Para
+confirmarlo por favor haz click en el siguiente enlace:
+
+
+<%= validation_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>
+
+
+#PetroPresidente
+
+---
+#PetroPresidente https://petro.com.co
+Política de datos: https://petro.com.co/politica-de-datos/
