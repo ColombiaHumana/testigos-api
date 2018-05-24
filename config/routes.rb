@@ -10,10 +10,12 @@ Rails.application.routes.draw do
     post 'password_reset' => 'api/password#create', as: :password_reset
     post 'user_token' => 'user_token#create', as: :user_token
     post 'user' => 'api/user#update', as: :user_online
+    post 'user/email' => 'api/user#email', as: :user_email
     post 'results' => 'api/results#create', as: :create_result
   end
   post '/' => 'application#index'
   get '/token/:token' => 'reset_mail#update', as: :token_show
+  get '/verify/:token' => 'reset_mail#validation', as: :validation
   authenticate :admin_user do
     mount Sidekiq::Web => 'admin/sidekiq'
   end

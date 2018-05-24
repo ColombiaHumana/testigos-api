@@ -5,6 +5,7 @@ json.user do
   json.email @user.email
   json.coordinator @user.coordinator
   json.online @user.online
+  json.email @user.email.present?
   json.department do
     json.id @user.department.id
     json.name @user.department.name
