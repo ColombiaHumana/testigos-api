@@ -77,4 +77,11 @@ namespace :users do
         end
       end
   end
+
+  desc 'Send invitation email'
+  task invitation: :environment do
+    User.where.not(email: nil).each do |user|
+      PasswordMailer.invitation(user).deliver_later
+    end
+  end
 end

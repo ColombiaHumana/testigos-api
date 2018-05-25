@@ -27,4 +27,9 @@ class PasswordMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: 'Email confirmado'
   end
+
+  def invitation(user)
+    @user = user
+    mail to: @user.email, subject: 'Convocatoria al simulacro electoral mañana sábado 6PM'
+  end
 end
