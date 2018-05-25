@@ -45,4 +45,26 @@ namespace :users do
       end
     end
   end
+  task load_email: :environment do
+      users_csv = File.read(Rails.root.join('vendor', 'divipol', 'divipol_users.csv'))
+      csv = CSV.parse(users_csv, headers: true)
+      csv.each do |row|
+        password = sprintf('%05d', rand(10**5))
+        department = Department.find_by(name: row['departamento'])
+        municipality = department.municipalities.find_by(name: row['municipio'])
+        zone = municipality.zones.find_by(cod_zone: row['zz'])
+        post = zone.posts.find_by(cod_post: row['pp'])
+        user = User.find_by(document: row['cedula']) || User.create!(
+          document: row['cedula'],
+          name: row['nombre'],
+          email: row['email'],
+          password: password,
+          password_confirmation: password,
+          post: post
+        )
+        post.tables.find_by(cod_table: row['mesa']).update user: user
+        token = user.reset_tokens.create
+        PasswordMailer.create(token).deliver_later if user.id_previously_changed? 
+      end
+  end
 end
