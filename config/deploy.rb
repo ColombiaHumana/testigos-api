@@ -11,7 +11,8 @@ set :linked_files, fetch(:linked_files, []).push(
   'config/database.yml',
   'config/master.key',
   'vendor/divipol/users.csv',
-  'vendor/divipol/emails.csv'
+  'vendor/divipol/emails.csv',
+  'vendor/divipol/divipol_users.csv'
 )
 set :linked_dirs, fetch(:linked_dirs, []).push(
   'log',
