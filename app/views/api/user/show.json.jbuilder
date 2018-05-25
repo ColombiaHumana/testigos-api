@@ -3,6 +3,7 @@
 json.user do
   json.name @user.name
   json.email @user.email
+  json.cedula @user.document
   json.coordinator @user.coordinator
   json.online @user.online
   json.email @user.email.present?
