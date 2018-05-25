@@ -15,7 +15,7 @@ class PasswordMailer < ApplicationMailer
 
   def create(token)
     @token = token
-    mail to: @token.user.email, subject: 'Simulacro de la aplicación de testigos'
+    mail to: @token.user.email, subject: 'Configura tu contraseña de testigo'
   end
 
   def verify(token)
