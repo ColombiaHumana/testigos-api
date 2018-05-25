@@ -68,7 +68,7 @@ namespace :users do
             phone: row['phone']
           )
           post.tables.find_by(cod_table: row['mesa']).update user: user
-          if user.id_previously_changed?
+          if user.id_previously_changed? && /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.match?(row['email'])
             token = user.reset_tokens.create
             PasswordMailer.create(token).deliver_later
           end
