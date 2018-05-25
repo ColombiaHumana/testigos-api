@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_25_144443) do
+ActiveRecord::Schema.define(version: 2018_05_25_203419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2018_05_25_144443) do
     t.integer "cod_department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "weight"
+    t.string "map"
     t.index ["cod_department"], name: "index_departments_on_cod_department"
   end
 
