@@ -26,20 +26,6 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.sentry = true
-    Bullet.alert = true
-    Bullet.bullet_logger = true
-    Bullet.console = true
-    Bullet.growl = false
-    Bullet.rails_logger = true
-    Bullet.honeybadger = true
-    Bullet.bugsnag = true
-    Bullet.airbrake = true
-    Bullet.rollbar = true
-    Bullet.add_footer = true
-  end
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
