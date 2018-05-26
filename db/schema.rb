@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_25_203419) do
+ActiveRecord::Schema.define(version: 2018_05_26_150411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,9 @@ ActiveRecord::Schema.define(version: 2018_05_25_203419) do
     t.datetime "updated_at", null: false
     t.float "weight"
     t.string "map"
+    t.integer "scrutinized", default: 0
+    t.float "percentage", default: 1.0
+    t.float "coefficient", default: 1.0
     t.index ["cod_department"], name: "index_departments_on_cod_department"
   end
 
@@ -134,6 +137,7 @@ ActiveRecord::Schema.define(version: 2018_05_25_203419) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "sample", default: false
     t.index ["cod_table"], name: "index_tables_on_cod_table"
     t.index ["post_id"], name: "index_tables_on_post_id"
     t.index ["user_id"], name: "index_tables_on_user_id"

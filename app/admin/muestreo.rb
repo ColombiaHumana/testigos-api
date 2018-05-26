@@ -1,61 +1,72 @@
 ActiveAdmin.register_page "Muestreo" do
   menu priority: 2
-  content title: "Testigos de muestreo" do
 
+  Tablas = [
+    ["Gustavo Petro", 'petro'],
+    ["Promotores voto blanco", 'promotores'],
+    ["Ivan Duque", 'duque'],
+    ["Humberto de la Calle", 'la_calle'],
+    ["José Antonio Trujillo", 'trujillo'],
+    ["Sergio Fajardo", 'fajardo'],
+    ["Viviane Morales", 'morales'],
+    ["Vargas Lleras", 'vargas'],
+    ["Voto blanco", 'votos_blancos']
+  ]
+
+  content title: "Testigos de muestreo" do
     columns do
       column do
-        panel "Testigos de muestreo logueados por departamento" do
-          data = [
-            {
-              name: "Online",
-              data: Department.all.collect { |x| [x.name, x.users.where(online: true).count] }
-            },
-            {
-              name: "Offline",
-              data: Department.all.collect { |x| [x.name, x.users.where(online: false).count] }
-            }
-          ]
-          render 'bar_graph', { data: data }
-          # table_for Department.joins(:users).where('users.online = true').group(['departments.id', 'departments.name']).count.each do
-          #   column("Departamento") {| department | department[0][1] }
-          #   column("Logueados") { | department | department.last }
-          #   column("Porcentaje") { | department | "#{department.last * 100 / (Department.find(department[0][0]).users.count.nonzero? || 1)} %" }
-          # end
-        end # End panel
+        panel "Proyección de resultados" do
+          @directos = {}
+          @total_ponderado = 0
+          @results = {}
+          @votes = Table.where(sample: true).map { |table| table.result.votes }
+          @escrutado = Department.sum(:scrutinized)
+          table_for Tablas.each do
+
+            column('Lista') { |lista| lista.first }
+            column('Votos directos') do |lista|
+              @directos[lista.first] = @votes.inject(0) { |sum, hash| sum + hash[lista.last] }
+              number_with_delimiter(@directos[lista.first], delimiter: ".")
+            end
+            column('% Votos directos') do |lista|
+              number_to_percentage((@directos[lista.first] * 100 / @escrutado.to_f), precision: 2)
+            end
+
+            column('Votos ponderados') do |lista|
+              @ponderado = 0
+              Department.where(id: 1..33).each do |department|
+                directos = department.tables.where(sample: true).map { |table| table.result.votes }.inject(0){ |sum, hash| sum + hash[lista.last] }
+                @ponderado += directos * department.coefficient
+              end
+              @total_ponderado += @ponderado
+              @results[lista.last] = @ponderado
+              number_with_delimiter(@results[lista.last].to_i, delimiter: ".")
+            end
+
+            column('% Votos ponderados') do |lista|
+              number_to_percentage((@results[lista.last] / @total_ponderado) * 100, precision: 2)
+            end
+
+          end
+        end
       end
     end
 
-    columns do
-      column do
-        panel "Testigos de muestreo logueados" do
-          columns do
-            column do
-              users = User.all
-              online = users.where(online: true).count
-              render 'logins', { number: online , icon: "user" }
-            end
-            column do
-              render 'logins', { number: "#{User.where(online: true).count * 100 / User.count}%", icon: "percent" }
-            end
-          end
-          columns do
-            column do
-              render 'login_chart'
-            end
-          end
-        end # End panel
+    # columns do
+    #   column do
+    #     panel "" do
+    #       table_for Department.order('name asc').where(id: 1..33).each do
+    #         column('Departamento') { |department| department.name }
+    #         column('Peso') { |department| "#{number_to_percentage((department.weight * 100.0), precision: 2)}" }
+    #         Tablas.each do | name, index |
+    #           column(name) { |department| department.results.pluck(:votes).inject(0) { |sum, hash| sum + hash[index] } }
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
 
-      end # End column
-
-      column do
-        panel "Testigos en el mapa" do
-          columns do
-            column do
-              render 'map_chart'
-            end
-          end
-        end
-      end # End column
-    end # End columns
   end
+
 end
