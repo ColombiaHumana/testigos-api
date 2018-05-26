@@ -60,7 +60,6 @@ $textGray: rgb(174, 179, 181) !default;
 .ui-tabs-nav li a{
   border-radius: 0;
   box-shadow: none;
-  color: red !important;
   background: $panelHeaderBck;
   &:active{
     background: $skinActiveColor;
