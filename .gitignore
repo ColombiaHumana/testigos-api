@@ -26,5 +26,6 @@
 /vendor/divipol/users.csv
 /vendor/divipol/emails.csv
 /vendor/divipol/divipol_users.csv
+/vendor/divipol/sample.csv
 
 .~lock*
