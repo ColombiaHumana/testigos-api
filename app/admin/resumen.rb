@@ -27,7 +27,7 @@ ActiveAdmin.register_page "Resumen" do
 
     columns do
       column do
-        panel "Testigos de muestreo logueados" do
+        panel "Testigos Online" do
           columns do
             column do
               users = User.all
