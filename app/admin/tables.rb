@@ -13,7 +13,7 @@ ActiveAdmin.register Table do
 #   permitted
 # end
 config.sort_order = 'order_asc'
-
+  scope :muestreo, default: true
   filter :order
 
   actions :index, :result
