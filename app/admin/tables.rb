@@ -21,30 +21,7 @@ config.sort_order = 'order_asc'
     @result = resource.result || resource.build_result
   end
 
-  member_action :create_result, method: :post do
-    votes = params.require(:result).permit(
-      :petro,
-      :promotores,
-      :duque,
-      :la_calle,
-      :trujillo,
-      :fajardo,
-      :morales,
-      :vargas,
-      :votos_validos,
-      :votos_blancos,
-      :votos_nulos,
-      :votos_no_marcados,
-      :total
-    ).merge(total_mesa: params[:result][:total].to_i)
-
-    votes.to_h.collect { |k,v| votes[k] = v.to_i }
-
-    resource.create_result! table_id: params[:result][:table_id].to_i, votes: votes.to_json, user: User.last
-    redirect_to admin_tables_path, notice: "Resultado guardado correctamente"
-  end
-
-  member_action :create_result, method: :patch do
+  member_action :create_result, method: %i{patch post} do
     votes = params.require(:result).permit(
       :petro,
       :promotores,
