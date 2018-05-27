@@ -34,4 +34,22 @@ namespace :divipol do
       end
     end
   end
+
+  desc 'Load sample tables'
+  task sample: :environment do
+    sample_csv = File.read(Rails.root.join('vendor', 'divipol', 'sample.csv'))
+    CSV.parse(sample_csv, headers: true).each do |row|
+      begin
+        Department.find_by(cod_department: row['dd'])
+        .municipalities.find_by(cod_municipality: row['mm'])
+        .zones.find_by(cod_zone: row['zz'])
+        .posts.find_by(cod_post: row['pp'])
+        .tables.find_by(cod_table: row['mesa'])
+        .update order: row['orden'], sample: true
+
+      rescue
+        puts row
+      end
+    end
+  end
 end
