@@ -34,6 +34,7 @@ es:
       user:
         name: Nombres
         post: Puesto
+        document: Cédula
         municipality: Municipio
         department: Departamento
         table: Mesa

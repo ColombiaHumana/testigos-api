@@ -9,7 +9,10 @@ ActiveAdmin.register_page "Incidencias" do
       end # end colum
       column do
         panel "Incidencias por tipo" do
-
+          table_for Report.joins(:issue).group('issues.name').count.each do
+            column('Tipo') { |issue| issue.first }
+            column('Cantidad') { |issue| issue.last }
+          end
         end
       end # end column
     end # end columns
