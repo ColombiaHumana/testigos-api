@@ -135,3 +135,39 @@ $textGray: rgb(174, 179, 181) !default;
 #footer{
   z-index: 1900 !important;
 }
+body.logged_in .flash.flash_notice{
+  background: #A5F0B1;
+  color: #622066;
+  border-bottom: 0;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+html body.logged_out .flash{
+  background: #FFFF95;
+  color: #622066;
+  border-bottom: 0;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+body.logged_in .flash.flash_error{
+  background: #F1ADB0;
+  color: #622066;
+  border-bottom: 0;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+html body.logged_out #login > h2{
+  background: #622066;
+}
+form fieldset ol > li label{
+  width: 95%;
+}
+body.logged_out #login form fieldset input[type="text"], body.logged_out #login form fieldset input[type="email"], body.logged_out #login form fieldset input[type="password"]{
+  width: 95%;
+}
+#admin_user_remember_me_input > label:nth-child(2){
+  padding-left: 0px;
+}
+.header#header{
+  height: 100% !important;
+}
