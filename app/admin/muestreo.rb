@@ -1,4 +1,4 @@
-ActiveAdmin.register_page "Muestreo" do
+ActiveAdmin.register_page "Proyecciones" do
   menu priority: 2
 
   Tablas = [
@@ -13,7 +13,7 @@ ActiveAdmin.register_page "Muestreo" do
     ["Voto blanco", 'votos_blancos']
   ]
 
-  content title: "Testigos de muestreo" do
+  content title: "Proyección de resultados" do
     columns do
       column do
         panel "Proyección de resultados" do
