@@ -37,8 +37,9 @@ namespace :users do
     csv.each do |row|
       begin
         user = User.find_by(document: row['cedula'])
-        if Devise::email_regexp.match?(row['email']) && user.email != row['email']
-          user.update email: row['email']
+        email = row['email'].clean_up_typoed_email
+        if Devise::email_regexp.match?(email) && user.email != email
+          user.update email: email
           token = user.reset_tokens.create
           PasswordMailer.create(token).deliver_later
         end

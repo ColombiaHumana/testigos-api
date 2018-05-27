@@ -151,6 +151,7 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
+    fat_fingers (0.1.30)
     ffi (1.9.23)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
@@ -417,6 +418,7 @@ DEPENDENCIES
   devise
   factory_bot_rails (~> 4.0)
   faker!
+  fat_fingers
   font-awesome-rails
   foundation-rails
   foundation_emails
