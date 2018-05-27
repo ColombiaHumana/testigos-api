@@ -4,6 +4,7 @@ ActiveAdmin.register User do
   index do
     id_column
     column :name
+    column :document
     column :email
     column :post
     column :municipality
@@ -15,6 +16,7 @@ ActiveAdmin.register User do
   filter :municipality
   filter :email
   filter :name
+  filter :document
 
   form do |f|
     f.inputs do
