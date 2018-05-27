@@ -11,7 +11,7 @@ namespace :divipol do
   end
 
   desc 'Load sample from csv'
-  task :load do
+  task :sample do
     on roles(:app) do
       within "#{current_path}" do
         with rails_env: "#{fetch(:stage)}" do
