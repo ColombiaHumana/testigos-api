@@ -1,26 +1,26 @@
 ActiveAdmin.register_page "Resumen" do
   menu priority: 2
-  content title: "Testigos de muestreo" do
+  content title: "Testigos online" do
 
     columns do
       column do
-        panel "Testigos de muestreo logueados por departamento" do
+        panel "Testigos online por departamento" do
           data = [
             {
               name: "Online",
-              data: Department.all.collect { |x| [x.name, x.users.where(online: true).count] }
+              data: Department.order('name asc').where(id: 1..33).collect { |x| [x.name, (x.users.where(online: true).count * 100 / x.users.count.to_f || 1)] }
             },
             {
               name: "Offline",
-              data: Department.all.collect { |x| [x.name, x.users.where(online: false).count] }
+              data: Department.order('name asc').where(id: 1..33).collect { |x| [x.name, (x.users.where(online: false).count * 100 / x.users.count.to_f || 1)] }
             }
           ]
           render 'bar_graph', { data: data }
-          # table_for Department.joins(:users).where('users.online = true').group(['departments.id', 'departments.name']).count.each do
-          #   column("Departamento") {| department | department[0][1] }
-          #   column("Logueados") { | department | department.last }
-          #   column("Porcentaje") { | department | "#{department.last * 100 / (Department.find(department[0][0]).users.count.nonzero? || 1)} %" }
-          # end
+          table_for Department.joins(:users).where('users.online = true').group(['departments.id', 'departments.name']).count.each do
+            column("Departamento") {| department | department[0][1] }
+            column("Logueados") { | department | department.last }
+            column("Porcentaje") { | department | "#{department.last * 100 / (Department.find(department[0][0]).users.count.nonzero? || 1)} %" }
+          end
         end # End panel
       end
     end
@@ -40,7 +40,10 @@ ActiveAdmin.register_page "Resumen" do
           end
           columns do
             column do
-              render 'login_chart'
+              users = User.all
+              online = users.where(online: true).count
+              offline = users.where.not(online: true).count
+              render 'login_chart', {online: online, offline: offline}
             end
           end
         end # End panel

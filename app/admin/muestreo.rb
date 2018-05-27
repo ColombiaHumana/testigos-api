@@ -20,13 +20,13 @@ ActiveAdmin.register_page "Muestreo" do
           @directos = {}
           @total_ponderado = 0
           @results = {}
-          @votes = Table.where(sample: true).map { |table| table.result.votes }
+          @votes = Table.where(sample: true).map { |table| table.result.votes unless table.result.nil? }.compact
           @escrutado = Department.sum(:scrutinized)
           table_for Tablas.each do
 
             column('Lista') { |lista| lista.first }
             column('Votos directos') do |lista|
-              @directos[lista.first] = @votes.inject(0) { |sum, hash| sum + hash[lista.last] }
+              @directos[lista.first] = @votes.inject(0) { |sum, hash| sum + hash[lista.last] || 0 }
               number_with_delimiter(@directos[lista.first], delimiter: ".")
             end
             column('% Votos directos') do |lista|
@@ -36,7 +36,7 @@ ActiveAdmin.register_page "Muestreo" do
             column('Votos ponderados') do |lista|
               @ponderado = 0
               Department.where(id: 1..33).each do |department|
-                directos = department.tables.where(sample: true).map { |table| table.result.votes }.inject(0){ |sum, hash| sum + hash[lista.last] }
+                directos = department.tables.where(sample: true).map { |table| table.result.votes unless table.result.nil? }.compact.inject(0){ |sum, hash| sum + hash[lista.last] }
                 @ponderado += directos * department.coefficient
               end
               @total_ponderado += @ponderado
