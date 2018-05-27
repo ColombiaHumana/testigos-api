@@ -7,6 +7,7 @@ module Api
     # GET user details /api/user
     def show
       @user = current_user
+      @user.update online: true
     end
 
     def update
