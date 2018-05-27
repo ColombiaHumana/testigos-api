@@ -7,6 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     can :read, User, id: user.id
+    can :read, News
     can :email, User, id: user.id
 
     if user.coordinator?
