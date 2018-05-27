@@ -21,10 +21,10 @@ namespace :users do
         )
         post.tables.find_by(cod_table: row['mesa']).update user: user
         # puts "Usuario: #{user.name}, Mesa: #{row['mesa']}"
-        puts row
-      rescue NoMethodError
-        # n += 1
         # puts row
+      rescue NoMethodError
+      #   # n += 1
+        puts row
       end
     end
 
