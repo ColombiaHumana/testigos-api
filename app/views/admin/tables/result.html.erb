@@ -1,0 +1,20 @@
+<h1><%="Nro MT: #{@result.table.order} - Mesa: #{@result.table.cod_table} - Puesto: #{@result.table.post}" %></h1>
+<%= semantic_form_for @result, url: create_result_admin_table_path, class: 'formtastic admin_user' do |f| %>
+  <%= f.inputs do %>
+      <%= f.input :total, as: :number %>
+      <%= f.input :petro, as: :number %>
+      <%= f.input :promotores, as: :number %>
+      <%= f.input :duque, as: :number %>
+      <%= f.input :la_calle, as: :number %>
+      <%= f.input :trujillo, as: :number %>
+      <%= f.input :fajardo, as: :number %>
+      <%= f.input :morales, as: :number %>
+      <%= f.input :vargas, as: :number %>
+      <%= f.input :votos_blancos, as: :number %>
+      <%= f.input :votos_nulos, as: :number %>
+      <%= f.input :votos_validos, as: :number %>
+      <%= f.input :votos_no_marcados, as: :number %>
+      <%= f.input :table_id, as: :hidden %>
+  <% end %>
+  <%= f.actions %>
+<% end %>

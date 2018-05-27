@@ -6,7 +6,7 @@ class Table < ApplicationRecord
   delegate :zone, to: :post
   delegate :municipality, to: :zone
   delegate :department, to: :municipality
-  default_scope { order(created_at: :asc) }
+  default_scope { order(order: :asc).where(sample: true) }
 
   def to_s
     "Mesa #{self.cod_table}"
