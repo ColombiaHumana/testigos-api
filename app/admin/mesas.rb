@@ -5,7 +5,7 @@ ActiveAdmin.register_page "Mesas" do
     columns do
       column do
         panel "Mesas no escrutadas" do
-          paginated_collection(Table.where(sample: true).includes(:result).where(results: {id: nil}).page(params[:page]).per(20)) do
+          paginated_collection(Table.where(sample: true).order(order: 'asc').includes(:result).where(results: {id: nil}).page(params[:page]).per(20)) do
             table_for collection do
               column('Nro Orden MT') { |table| table.order }
               column('Departamento') { |table| table.post.department.name }
