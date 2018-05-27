@@ -1,6 +1,6 @@
 class Result < ApplicationRecord
   after_commit :send_to_spek, on: :create
-  after_commit :calculate_coefficient, on: %i{create update}, if: -> (result) { result.table.sample? }
+  after_commit :calculate_coefficient, on: %i{create}, if: -> (result) { result.table.sample? }
   belongs_to :table
   belongs_to :user, required: :false
 
