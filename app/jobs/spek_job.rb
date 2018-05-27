@@ -27,12 +27,12 @@ class SpekJob < ApplicationJob
       clave: Rails.application.credentials.spek_password,
       imagen: result.image
     }.to_json
-    RestClient.post( Rails.application.credentials.spek_url,
-      json,
-      { content_type: :json, accept: :json }
-    )
-    rescue_from RestClient::PreconditionFailed do |e|
-      puts e
+    begin
+      RestClient.post( Rails.application.credentials.spek_url,
+        json,
+        { content_type: :json, accept: :json }
+      )
+    rescue RestClient::PreconditionFailed
     end
   end
 end
