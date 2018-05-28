@@ -43,8 +43,11 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'mail.petro.com.co', port: 587 }
+  config.action_mailer.delivery_method = :postal
+  config.action_mailer.postal_settings = {
+    host:           Rails.application.credentials.postal_host,
+    server_key:     Rails.application.credentials.postal_api
+  }
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
