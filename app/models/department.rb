@@ -10,4 +10,11 @@ class Department < ApplicationRecord
   def to_s
     self.name
   end
+
+  def self.compute_coefficient
+    Department.all { | department | department.update_data }
+  end
+
+  def update_data
+  end
 end

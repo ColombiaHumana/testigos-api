@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_27_020055) do
+ActiveRecord::Schema.define(version: 2018_05_30_200408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,12 @@ ActiveRecord::Schema.define(version: 2018_05_27_020055) do
     t.index ["user_id"], name: "index_results_on_user_id"
   end
 
+  create_table "statistics", force: :cascade do |t|
+    t.jsonb "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tables", force: :cascade do |t|
     t.integer "cod_table"
     t.bigint "post_id"
@@ -158,6 +164,10 @@ ActiveRecord::Schema.define(version: 2018_05_27_020055) do
     t.boolean "online", default: false
     t.boolean "verified_email", default: false
     t.string "phone"
+    t.string "first_name"
+    t.string "second_name"
+    t.string "surname"
+    t.string "second_surname"
     t.index ["document"], name: "index_users_on_document"
     t.index ["post_id"], name: "index_users_on_post_id"
   end
