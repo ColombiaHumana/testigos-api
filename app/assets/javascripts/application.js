@@ -15,6 +15,7 @@
 //= require jquery
 //= require activestorage
 //= require turbolinks
+//= require jquery-inputmask
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

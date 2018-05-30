@@ -4,21 +4,45 @@
     <%= semantic_form_for user do |f| %>
       <%= f.semantic_errors %>
       <%= f.inputs do %>
-
-        <%= f.input :document, as: :number %>
-        <%= f.input :first_name %>
-        <%= f.input :second_name %>
-        <%= f.input :surname %>
-        <%= f.input :second_surname %>
-        <%= f.input :email, as: :email %>
-        <%= f.input :phone, as: :phone %>
-        <%= f.input 'department', as: :select, collection: {} %>
-        <%= f.input 'municipality', as: :select, collection: {} %>
-        <%= f.input 'zone', as: :select, collection: {} %>
-        <%= f.input :post, as: :select, collection: {} %>
-
+        <div class="grid-x grid-padding-x">
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input :document, as: :number %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input :first_name %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input :second_name %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input :surname %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input :second_surname %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input :email, as: :email %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input :phone, as: :phone %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input 'department', as: :select, collection: {} %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input 'municipality', as: :select, collection: {} %>
+          </div>
+          <div class="cell small-12 medium-6 large-6">
+            <%= f.input 'zone', as: :select, collection: {} %>
+          </div>
+          <div class="cell small-12 medium-12 large-12">
+            <%= f.input :post, as: :select, collection: {} %>
+          </div>
+          <div class="cell small-12">
+            <%= f.action :submit, label: 'Guardar', button_html: { class: "button large expanded" } %>
+          </div>
+        </div>
       <% end %>
-      <%= f.actions %>
     <% end %>
 
   </div>

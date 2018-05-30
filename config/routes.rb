@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   get '/' => 'register#new', as: :user
+  get '/iframe' => 'register#iframe', as: :iframe
   get '/departments' => 'register#get_department'
   get '/municipalities/:department_id' => 'register#get_municipality'
   get '/zones/:municipality_id' => 'register#get_zone'
