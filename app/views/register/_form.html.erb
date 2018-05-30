@@ -1,0 +1,25 @@
+<div class="card" id="formulario">
+  <div class="card-section">
+
+    <%= semantic_form_for user do |f| %>
+      <%= f.semantic_errors %>
+      <%= f.inputs do %>
+
+        <%= f.input :document, as: :number %>
+        <%= f.input :first_name %>
+        <%= f.input :second_name %>
+        <%= f.input :surname %>
+        <%= f.input :second_surname %>
+        <%= f.input :email, as: :email %>
+        <%= f.input :phone, as: :phone %>
+        <%= f.input 'department', as: :select, collection: {} %>
+        <%= f.input 'municipality', as: :select, collection: {} %>
+        <%= f.input 'zone', as: :select, collection: {} %>
+        <%= f.input :post, as: :select, collection: {} %>
+
+      <% end %>
+      <%= f.actions %>
+    <% end %>
+
+  </div>
+</div>
