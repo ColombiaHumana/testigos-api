@@ -37,7 +37,7 @@ class RegisterController < ApplicationController
 
   def user_params
     password = User.gen_password
-    params.require(:user).permit(:name, :document, :post_id, :email, :phone).merge(password: password, password_confirmation: password)
+    params.require(:user).permit(:first_name, :second_name, :surname, :second_surname, :document, :post_id, :email, :phone).merge(password: password, password_confirmation: password)
   end
 
   def municipality_params
