@@ -3,6 +3,11 @@ class RegisterController < ApplicationController
     @user = User.new
   end
 
+  def iframe
+    @user = User.new
+    render :new, layout: 'iframe'
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save

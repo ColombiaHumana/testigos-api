@@ -5,3 +5,7 @@
 highcharts@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-6.1.0.tgz#115a6ee10ad36a53d9913f1030c6d46da16c7cb5"
+
+jquery-inputmask@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jquery-inputmask/-/jquery-inputmask-1.0.1.tgz#b4e208b32db0a86b284b3aa090386692b79dd516"

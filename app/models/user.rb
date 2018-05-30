@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :document, presence: true, uniqueness: true
   validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
   validates :email, uniqueness: true, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
-  validates_presence_of :first_name, :second_name, :surname, :second_surname
+  validates_presence_of :first_name, :surname
   belongs_to :post
   delegate :zone, to: :post, allow_nil: true
   delegate :municipality, to: :zone, allow_nil: true
@@ -31,6 +31,7 @@ class User < ApplicationRecord
 
   def clean_user
     self.name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize
+    self.phone = self.phone.scan(/\d/).join('')
   end
 
   def clean_email

@@ -33,6 +33,12 @@ es:
           other: Roles
       user:
         name: Nombres
+        first_name: Primer nombre
+        second_name: Segundo nombre
+        surname: Primer apellido
+        second_surname: Segundo apellido
+        zone: Zona
+        phone: Celular
         post: Puesto
         document: Cédula
         municipality: Municipio
