@@ -1,0 +1,29 @@
+Hola, <%= @token.user.name %>
+
+Ya puedes generar tu contraseña para usar la aplicación de Testigos de la
+Colombia Humana. Para generar tu contraseña haz click en el siguiente
+
+==========================================================================
+
+<%= token_show_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>
+
+==========================================================================
+
+La aplicación la puedes encontrar en las cuenta oficiales:
+
+Google Play:
+https://play.google.com/store/apps/details?id=petro.presidencia.votacion
+
+App Store:
+https://itunes.apple.com/co/app/testigos-colombia-humana/id1380254731?mt=8
+
+
+En caso de problemas puedes pedir apoyo al siguiente mail: app@petro.com.co
+
+Tu apoyo hace la diferencia para alcanzar una Colombia más humana. Mil gracias.
+
+#PetroPresidente
+
+---
+#PetroPresidente https://petro.com.co
+Política de datos: https://petro.com.co/politica-de-datos/
