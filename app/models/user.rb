@@ -31,7 +31,7 @@ class User < ApplicationRecord
   private
 
   def clean_user
-    self.name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize
+    self.name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize unless self.name.nil?
     self.phone = self.phone.scan(/\d/).join('') unless self.phone.nil?
   end
 
