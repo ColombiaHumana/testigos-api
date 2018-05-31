@@ -36,7 +36,7 @@ class User < ApplicationRecord
   end
 
   def clean_email
-    self.email = self.email.downcase.strip
+    self.email = self.email.downcase.strip.clean_up_typoed_email
   end
 
   def check_coordinator
