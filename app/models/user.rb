@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   def clean_user
     self.name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize
-    self.phone = self.phone.scan(/\d/).join('')
+    self.phone = self.phone.scan(/\d/).join('') unless self.phone.nil?
   end
 
   def clean_email
