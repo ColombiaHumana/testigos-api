@@ -1,11 +1,18 @@
 # frozen_string_literal: true
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  get '/' => 'register#new', as: :user
+  get '/iframe' => 'register#iframe', as: :iframe
+  get '/departments' => 'register#get_department'
+  get '/municipalities/:department_id' => 'register#get_municipality'
+  get '/zones/:municipality_id' => 'register#get_zone'
+  get '/posts/:zone_id' => 'register#get_post'
+  post '/' => 'register#create', as: :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope '/api', defaults: { format: 'json' } do
     get 'news' => 'api/news#index', as: :news_index
-    get 'user' => 'api/user#show', as: :user
+    get 'user' => 'api/user#show', as: :user_show
     post 'issue' => 'api/reports#create', as: :create_issue
     post 'password_reset' => 'api/password#create', as: :password_reset
     post 'user_token' => 'user_token#create', as: :user_token
@@ -13,7 +20,7 @@ Rails.application.routes.draw do
     post 'user/email' => 'api/user#email', as: :user_email
     post 'results' => 'api/results#create', as: :create_result
   end
-  post '/' => 'application#index'
+  post '/' => 'application#index', format: 'html'
   get '/token/:token' => 'reset_mail#update', as: :token_show
   get '/verify/:token' => 'reset_mail#validation', as: :validation
   authenticate :admin_user do
