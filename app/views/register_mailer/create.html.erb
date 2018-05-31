@@ -1,0 +1,57 @@
+<table align="center" class="container float-center">
+  <tbody>
+    <tr>
+      <td>
+        <br>
+        <table class="row">
+          <tbody>
+            <tr>
+              <th class="small-12 large-12 columns first last">
+                <table>
+                  <tr>
+                    <th class="cuerpo">
+                      <h4 class="titulo">Hola, <%= @token.user.name.titleize %></h4>
+                      <p>Ya puedes generar tu contraseña para usar la aplicación de Testigos de la Colombia Humana. Para generar tu contraseña haz click en el siguiente botón:</p>
+                      <a class="b_rc" href="<%= token_show_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>">Generar Contraseña</a>
+                      <p>La aplicación la puedes encontrar en las tiendas oficiales de Google Play o App Store:</p>
+                        <table align="center">
+                            <tr>
+                                <td id="bizq"><a href="https://play.google.com/store/apps/details?id=petro.presidencia.votacion"><img class="botones" alt="Play Store" src="https://petro.com.co/wp-content/uploads/2018/05/play_store.png"></a></td>
+                                <td id="bder"><a href="https://itunes.apple.com/co/app/testigos-colombia-humana/id1380254731?mt=8"><img class="botones" alt="App Store" src="https://petro.com.co/wp-content/uploads/2018/05/app_store.png"></a></td>
+                            </tr>
+                        </table>
+                        <p></p>
+                        <p>En caso de problemas con la aplicación puedes pedir apoyo al siguiente email: <a href="mailto:app@petro.com.co">app@petro.com.co</a></p>
+
+                        <p>Tu apoyo hace la diferencia para alcanzar una Colombia más humana. Muchas gracias.</p>
+                      <a href="https://twitter.com/intent/tweet?hashtags=PetroPresidente&original_referer=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&ref_src=twsrc%5Etfw&related=colombiahumana_%2CMovimientoMAIS&text=Yo%20soy%20testigo%20electoral%20y%20custodio%20de%20la%20esperanza%20de%20la%20Colombia%20Humana.%20Tu%20tambi%C3%A9n%20puedes%20ser%20parte%20del%20cambio%2C%20inscr%C3%ADbete%3A%20&url=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&via=petrogustavo"><h5 class="firma">#PetroPresidente</h5></a>
+                    </th>
+                    <th class="expander"></th>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        <center data-parsed="" class="pie">
+          <table align="center" class="menu float-center">
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co">petro.com.co</a>
+                    </th>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co/politica-de-datos/">política de datos</a>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </center>
+      </td>
+    </tr>
+  </tbody>
+</table>
