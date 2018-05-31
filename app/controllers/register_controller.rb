@@ -12,7 +12,6 @@ class RegisterController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       RegisterMailer.create(@user.id).deliver_later
-      redirect_to 'https://petro.com.co/gracias-testigos/'
     else
       render :new
     end
