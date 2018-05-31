@@ -3,30 +3,35 @@ class User < ApplicationRecord
   before_validation :clean_user
   before_validation :clean_email, unless: -> (user) { user.email.blank? }
   validates :document, presence: true, uniqueness: true
-  validates :email, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }, unless: -> (user) { user.email.blank? }
-  belongs_to :post, required: false
-  delegate :zone, to: :post
-  delegate :municipality, to: :zone
-  delegate :department, to: :municipality
+  validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
+  validates :email, uniqueness: true, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
+  validates_presence_of :first_name, :surname
+  belongs_to :post
+  delegate :zone, to: :post, allow_nil: true
+  delegate :municipality, to: :zone, allow_nil: true
+  delegate :department, to: :municipality, allow_nil: true
   has_many :reset_tokens
   has_many :tables
   has_many :results
-  has_many :validation_tokens
   has_one :puesto, foreign_key: :coordinator_id, class_name: 'Post'
   after_save :check_coordinator
   def to_s
     self.name
   end
-
   def self.from_token_request(request)
     username = request.params["auth"] && request.params['auth']['document']
     self.find_by document: username
   end
 
+  def self.gen_password
+    sprintf('%05d', rand(10**5))
+  end
+
   private
 
   def clean_user
-    self.name = self.name.titleize.strip
+    self.name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize
+    self.phone = self.phone.scan(/\d/).join('')
   end
 
   def clean_email

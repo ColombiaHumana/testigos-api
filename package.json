@@ -2,6 +2,7 @@
   "name": "testigos-api",
   "private": true,
   "dependencies": {
-    "highcharts": "^6.1.0"
+    "highcharts": "^6.1.0",
+    "jquery-inputmask": "^1.0.1"
   }
 }
