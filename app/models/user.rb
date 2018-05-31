@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   before_validation :clean_user
   before_validation :clean_email, unless: -> (user) { user.email.blank? }
-  validates :document, presence: true, uniqueness: true
+  validates :document, presence: true, uniqueness: true, greater_than_or_equal_to: 1000
   validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
   validates :email, uniqueness: true, presence: true, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
   validates_presence_of :first_name, :surname
