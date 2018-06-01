@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_30_200408) do
+ActiveRecord::Schema.define(version: 2018_06_01_185726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,25 @@ ActiveRecord::Schema.define(version: 2018_05_30_200408) do
     t.string "role", limit: 20, default: "lector"
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "coordinators", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["email"], name: "index_coordinators_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_coordinators_on_reset_password_token", unique: true
+    t.index ["user_id"], name: "index_coordinators_on_user_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -168,8 +187,19 @@ ActiveRecord::Schema.define(version: 2018_05_30_200408) do
     t.string "second_name"
     t.string "surname"
     t.string "second_surname"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
     t.index ["document"], name: "index_users_on_document"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["post_id"], name: "index_users_on_post_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "zones", force: :cascade do |t|
@@ -182,6 +212,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_200408) do
     t.index ["municipality_id"], name: "index_zones_on_municipality_id"
   end
 
+  add_foreign_key "coordinators", "users"
   add_foreign_key "municipalities", "departments"
   add_foreign_key "posts", "users", column: "coordinator_id"
   add_foreign_key "posts", "zones"

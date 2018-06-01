@@ -5,7 +5,7 @@ class AdminUser < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates :role, presence: true
 
-  ROLES = %w[lector moderador administrador]
+  ROLES = %w[validador lector moderador administrador]
 
 
   def role?(base_role)

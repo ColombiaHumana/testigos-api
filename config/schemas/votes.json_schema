@@ -5,72 +5,72 @@
     "total_mesa": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "petro": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "promotores": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "duque": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "la_calle": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "trujillo": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "fajardo":{
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "morales": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "vargas": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "votos_validos": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "votos_blancos": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "votos_nulos": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "votos_no_marcados": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     },
     "total": {
       "type": "integer",
       "minimum": 0,
-      "maximum": 3000
+      "maximum": 4000
     }
   },
   "required": [

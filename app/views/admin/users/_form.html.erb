@@ -1,0 +1,27 @@
+<div class="form_email">
+  <label for="email">Email:</label>
+  <input type="text" name="email" id="email" value="<%= user.email %>">
+  <button type="button" id="save_email" name="save_email">Guardar Email</button>
+</div>
+<div class="form_divipol">
+  <label for="department">Puesto:</label>
+  <select id="department" class="" name="department">
+    <option value="">Selecciona un departamento</option>
+  </select>
+  <select id="municipality" name="municipality">
+    <option value="">Selecciona un municipio</option>
+  </select>
+  <select id="zone" name="zone">
+    <option value="">Selecciona una zona</option>
+  </select>
+  <select id="post_id" name="post">
+    <option value="">Selecciona un puesto</option>
+  </select>
+  <button type="button" id="save_post" name="save_post">Guardar Puesto</button>
+</div>
+<div class="form_participa">
+  <button type="button" name="participa">SI participará como testigo</button>
+  <button type="button" name="no_participa">NO participará como testigo</button>
+  <button type="button" name="no_localizado">NO pudo ser localizado</button>
+</div>
+<input type="hidden" name="user" id="user_id" value="<%= user.id %>">

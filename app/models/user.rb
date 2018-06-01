@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  # has_secure_password
   before_validation :clean_user
   before_validation :clean_email, unless: -> (user) { user.email.blank? }
   validates :document, presence: true, uniqueness: true
@@ -41,6 +45,8 @@ class User < ApplicationRecord
 
   def check_coordinator
     if self.coordinator?
+      password = User.gen_password
+      Coordinator.create email: self.email, password: password, password_confirmation: password, user: self
       Post.find(self.post.id).update coordinator: self
     end
   end

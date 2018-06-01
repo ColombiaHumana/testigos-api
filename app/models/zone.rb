@@ -8,6 +8,6 @@ class Zone < ApplicationRecord
   delegate :department, to: :municipaly
 
   def to_s
-    self.name
+    "Zona #{self.cod_zone}"
   end
 end

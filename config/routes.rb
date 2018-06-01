@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  devise_for :coordinators
+  devise_for :users
   get '/' => 'register#new', as: :user
   get '/iframe' => 'register#iframe', as: :iframe
   get '/departments' => 'register#get_department'
@@ -32,4 +34,5 @@ Rails.application.routes.draw do
 
   post "/webhook/#{Rails.application.credentials.postal_api}" => 'webhook#handle'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/coordinadores' => 'validate#index', as: :coordinator_root
 end

@@ -2,9 +2,11 @@ class AdminAbility
   include CanCan::Ability
 
   def initialize(user)
-    can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+    if user.role?('validador')
+      can :read, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
+      can :manage, User
+    end
     if user.role?('lector')
-      can :read, User
       can :read, Issue
       can :read, Report
       can :read, ActiveAdmin::Page, name: 'Resumen', namespace_name: 'admin'
