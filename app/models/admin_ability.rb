@@ -12,6 +12,7 @@ class AdminAbility
     end
 
     if user.role?('moderador')
+      can :manage, News
       can :read, ActiveAdmin::Page, name: 'Proyecciones', namespace_name: 'admin'
       can :read, ActiveAdmin::Page, name: 'Mesas', namespace_name: 'admin'
       can :read, ActiveAdmin::Page, name: 'Escrutinio', namespace_name: 'admin'
