@@ -7,14 +7,21 @@
     <title><%= content_for?(:title) ? yield(:title) : "Testigos Colombia Humana" %></title>
 
     <%= stylesheet_link_tag    "application" %>
+    <%= yield :stylesheets %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= yield :javascripts %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
     <div class="top-bar">
-        <a class="float-center" href="https://app.petro.com.co"><%= image_tag 'logo_mail.png' %></a>
+      <div class="float-center">
+        <a href="https://petro.com.co">
+          <a class="float-center" href="https://app.petro.com.co"><%= image_tag 'logo_mail.png' %></a>
+        </a>
+      </div>
     </div>
+
     <%= yield %>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113384581-2"></script>

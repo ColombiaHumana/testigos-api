@@ -1,0 +1,9 @@
+hola, <%= current_coordinador.user.name %>
+
+<% current_coordinador.user.post.users.each do |user|%>
+
+<%= "#{user.document},#{user.name}" %>
+
+<% end %>
+
+<%= link_to 'cerrar sesion', destroy_coordinador_session_path, method: :delete %>

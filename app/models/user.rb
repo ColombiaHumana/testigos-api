@@ -41,6 +41,8 @@ class User < ApplicationRecord
 
   def check_coordinator
     if self.coordinator?
+
+      Coordinador.create email: self.email, password: password, password_confirmation: password
       Post.find(self.post.id).update coordinator: self
     end
   end

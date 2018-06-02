@@ -1,0 +1,99 @@
+// Place all the styles related to the Validate controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body{
+  background: #EDE5FF;
+}
+input::placeholder {
+    color: #999;
+    opacity: 1;
+}
+.top-bar{
+  padding: 12px 20px;
+}
+.top-bar, .top-bar ul, .title-bar{
+  background: #622066;
+}
+.top-bar ul a{
+  color: #fff;
+}
+.logo{
+  width: 110px;
+}
+.menu{
+  background: #622066;
+}
+.title-bar{
+  padding: 12px;
+}
+.button{
+  font-weight: bold;
+  font-size: 1.2em;
+  letter-spacing: 0.05em;
+  background: #622066;
+}
+.button:hover{
+  background: #76267A;
+}
+.button:active{
+  background: #49184C;
+}
+.cuerpo h3{
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+form label{
+  font-size: 0.8em;
+  //font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+}
+.cuerpo form input{
+  margin-bottom: 20px;
+}
+.password-wrapper {
+  position: relative;
+}
+.password + .unmask {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-indent: -9999px;
+  width: 25px;
+  height: 25px;
+  background: #aaa;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  -webkit-appearance: none;
+}
+.password + .unmask:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 17px;
+  height: 17px;
+  background: #e3e3e3;
+  z-index: 1;
+  border-radius: 50%;
+}
+.password[type="text"] + .unmask:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 13px;
+  height: 13px;
+  background: #aaa;
+  z-index: 2;
+  border-radius: 50%;
+}
+#ver_contra{
+  outline: none;
+}
