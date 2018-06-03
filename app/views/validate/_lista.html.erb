@@ -1,0 +1,34 @@
+<div class="grid-container cuerpo">
+      <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-10 cell float-center">
+          <h4>Hola <%= current_coordinador.user.name %>, a continuación los testigos verificados para tu puesto:</h4>
+          <table id="lista_test" class="stack">
+            <thead>
+              <tr>
+                <th width="130">Teléfono</th>
+                <th width="280">Nombre</th>
+                <th width="100">Cédula</th>
+                <th>Puesto</th>
+                <th width="40">Mesa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% users.joins(:tables).order('tables.cod_table asc').uniq.each do |user| %>
+                <%= render 'user', user: user %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-10 cell float-center">
+          <%= link_to validacion_path do %>
+            <div class="agregar_mas">
+              <%= fa_icon "plus-square 4x", class: 'far' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>

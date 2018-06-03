@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Testigos Colombia Humana" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= yield :stylesheets %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "validate" %>
+    <%= yield :javascripts %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+      <button class="menu-icon" type="button" data-toggle></button>
+      <div class="title-bar-title float-center"><a href="https://petro.com.co"><img class="logo" alt="Petro Presidente" src="https://petro.com.co/wp-content/uploads/2018/04/logo_mail.png"/></a></div>
+    </div>
+
+    <div class="top-bar" id="example-animated-menu">
+      <div class="top-bar-left">
+        <a href="https://petro.com.co"><img class="logo hide-for-small-only" alt="Petro Presidente" src="https://petro.com.co/wp-content/uploads/2018/04/logo_mail.png"/></a>
+      </div>
+      <div class="top-bar-right">
+        <ul class="vertical medium-horizontal dropdown menu" data-dropdown-menu>
+          <li class="<%= active_class(root_path) %>">
+            <%= link_to root_path do %>
+              <%= fa_icon "list-ol", class: 'hide-for-small-only' %>
+              Resumen
+            <% end %>
+          </li>
+          <li class="<%= active_class(validacion_path) %>">
+            <%= link_to validacion_path do %>
+              <%= fa_icon "address-card-o", class: 'hide-for-small-only' %>
+              Validación
+            <% end %>
+          </li>
+          <li class="<%= active_class(help_path) %>">
+            <%= link_to help_path do %>
+              <%= fa_icon "question-circle-o", class: 'hide-for-small-only' %>
+              Ayuda
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_coordinador_session_path, method: :delete do %>
+              <%= fa_icon "sign-out", class: 'hide-for-small-only' %>
+              Salir
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <%= yield %>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113384581-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-113384581-2');
+    </script>
+  </body>
+</html>

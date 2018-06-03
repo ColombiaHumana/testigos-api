@@ -30,7 +30,7 @@ module TestigosApi
     config.assets.precompile += %w( active_admin.js.coffee active_admin.scss )
     config.assets.precompile += %w( foundation_emails.css )
     config.assets.precompile += %w( highcharts.js )
-    config.assets.precompile += %w( validate.css validate.js )
+    config.assets.precompile += %w( validate.css validate.js register.js )
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.action_dispatch.default_headers = {

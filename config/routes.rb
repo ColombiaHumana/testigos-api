@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   constraints subdomain: 'coordinador' do
     devise_for :coordinadores, path: '/'
     root to: 'validate#index'
+    get '/validacion', to: 'validate#show', as: :validacion
+    get '/ayuda', to: 'validate#help', as: :help
+    get '/validacion/:id', to: 'validate#edit_user', as: :edit_user
+    patch '/validacion/:id', to: 'validate#update_user', as: :update_user
+    patch '/descartado/:id', to: 'validate#reject_user', as: :reject_user
+
   end
   get '/' => 'register#new', as: :user
   get '/iframe' => 'register#iframe', as: :iframe

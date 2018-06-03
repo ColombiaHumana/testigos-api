@@ -1,9 +1,12 @@
-hola, <%= current_coordinador.user.name %>
+<div class="grid-container cuerpo">
 
-<% current_coordinador.user.post.users.each do |user|%>
-
-<%= "#{user.document},#{user.name}" %>
-
-<% end %>
-
-<%= link_to 'cerrar sesion', destroy_coordinador_session_path, method: :delete %>
+  <% if flash[:notice] %>
+    <%= render 'callout' %>
+  <% end %>
+  <% if current_coordinador.user.post.users.where(enabled: true).count == 0 %>
+    <%= render 'ayuda' %>
+    <%= render 'empty' %>
+  <% else %>
+    <%= render 'lista', users: current_coordinador.user.post.users.where(enabled: true) %>
+  <% end %>
+</div>

@@ -15,4 +15,9 @@
  * require reset_mail.scss
  *= require errors.scss
  *= require register
- */
+ *= require validate
+*/
+@import "font-awesome";
+.logo{
+  width: 110px;
+}
