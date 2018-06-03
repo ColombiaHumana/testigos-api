@@ -27,10 +27,6 @@ module TestigosApi
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :es
-    config.assets.precompile += %w( active_admin.js.coffee active_admin.scss )
-    config.assets.precompile += %w( foundation_emails.css )
-    config.assets.precompile += %w( highcharts.js )
-    config.assets.precompile += %w( validate.css validate.js register.js )
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.action_dispatch.default_headers = {
