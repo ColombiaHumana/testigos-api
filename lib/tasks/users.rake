@@ -131,7 +131,16 @@ namespace :users do
         password = User.gen_strong_password
         user = User.find_by(document: row['cedula'])
         if user
-          User.update coordinator: true
+          user.update!(
+            first_name: row['first_name'],
+            second_name: row['second_name'],
+            surname: row['surname'],
+            second_surname: row['second_surname'],
+            phone: row['phone'],
+            email: row['email'],
+            post: post,
+            coordinator: true
+          )
         else
           User.create!(
             document: row['cedula'],
