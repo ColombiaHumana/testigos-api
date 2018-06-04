@@ -2,7 +2,7 @@
 
 module Api
   # News view controller
-  class NewsController < Api::ApiController
+  class NewsController < ApplicationController
     # Define POST method to receive News /api/news
     def index
       @news = News.where(public: true).last(5)
