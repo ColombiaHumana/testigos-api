@@ -44,6 +44,7 @@ es:
         municipality: Municipio
         department: Departamento
         table: Mesa
+        table_ids: Mesa
       news:
         title: Título
         content: Contenido

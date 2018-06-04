@@ -1,0 +1,8 @@
+<tr>
+  <td><%= tel_to number_to_phone(user.phone, area_code: true) %></td>
+  <td><%= user.name %></td>
+  <td><%= user.document %></td>
+  <td><%= user.post.department.name %></td>
+  <td><%= user.post.municipality.name %></td>
+  <td><%= user.post.name %></td>
+</tr>

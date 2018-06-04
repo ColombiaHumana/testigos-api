@@ -1,0 +1,63 @@
+<div class="grid-container c_validacion">
+  <% if flash[:alert] %>
+    <%= render 'alert' %>
+  <% end %>
+      <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-12 large-10 cell float-center">
+          <%= semantic_form_for @user, url: update_user_path(@user) do |f| %>
+            <%= f.inputs do %>
+            <div class="grid-container">
+              <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                  <%= f.input :document, input_html: { disabled: true } %>
+                  <%= f.input :document, as: :hidden%>
+                </div>
+                <div class="medium-6 cell">
+                  <%= f.input :name, input_html: { disabled: true, class: 'editable' } %>
+                </div>
+                <div class="medium-6 cell">
+                  <%= f.input :phone, input_html: { disabled: true } %>
+                </div>
+                <div class="medium-6 cell">
+                  <%=
+                  f.input :email, input_html: { disabled: @user.email?, class: 'editable'  }
+                  %>
+                </div>
+                <div class="medium-6 cell">
+                  <%= f.input :department, input_html: { disabled: true }, as: :string %>
+                </div>
+                <div class="medium-6 cell">
+                  <%= f.input :municipality, input_html: { disabled: true }, as: :string %>
+                </div>
+                <div class="medium-6 cell">
+                  <%= f.input :post, input_html: { disabled: true }, as: :string %>
+                </div>
+              </div>
+              <div class="grid-x grid-margin-x">
+                <% edit = capture do %>
+                  <%= fa_icon 'edit', class: 'hide-for-small-only' %>
+                  Editar
+                <% end %>
+                <%= f.button edit, type: 'button', class: 'edit warning button small-12 large-2 cell' %>
+
+
+                  <% verify = capture do %>
+                    <%= fa_icon 'check', class: 'hide-for-small-only' %>
+                    Verificar
+                  <% end %>
+                  <%= f.button verify, class: 'verify success button small-12 large-2 cell',  'data-confirm'.to_sym => '¿Estás seguro de que deseas confirmar este testigo?'  %>
+                <%= link_to reject_user_path(@user), method: :patch, class: 'alert button small-12 large-2 cell', data: {confirm: "Sólo descarta un testigo cuando no sea posible lograr comunicación.\n¿Estás seguro que deseas descartar este testigo?"} do %>
+                  <%= fa_icon "user-times", class: 'hide-for-small-only' %>
+                  Descartar
+                <% end %>
+                <%= link_to validacion_path, class: 'primary button small-12 large-2 large-offset-4 cell end', 'data-confirm'.to_sym => '¿Estás seguro de que deseas pasar al siguiente testigo sin validar?' do %>
+                  <%= fa_icon "chevron-right", class: 'hide-for-small-only' %>
+                  Siguiente
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>

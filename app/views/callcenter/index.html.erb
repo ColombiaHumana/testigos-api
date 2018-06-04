@@ -1,0 +1,12 @@
+<div class="grid-container cuerpo">
+
+  <% if flash[:notice] %>
+    <%= render 'callout' %>
+  <% end %>
+  <% if User.where(enabled: true, coordinator: true).count == 0 %>
+    <%= render 'ayuda' %>
+    <%= render 'empty' %>
+  <% else %>
+    <%= render 'lista', users: User.where(enabled: true, coordinator: true) %>
+  <% end %>
+</div>
