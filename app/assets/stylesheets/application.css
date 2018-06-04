@@ -16,6 +16,7 @@
  *= require errors.scss
  *= require register
  *= require validate
+ *= require font-awesome
 */
 @import "font-awesome.css";
 .logo{
