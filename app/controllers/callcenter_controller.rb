@@ -29,6 +29,7 @@ class CallcenterController < ApplicationController
     @user.validate_user = false
     if @user.update_attributes(user_params)
       flash[:notice] = "El coordinador #{@user.name} ha sido validado exitosamente!"
+      CoordinadorMailer.create(@user.id).deliver_later
       redirect_to root_path
     else
       flash[:alert] = "Error en el formulario, por favor completa todos los campos requeridos"
