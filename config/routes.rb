@@ -2,7 +2,7 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
 
-  constraints subdomain: 'coordinador' do
+  constraints subdomain: 'coordinadores' do
     devise_for :coordinadores, path: '/'
     root to: 'validate#index'
     get '/validacion', to: 'validate#show', as: :validacion
