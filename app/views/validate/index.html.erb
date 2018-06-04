@@ -3,7 +3,7 @@
   <% if flash[:notice] %>
     <%= render 'callout' %>
   <% end %>
-  <% if current_coordinador.user.post.users.where(enabled: true).count == 0 %>
+  <% if current_coordinador.user.post.users.where(enabled: true, coordinator: false).count == 0 %>
     <%= render 'ayuda' %>
     <%= render 'empty' %>
   <% else %>
