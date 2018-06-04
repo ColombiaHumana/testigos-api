@@ -17,7 +17,7 @@
  *= require register
  *= require validate
 */
-@import "font-awesome";
+@import "font-awesome.css";
 .logo{
   width: 110px;
 }
