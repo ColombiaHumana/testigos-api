@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'sidekiq/web'
 Rails.application.routes.draw do
+
   constraints subdomain: 'coordinador' do
     devise_for :coordinadores, path: '/'
     root to: 'validate#index'
@@ -11,6 +12,17 @@ Rails.application.routes.draw do
     patch '/descartado/:id', to: 'validate#reject_user', as: :reject_user
 
   end
+
+  constraints subdomain: 'callcenter' do
+    devise_for :callcenter_users, path: '/'
+    root to: 'callcenter#index'
+    get '/validacion', to: 'callcenter#show', as: :callcenter_validacion
+    get '/ayuda', to: 'callcenter#help', as: :callcenter_help
+    get '/validacion/:id', to: 'callcenter#edit_user', as: :callcenter_edit_user
+    patch '/validacion/:id', to: 'callcenter#update_user', as: :callcenter_update_user
+    patch '/descartado/:id', to: 'callcenter#reject_user', as: :callcenter_reject_user
+  end
+
   get '/' => 'register#new', as: :user
   get '/iframe' => 'register#iframe', as: :iframe
   get '/departments' => 'register#get_department'

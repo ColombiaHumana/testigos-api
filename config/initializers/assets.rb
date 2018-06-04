@@ -21,4 +21,5 @@ Rails.application.config.assets.precompile += %w(
   register.js
   alidate.css
   validate.js
+  validate.css
 )
