@@ -30,6 +30,10 @@ class User < ApplicationRecord
     sprintf('%05d', rand(10**5))
   end
 
+  def self.gen_strong_password
+    (('0'..'9').to_a + ('a'..'z').to_a + ('A'..'Z').to_a).shuffle.first(8).join
+  end
+
   def validate_user?
     self.validate_user == true
   end

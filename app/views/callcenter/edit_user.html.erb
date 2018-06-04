@@ -10,6 +10,7 @@
               <div class="grid-x grid-padding-x">
                 <div class="medium-6 cell">
                   <%= f.input :document, input_html: { disabled: true } %>
+                  <%= f.input :document, as: :hidden%>
                 </div>
                 <div class="medium-6 cell">
                   <%= f.input :name, input_html: { disabled: true, class: 'editable' } %>

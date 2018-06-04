@@ -28,6 +28,7 @@ class ValidateController < ApplicationController
     @user.validate_user = true
     if @user.update_attributes(user_params)
       flash[:notice] = "El testigo #{@user.name} ha sido validado exitosamente!"
+      CoordinadorMailer.validate(@user.id).deliver_later
       redirect_to root_path
     else
       flash[:alert] = "Error en el formulario, por favor completa todos los campos requeridos"
