@@ -32,9 +32,18 @@ namespace :users do
 
   task :invitation do
     on roles(:app) do
-      within "#{current_path}" do
-        with rails_env: "#{fetch(:stage)}" do
-          execute :rake, "users:invitation"
+      within current_path.to_s do
+        with rails_env: fetch(:stage).to_s do
+          execute :rake, 'users:invitation'
+        end
+      end
+    end
+  end
+  task :mautic do
+    on roles(:app) do
+      within current_path.to_s do
+        with rails_env: fetch(:stage).to_s do
+          execute :rake, 'users:mautic'
         end
       end
     end

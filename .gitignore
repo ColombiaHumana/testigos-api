@@ -27,6 +27,7 @@
 /vendor/divipol/emails.csv
 /vendor/divipol/divipol_users.csv
 /vendor/divipol/sample.csv
+/vendor/divipol/mautic.csv
 
 .~lock*
 errores.csv

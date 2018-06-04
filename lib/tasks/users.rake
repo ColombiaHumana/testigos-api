@@ -85,4 +85,36 @@ namespace :users do
       PasswordMailer.invitation(user).deliver_later
     end
   end
+  desc 'Load mautic users'
+  task mautic: :environment do
+    mautic_csv = File.read(Rails.root.join('vendor', 'divipol', 'mautic.csv'))
+    csv = CSV.parse(mautic_csv, headers: true)
+    csv.each do |row|
+      begin
+        department = Department.find_by(cod_department: row['dd'])
+        municipality = department.municipalities.find_by(cod_municipality: row['mm'])
+        zone = municipality.zones.find_by(cod_zone: row['zz'])
+        post = zone.posts.find_by(cod_post: row['pp'])
+        password = User.gen_strong_password
+        user = User.find_by(document: row['cedula']) || User.create!(
+          document: row['cedula'],
+          first_name: row['first_name'],
+          second_name: row['second_name'],
+          surname: row['surname'],
+          second_surname: row['second_surname'],
+          phone: row['phone'],
+          email: row['email'],
+          post: post,
+          password: password,
+          password_confirmation: password
+        )
+        if user.id_previously_changed?
+          token = user.reset_tokens.create
+          PasswordMailer.create(token).deliver_later
+        end
+      rescue
+        puts row
+      end
+    end
+  end
 end
