@@ -6,7 +6,6 @@ $(document).ready ->
     $('.top-bar').remove()
   $("#user_phone").mask("(999) 999-9999");
   $('#ver_contra').on 'click', ->
-    console.log("click")
     if $('#contra').attr('type') == 'password'
       $('#contra').attr('type', 'text')
     else

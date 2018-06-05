@@ -18,5 +18,6 @@
 // require turbolinks
 //= require jquery-inputmask
 // require_tree .
+//= require validate
 
 $(function(){ $(document).foundation(); });
