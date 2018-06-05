@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  permit_params :name, :password, :password_confirmation, :email
+  permit_params :name, :first_name, :second_name, :surname, :second_surname, :password, :password_confirmation, :email
   menu priority: 5
   index do
     id_column
@@ -20,7 +20,11 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs do
-      f.input :name
+      f.input :name, input_html: { disabled: true }
+      f.input :first_name
+      f.input :second_name
+      f.input :surname
+      f.input :second_name
       f.input :email
       f.input :password
       f.input :password_confirmation
