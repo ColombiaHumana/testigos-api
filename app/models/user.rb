@@ -11,7 +11,7 @@ class User < ApplicationRecord
   delegate :zone, to: :post, allow_nil: true
   delegate :municipality, to: :zone, allow_nil: true
   delegate :department, to: :municipality, allow_nil: true
-  has_many :reset_tokens
+  has_many :reset_tokens, dependent: :destroy
   has_many :tables
   validates_presence_of :table_ids, :name, on: :update, if: -> (user) {user.validate_user?}
   has_many :results
