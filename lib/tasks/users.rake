@@ -130,7 +130,7 @@ namespace :users do
         post = zone.posts.find_by(cod_post: row['pp'])
         password = User.gen_strong_password
         user = User.find_by(document: row['cedula'])
-        if user
+        if user && !user.enabled?
           user.update!(
             first_name: row['first_name'],
             second_name: row['second_name'],
