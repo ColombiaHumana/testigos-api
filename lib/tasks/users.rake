@@ -161,4 +161,28 @@ namespace :users do
       end
     end
   end
+
+  desc 'Load users phones'
+  task phones: :environment do
+    phones_csv = File.read(
+      Rails.root.join(
+        'vendor',
+        'divipol',
+        'phones.csv'
+      )
+    )
+    CSV.parse(phones_csv, headers: true).each do |row|
+      user = User.find_by(document: row['cedula'])
+      user&.update_attributes(
+        first_name: row['first_name'],
+        second_name: row['second_name'],
+        surname: row['surname'],
+        second_surname: row['second_surname'],
+        phone: row['phone']
+      )
+      user&.save!(validate: false)
+    #rescue
+      #puts row
+    end
+  end
 end
