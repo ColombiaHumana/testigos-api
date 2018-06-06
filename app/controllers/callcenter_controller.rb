@@ -13,10 +13,13 @@ class CallcenterController < ApplicationController
       enabled: false,
       rejected: false
     ).where.not(phone: nil).sample
-    redirect_to edit_user_path(@user) if @user
-    flash[:notice] = 'Todos los coordinadores disponibles '\
-      'han sido verificados.'
-    redirect_to root_path
+    if @user
+    redirect_to edit_user_path(@user)
+    else
+      flash[:notice] = 'Todos los coordinadores disponibles '\
+        'han sido verificados.'
+      redirect_to root_path
+    end
   end
 
   def edit_user; end
