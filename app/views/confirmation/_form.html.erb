@@ -1,0 +1,75 @@
+<%= semantic_form_for @user do |f|  %>
+  <div class="grid-container">
+    <hr>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :document, as: :disabled %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :first_name, as: :disabled %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :second_name, as: :disabled %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :surname, as: :disabled %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :second_surname, as: :disabled %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :email, as: :disabled %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :phone, as: :phone %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :department,
+          as: :select,
+          collection: {},
+          include_empty: 'Seleciona un departamento' %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :municipality,
+          as: :select,
+          collection: {},
+          include_empty: 'Seleciona un municipio' %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :zone,
+          as: :select,
+          collection: {},
+          include_empty: 'Seleciona una zona' %>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <%= f.input :post,
+          as: :select,
+          collection: {},
+          include_empty: 'Seleciona un puesto' %>
+      </div>
+    </div>
+    <div class="medium-12 cell preg_cor">
+      <%= f.input :gestion, as: :check_boxex, collection: %w[1 2 3 4 5] %>
+    </div>
+  </div>
+<% end %>

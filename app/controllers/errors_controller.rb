@@ -1,3 +1,6 @@
+#  frozen_string_literal: true
+
+# Default errors controller
 class ErrorsController < ApplicationController
   def show
     status_code = params[:code] || 500
