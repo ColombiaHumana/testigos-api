@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     root to: 'validate#index'
     get '/validacion', to: 'validate#show', as: :validacion
     get '/ayuda', to: 'validate#help', as: :help
-    get '/validacion/:id', to: 'validate#edit_user', as: :edit_user
-    patch '/validacion/:id', to: 'validate#update_user', as: :update_user
-    patch '/descartado/:id', to: 'validate#reject_user', as: :reject_user
+    get '/validacion/:token', to: 'validate#edit_user', as: :edit_user
+    patch '/validacion/:token', to: 'validate#update_user', as: :update_user
+    patch '/descartado/:token', to: 'validate#reject_user', as: :reject_user
 
   end
 
@@ -18,9 +18,9 @@ Rails.application.routes.draw do
     root to: 'callcenter#index'
     get '/validacion', to: 'callcenter#show', as: :callcenter_validacion
     get '/ayuda', to: 'callcenter#help', as: :callcenter_help
-    get '/validacion/:id', to: 'callcenter#edit_user', as: :callcenter_edit_user
-    patch '/validacion/:id', to: 'callcenter#update_user', as: :callcenter_update_user
-    patch '/descartado/:id', to: 'callcenter#reject_user', as: :callcenter_reject_user
+    get '/validacion/:token', to: 'callcenter#edit_user', as: :callcenter_edit_user
+    patch '/validacion/:token', to: 'callcenter#update_user', as: :callcenter_update_user
+    patch '/descartado/:token', to: 'callcenter#reject_user', as: :callcenter_reject_user
   end
 
   get '/' => 'register#new', as: :user
@@ -48,12 +48,24 @@ Rails.application.routes.draw do
   authenticate :admin_user do
     mount Sidekiq::Web => 'admin/sidekiq'
   end
-  %w( 404 422 500 503 ).each do |code|
-    get code, :to => "errors#show", :code => code
+  %w[404 422 500 503].each do |code|
+    get code, to: 'errors#show', code: code
   end
 
-  post "/webhook/#{Rails.application.credentials.postal_api}" => 'webhook#handle'
+  post "/webhook/#{Rails.application.credentials.postal_api}",
+       to: 'webhook#handle'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
+  get '/t/:token/accept', to: 'confirmation#accept', as: :confirmation_accept
+  get '/t/:token/reject', to: 'confirmation#reject', as: :confirmation_reject
+  get '/t/:token/edit', to: 'confirmation#edit', as: :confirmation_edit
+  get '/t/:token/coordinador',
+      to: 'confirmation#coordinator', as: :confirmation_coordinator
+  patch '/t/:token', to: 'confirmation#update', as: :confirmation_update
+  patch '/t/:token/coordinador', to: 'confirmation#update_coordinator',
+        as: :confirmation_update_coordinator
+  get '/t/:token/gracias', to: 'confirmation#thanks', as: :confirmation_thanks
+  get '/t/gracias_coordinador',
+      to: 'confirmation#thanks_coordinator',
+      as: :confirmation_thanks_coordinator
 end

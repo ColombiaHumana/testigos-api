@@ -1,0 +1,10 @@
+<%= semantic_form_for @user, url: confirmation_update_coordinator_path(@user) do |f|  %>
+    <%= f.inputs do %>
+      <%= f.input :gestion, as: :radio, collection: %w[1 2 3 4 5],
+                  label: 'Siendo 1 el valor menor y 5 el mayor: ¿Como evalua su capacidad de coordinación y gestión?',
+                  legend_html: { class: nil }
+      %>
+
+    <% end %>
+    <%= f.submit 'Enviar', class: 'primary button b_si' %>
+<% end %>

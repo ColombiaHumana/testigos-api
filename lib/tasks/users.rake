@@ -123,40 +123,42 @@ namespace :users do
     coordinador_csv = File.read(Rails.root.join('vendor', 'divipol', 'coordinador.csv'))
     csv = CSV.parse(coordinador_csv, headers: true)
     csv.each do |row|
-      department = Department.find_by(cod_department: row['dd'])
-      municipality = department.municipalities.find_by(cod_municipality: row['mm'])
-      zone = municipality.zones.find_by(cod_zone: row['zz'])
-      post = zone.posts.find_by(cod_post: row['pp'])
-      password = User.gen_strong_password
-      user = User.find_by(document: row['cedula'])
-      if user && !user.enabled?
-        user.update!(
-          first_name: row['first_name'],
-          second_name: row['second_name'],
-          surname: row['surname'],
-          second_surname: row['second_surname'],
-          phone: row['phone'],
-          email: row['email'],
-          post: post,
-          coordinator: true
-        )
-      else
-        User.create!(
-          document: row['cedula'],
-          first_name: row['first_name'],
-          second_name: row['second_name'],
-          surname: row['surname'],
-          second_surname: row['second_surname'],
-          phone: row['phone'],
-          email: row['email'],
-          post: post,
-          password: password,
-          password_confirmation: password,
-          coordinator: true
-        )
+      begin
+        department = Department.find_by(cod_department: row['dd'])
+        municipality = department.municipalities.find_by(cod_municipality: row['mm'])
+        zone = municipality.zones.find_by(cod_zone: row['zz'])
+        post = zone.posts.find_by(cod_post: row['pp'])
+        password = User.gen_strong_password
+        user = User.find_by(document: row['cedula'])
+        if user && !user.enabled?
+          user.update!(
+            first_name: row['first_name'],
+            second_name: row['second_name'],
+            surname: row['surname'],
+            second_surname: row['second_surname'],
+            phone: row['phone'],
+            email: row['email'],
+            post: post,
+            coordinator: true
+          )
+        else
+          User.create!(
+            document: row['cedula'],
+            first_name: row['first_name'],
+            second_name: row['second_name'],
+            surname: row['surname'],
+            second_surname: row['second_surname'],
+            phone: row['phone'],
+            email: row['email'],
+            post: post,
+            password: password,
+            password_confirmation: password,
+            coordinator: true
+          )
+        end
+      rescue
+        puts row
       end
-    rescue
-      puts row
     end
   end
 
@@ -181,6 +183,16 @@ namespace :users do
       user&.save!(validate: false)
     #rescue
       #puts row
+    end
+  end
+
+  desc 'Send confirmations'
+  task confirmation: :environment do
+    User.where.not(email: nil, token: nil).where(enabled: false, rejected: false).each do |u|
+      begin
+        ConfirmationMailer.create(u.id).deliver_later
+      rescue
+      end
     end
   end
 end

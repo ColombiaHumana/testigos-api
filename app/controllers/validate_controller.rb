@@ -17,14 +17,14 @@ class ValidateController < ApplicationController
   end
 
   def edit_user
-    @user = User.find_by!(id: params[:id], post: current_coordinador.user.post)
+    @user = User.find_by!(token: params[:token], post: current_coordinador.user.post)
     @user.validate_user = true
   end
 
   def help; end
 
   def update_user
-    @user = User.find_by!(id: params[:id], post: current_coordinador.user.post)
+    @user = User.find_by!(token: params[:token], post: current_coordinador.user.post)
     @user.validate_user = true
     if @user.update_attributes(user_params)
       flash[:notice] = "El testigo #{@user.name} ha sido validado exitosamente!"
@@ -37,7 +37,7 @@ class ValidateController < ApplicationController
   end
 
   def reject_user
-    @user = User.find_by!(id: params[:id], post: current_coordinador.user.post)
+    @user = User.find_by!(token: params[:token], post: current_coordinador.user.post)
     @user.validate_user = false
     if @user.update_attributes(rejected: true)
       flash[:notice] = "El testigo #{@user.name} ha sido descartado exitosamente!"

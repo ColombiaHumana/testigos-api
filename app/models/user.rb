@@ -1,13 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  before_validation :clean_user
-  before_validation :clean_email, unless: ->(user) { user.email.blank? }
-  validates :document, presence: true, uniqueness: true
-  validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
-  validates :email, uniqueness: true, presence: true, format: {
-    with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  }
-  validates_presence_of :first_name, :surname, on: :create
+  has_secure_token :token
+  before_save :clean_user
   belongs_to :post
   delegate :zone, to: :post, allow_nil: true
   delegate :municipality, to: :zone, allow_nil: true
@@ -23,8 +17,15 @@ class User < ApplicationRecord
   after_save :check_coordinator
   attr_accessor :validate_user
   enum confirmation: %i[rechazada pendiente aceptada coordinador]
+  scope :validating, -> do
+    where(coordinator: true, rejected: false, enabled: false)
+  end
   def to_s
     name
+  end
+
+  def to_param
+    token
   end
 
   def from_token_request(request)
@@ -47,12 +48,9 @@ class User < ApplicationRecord
   private
 
   def clean_user
-    name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize unless first_name.nil?
-    phone = self.phone.scan(/\d/).join('') unless phone.nil?
-  end
-
-  def clean_email
-    email = self.email.downcase.strip.clean_up_typoed_email
+    self.name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize unless first_name.nil?
+    self.phone = self.phone.scan(/\d/).join('') unless phone.nil?
+    self.email = self.email.downcase.strip.clean_up_typoed_email unless email.nil?
   end
 
   def check_coordinator

@@ -8,13 +8,9 @@ class CallcenterController < ApplicationController
   def index; end
 
   def show
-    @user = User.where(
-      coordinator: true,
-      enabled: false,
-      rejected: false
-    ).where.not(phone: nil).sample
+    @user = User.validating.where.not(phone: nil).sample
     if @user
-    redirect_to edit_user_path(@user)
+      redirect_to edit_user_path(@user)
     else
       flash[:notice] = 'Todos los coordinadores disponibles '\
         'han sido verificados.'
@@ -62,7 +58,7 @@ class CallcenterController < ApplicationController
 
   def set_user
     @user = User.find_by(
-      id: params[:id],
+      token: params[:token],
       coordinator: true
     )
     @user.validate_user = false

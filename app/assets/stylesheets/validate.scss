@@ -277,8 +277,28 @@ table tbody tr:hover{
       background: transparent;
     }
 }
-
+.b_si{
+  margin-top: 10px;
+  width: 20%;
+}
+.label{
+  background-color: transparent;
+  white-space: normal;
+}
+@media screen and (max-width: 39.9375em) {
+  .b_si{
+    width: 100%;
+  }
+}
 .error{
   padding: 0;
   color: #D54C4C;
+}
+.choices-group{
+
+}
+.choices-group li{
+  list-style: none;
+  float: left;
+  margin-right: 20px;
 }
