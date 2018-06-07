@@ -26,6 +26,7 @@ ActiveAdmin.register User do
       f.input :surname
       f.input :second_surname
       f.input :email
+      f.input :phone
       f.input :password
       f.input :password_confirmation
     end
