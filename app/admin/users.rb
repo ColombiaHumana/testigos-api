@@ -31,4 +31,8 @@ ActiveAdmin.register User do
     end
     f.actions
   end
+
+  controller do
+    defaults finder: :find_by_token
+  end
 end
