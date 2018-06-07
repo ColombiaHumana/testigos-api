@@ -18,7 +18,6 @@
  *= require validate
  *= require font-awesome
 */
-@import "font-awesome.css";
 .logo{
   width: 110px;
 }
