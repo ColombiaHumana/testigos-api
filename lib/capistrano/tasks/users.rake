@@ -9,6 +9,7 @@ namespace :users do
     load_email
     mautic
     phones
+    confirmation
   ]
 
   task_lists.each do |task_name|
