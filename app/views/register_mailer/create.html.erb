@@ -12,7 +12,7 @@
                     <th class="cuerpo">
                       <h4 class="titulo">Hola, <%= @token.user.name.titleize %></h4>
                       <p>Ya puedes generar tu contraseña para usar la aplicación de Testigos de la Colombia Humana. Para generar tu contraseña haz click en el siguiente botón:</p>
-                      <a class="b_rc" href="<%= token_show_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>">Generar Contraseña</a>
+                      <a class="b_rc" href="<%= validation_url(@token, host: Rails.application.credentials.app_host, protocol: 'https') %>">Generar Contraseña</a>
                       <p>La aplicación la puedes encontrar en las tiendas oficiales de Google Play o App Store:</p>
                         <table align="center">
                             <tr>
