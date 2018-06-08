@@ -13,8 +13,12 @@ class User < ApplicationRecord
   delegate :department, to: :municipality, allow_nil: true
   has_many :reset_tokens, dependent: :destroy
   has_many :tables
-  validates_presence_of :first_name, :surname, :email, :phone
-  validates_uniqueness_of :document, :email
+  validates_presence_of :first_name, :surname
+  validates :document, presence: true, uniqueness: true
+  validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
+  validates :email, uniqueness: true, presence: true, format: {
+  with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  }
   validates_presence_of :table_ids,
                         :name,
                         on: :update,

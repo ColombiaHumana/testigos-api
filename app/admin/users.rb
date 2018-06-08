@@ -61,7 +61,7 @@ ActiveAdmin.register User do
     column('Departamento') { |u| u.department.name }
     column('DD') { |u| u.department.cod_department }
     column('Municipio') { |u| u.municipality.name }
-    column('MM') { |u| u.department.cod_municipality }
+    column('MM') { |u| u.municipality.cod_municipality }
     column('Zona') { |u| u.zone.cod_zone }
     column('Puesto') { |u| u.post.name }
     column('PP') { |u| u.post.cod_post }
