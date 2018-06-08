@@ -22,7 +22,7 @@ class ResetMailController < ApplicationController
       password = User.gen_password
       @reset_mail.user.update password: password, password_confirmation: password, verified_email: true
       @reset_mail.update used: true
-      PasswordMailer.validated(@reset_mail.user).deliver_later(queue: 'resets')
+      PasswordMailer.validated(@reset_mail.user, password).deliver_later(queue: 'resets')
       ConfirmationMailer.create(@reset_mail.user.id).deliver_later
     end
   end

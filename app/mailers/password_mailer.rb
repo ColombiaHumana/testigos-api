@@ -23,9 +23,10 @@ class PasswordMailer < ApplicationMailer
     mail to: @token.user.email, subject: 'Verifica tu dirección de correo'
   end
 
-  def validated(user)
+  def validated(user, password)
     @user = user
-    mail to: @user.email, subject: 'Email confirmado'
+    @password = password
+    mail to: @user.email, subject: 'Esta es tu nueva contraseña'
   end
 
   def invitation(user)
