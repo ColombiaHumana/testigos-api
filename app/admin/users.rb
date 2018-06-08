@@ -1,6 +1,13 @@
+# frozen_string_literal: true
+
+# User administration
 ActiveAdmin.register User do
-  permit_params :name, :first_name, :second_name, :surname, :second_surname, :password, :password_confirmation, :email, :phone
+  permit_params :name, :first_name, :second_name, :surname,
+                :second_surname, :password, :password_confirmation,
+                :email, :phone
   menu priority: 5
+
+  scope 'Postulados Coordinadores', :coordinators
   index do
     id_column
     column :name
