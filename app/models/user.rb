@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_secure_password
   has_secure_token :token
   before_save :clean_name, unless: ->(user) { user.first_name.nil? }
-  before_save :clean_email, unless: ->(user) { user.email.nil? }
-  before_save :clean_phone, unless: ->(user) { user.phone.nil? }
+  before_validation :clean_email
+  before_validation :clean_phone
   belongs_to :post
   delegate :zone, to: :post, allow_nil: true
   delegate :municipality, to: :zone, allow_nil: true
@@ -65,7 +65,7 @@ class User < ApplicationRecord
   end
 
   def clean_phone
-    self.phone = phone.scan(/\d/).join('')
+    self.phone = self.phone.scan(/\d/).join('')
   end
 
   def clean_email
