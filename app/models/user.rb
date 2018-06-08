@@ -13,6 +13,7 @@ class User < ApplicationRecord
   delegate :department, to: :municipality, allow_nil: true
   has_many :reset_tokens, dependent: :destroy
   has_many :tables
+  validates_presence_of :first_name, :surname, :email, :phone
   validates_uniqueness_of :document, :email
   validates_presence_of :table_ids,
                         :name,
