@@ -29,7 +29,7 @@ class User < ApplicationRecord
     token
   end
 
-  def from_token_request(request)
+  def self.from_token_request(request)
     username = request.params[:auth] && request.params[:auth][:document]
     find_by document: username
   end
