@@ -1,7 +1,12 @@
+# frozen_string_literal: true
+
+# User model
 class User < ApplicationRecord
   has_secure_password
   has_secure_token :token
-  before_save :clean_user
+  before_save :clean_name, unless: ->(user) { user.first_name.nil? }
+  before_save :clean_email, unless: ->(user) { user.email.nil? }
+  before_save :clean_phone, unless: ->(user) { user.phone.nil? }
   belongs_to :post
   delegate :zone, to: :post, allow_nil: true
   delegate :municipality, to: :zone, allow_nil: true
@@ -18,9 +23,10 @@ class User < ApplicationRecord
   after_save :check_coordinator
   attr_accessor :validate_user
   enum confirmation: %i[rechazada pendiente aceptada coordinador]
-  scope :validating, -> do
+  scope :validating, lambda {
     where(coordinator: true, rejected: false, enabled: false)
-  end
+  }
+  scope :coordinators, -> { where(confirmation: :coordinador) }
   def to_s
     name
   end
@@ -48,10 +54,17 @@ class User < ApplicationRecord
 
   private
 
-  def clean_user
-    self.name = "#{self.first_name} #{self.second_name} #{self.surname} #{self.second_surname}".titleize unless first_name.nil?
-    self.phone = self.phone.scan(/\d/).join('') unless phone.nil?
-    self.email = self.email.downcase.strip.clean_up_typoed_email unless email.nil?
+  def clean_name
+    self.name = "#{first_name} #{second_name}"\
+      "#{surname} #{second_surname}".titleize
+  end
+
+  def clean_phone
+    self.phone = phone.scan(/\d/).join('')
+  end
+
+  def clean_email
+    self.email = email.downcase.strip.clean_up_typoed_email
   end
 
   def check_coordinator
