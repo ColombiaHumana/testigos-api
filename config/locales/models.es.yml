@@ -49,6 +49,7 @@ es:
         confirmation: Postulación
         rejected: Rechazado
         enabled: Confirmado
+        coordinator: Coordinador
       news:
         title: Título
         content: Contenido
