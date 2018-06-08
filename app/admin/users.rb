@@ -43,4 +43,27 @@ ActiveAdmin.register User do
   controller do
     defaults finder: :find_by_token
   end
+
+  csv do
+    column :document
+    column :name
+    column :first_name
+    column :second_name
+    column :surname
+    column :second_surname
+    column :coordinator
+    column :online
+    column :verified_email
+    column :confirmmation
+    column :gestion
+    column :rejected
+    column :enabled
+    column('Departamento') { |u| u.department.name }
+    column('DD') { |u| u.department.cod_department }
+    column('Municipio') { |u| u.municipality.name }
+    column('MM') { |u| u.department.cod_municipality }
+    column('Zona') { |u| u.zone.cod_zone }
+    column('Puesto') { |u| u.post.name }
+    column('PP') { |u| u.post.cod_post }
+  end
 end
