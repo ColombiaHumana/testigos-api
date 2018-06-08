@@ -54,7 +54,7 @@ ActiveAdmin.register User do
     column :coordinator
     column :online
     column :verified_email
-    column :confirmmation
+    column :confirmation
     column :gestion
     column :rejected
     column :enabled
