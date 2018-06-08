@@ -45,6 +45,10 @@ es:
         department: Departamento
         table: Mesa
         table_ids: Mesa
+        verified_email: Email Verificado
+        confirmation: Postulación
+        rejected: Rechazado
+        enabled: Confirmado
       news:
         title: Título
         content: Contenido
