@@ -31,7 +31,14 @@ class User < ApplicationRecord
   scope :validating, lambda {
     where(coordinator: true, rejected: false, enabled: false)
   }
-  scope :coordinators, -> { where(confirmation: :coordinador) }
+  scope :coordinators, -> { where(coordinator: true) }
+  scope :enabled, -> { where(enabled: true) }
+  scope :enabled_coordinators, -> { enabled.coordinators }
+  scope :witnesses, -> { where(coordinator: false) }
+  scope :enabled_witnesses, -> { enabled.witnesses }
+
+  scope :postulated_coordinators, -> { where(confirmation: :coordinador) }
+  scope :postulated_witnesses, -> { where(confirmation: :aceptada) }
   def to_s
     name
   end

@@ -7,7 +7,12 @@ ActiveAdmin.register User do
                 :email, :phone
   menu priority: 5
 
-  scope 'Postulados Coordinadores', :coordinators
+  scope 'Coordinadores', :coordinators
+  scope 'Coordinadores Validados', :enabled_coordinators
+  scope 'Postulados a Coordinadores', :postulated_coordinators
+  scope 'Testigos', :witnesses
+  scope 'Testigos Validados', :enabled_witnesses
+  scope 'Postulados a Testigos', :postulated_witnesses
   index do
     id_column
     column :name
