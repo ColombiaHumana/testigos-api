@@ -22,7 +22,7 @@ class User < ApplicationRecord
   validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
   validates :email, uniqueness: true, presence: true, format: {
     with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  }
+  }, on: :create
   validates_presence_of :table_ids,
                         :name,
                         on: :update,
