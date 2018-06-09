@@ -157,8 +157,8 @@ namespace :users do
           )
           user.save(validate: false)
         end
-      rescue
-        puts row
+      # rescue
+      #   puts row
       end
     end
   end
