@@ -17,7 +17,11 @@ class User < ApplicationRecord
   has_many :reset_tokens, dependent: :destroy
   has_many :tables
 
-  validates_presence_of :first_name, :surname
+  attr_accessor :validate_user
+  attr_accessor :validate_coordinator
+
+  validates_presence_of :first_name, :surname,
+                        unless: ->(user) { user.validate_coordinator }
   validates :document, presence: true, uniqueness: true
   validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
   validates :email, uniqueness: true, presence: true, format: {
@@ -27,14 +31,18 @@ class User < ApplicationRecord
                         :name,
                         on: :update,
                         if: ->(user) { user.validate_user? }
+
   validate :post_available, if: ->(user) { user.coordinator? && user.enabled? }
+
+  validates :email, uniqueness: true, presence: true, format: {
+    with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  }, if: ->(user) { user.validate_coordinator }
 
   has_many :results
   has_one :puesto, foreign_key: :coordinator_id, class_name: 'Post'
   after_save :check_coordinator, if: proc { |user|
     user.enabled? && user.coordinator?
   }
-  attr_accessor :validate_user
   enum confirmation: %i[rechazada pendiente aceptada coordinador]
   scope :validating, lambda {
     where(coordinator: true, rejected: false, enabled: false)

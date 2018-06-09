@@ -61,6 +61,6 @@ class CallcenterController < ApplicationController
       token: params[:token],
       coordinator: true
     )
-    @user.validate_user = false
+    @user.validate_coordinator = true
   end
 end
