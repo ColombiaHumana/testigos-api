@@ -21,7 +21,7 @@ class User < ApplicationRecord
   attr_accessor :validate_coordinator
 
   validates_presence_of :first_name, :surname,
-                        unless: ->(user) { user.validate_coordinator }
+    unless: ->(user) { user.validate_coordinator || user.validate_user }
   validates :document, presence: true, uniqueness: true
   validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
   validates :email, uniqueness: true, presence: true, format: {
