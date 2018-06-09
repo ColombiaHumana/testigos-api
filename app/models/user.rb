@@ -4,28 +4,36 @@
 class User < ApplicationRecord
   has_secure_password
   has_secure_token :token
+
   before_save :clean_name, unless: ->(user) { user.first_name.nil? }
-  before_validation :clean_email
+  before_validation :clean_email, unless: ->(user) { user.email.nil? }
   before_validation :clean_phone
+
   belongs_to :post
   delegate :zone, to: :post, allow_nil: true
   delegate :municipality, to: :zone, allow_nil: true
   delegate :department, to: :municipality, allow_nil: true
+
   has_many :reset_tokens, dependent: :destroy
   has_many :tables
+
   validates_presence_of :first_name, :surname
   validates :document, presence: true, uniqueness: true
   validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
   validates :email, uniqueness: true, presence: true, format: {
-  with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+    with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   }
   validates_presence_of :table_ids,
                         :name,
                         on: :update,
                         if: ->(user) { user.validate_user? }
+  validate :post_available, if: ->(user) { user.coordinator? && user.enabled? }
+
   has_many :results
   has_one :puesto, foreign_key: :coordinator_id, class_name: 'Post'
-  after_save :check_coordinator
+  after_save :check_coordinator, if: proc { |user|
+    user.enabled? && user.coordinator?
+  }
   attr_accessor :validate_user
   enum confirmation: %i[rechazada pendiente aceptada coordinador]
   scope :validating, lambda {
@@ -39,6 +47,13 @@ class User < ApplicationRecord
 
   scope :postulated_coordinators, -> { where(confirmation: :coordinador) }
   scope :postulated_witnesses, -> { where(confirmation: :aceptada) }
+
+  scope :municipales, lambda { |admin_user|
+    joins(post: :zone).where(
+      'zones.municipality_id = ?',
+      admin_user.municipality.id
+    )
+  }
   def to_s
     name
   end
@@ -79,7 +94,13 @@ class User < ApplicationRecord
     self.email = email.downcase.strip.clean_up_typoed_email
   end
 
+  def post_available
+    errors.add(
+      :post, 'El puesto ya está asignado a un coordinador'
+    ) unless post.coordinator.nil? || post.coordinator == self
+  end
+
   def check_coordinator
-    Post.find(post.id).update coordinator: self if coordinator?
+    Post.find(post.id).update coordinator: self
   end
 end

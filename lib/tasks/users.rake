@@ -137,24 +137,25 @@ namespace :users do
             surname: row['surname'],
             second_surname: row['second_surname'],
             phone: row['phone'],
-            email: row['email'],
+            # email: row['email'],
             post: post,
             coordinator: true
           )
         else
-          User.create!(
+          user = User.new(
             document: row['cedula'],
             first_name: row['first_name'],
             second_name: row['second_name'],
             surname: row['surname'],
             second_surname: row['second_surname'],
             phone: row['phone'],
-            email: row['email'],
+            # email: row['email'],
             post: post,
             password: password,
             password_confirmation: password,
             coordinator: true
           )
+          user.save(validate: false)
         end
       rescue
         puts row
@@ -193,6 +194,22 @@ namespace :users do
         ConfirmationMailer.create(u.id).deliver_later
       rescue
       end
+    end
+  end
+
+  desc 'Load names'
+  task names: :environment do
+    mautic_csv = File.read(Rails.root.join('vendor', 'divipol', 'mautic.csv'))
+    csv = CSV.parse(mautic_csv, headers: true)
+    csv.each do |row|
+      user = User.find_by(document: row['cedula'])
+      user&.update!(
+        first_name: row['first_name'],
+        second_name: row['second_name'],
+        surname: row['surname'],
+        second_surname: row['second_surname']
+      ) if user&.first_name.nil?
+    rescue
     end
   end
 end

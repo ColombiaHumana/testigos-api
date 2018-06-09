@@ -2,6 +2,9 @@
   <% if flash[:alert] %>
     <%= render 'alert' %>
   <% end %>
+  <% if @user.post.coordinator %>
+    <%= render 'ocupado' %>
+  <% end %>
       <div class="grid-x grid-padding-x">
         <div class="small-12 medium-12 large-10 cell float-center">
           <%= semantic_form_for @user, url: update_user_path(@user) do |f| %>
@@ -30,7 +33,15 @@
                   <%= f.input :municipality, input_html: { disabled: true }, as: :string %>
                 </div>
                 <div class="medium-6 cell">
-                  <%= f.input :post, input_html: { disabled: true }, as: :string %>
+                  <%= f.input :zone, 
+                    input_html: { disabled: true },
+                    as: :string %>
+                </div>
+                <div class="medium-6 cell">
+                  <%= f.input :post, 
+                    input_html: { disabled: true, class: 'editable' },
+                    as: :select,
+                    collection: @user.zone.posts.where(coordinator: nil)%>
                 </div>
               </div>
               <div class="grid-x grid-margin-x">
