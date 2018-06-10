@@ -36,7 +36,8 @@ class CallcenterController < ApplicationController
   end
 
   def reject_user
-    if @user.update_attributes(rejected: true)
+    @user.assign_attributes(rejected: true)
+    if @user.save(validate: false)
       flash[:notice] = "El coordinador #{@user.name}"\
         ' ha sido descartado exitosamente!'
       redirect_to root_path
