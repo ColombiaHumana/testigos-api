@@ -95,7 +95,7 @@ class User < ApplicationRecord
   end
 
   def clean_phone
-    self.phone = self.phone.scan(/\d/).join('')
+    self.phone = phone.scan(/\d/).join('')
   end
 
   def clean_email

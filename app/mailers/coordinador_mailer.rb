@@ -1,5 +1,7 @@
-class CoordinadorMailer < ApplicationMailer
+# frozen_string_literal: true
 
+# Mailer for coordinators
+class CoordinadorMailer < ApplicationMailer
   def create(coordinador_id)
     @coordinador = User.find(coordinador_id)
     @password = User.gen_strong_password
@@ -12,8 +14,10 @@ class CoordinadorMailer < ApplicationMailer
       user: @coordinador
     ) unless coordinador
 
-    coordinador.update password: @password, password_confirmation: @password if coordinador
-    mail to: @coordinador.email, subject: 'Has sido validado como coordinador de puesto'
+    coordinador&.update password: @password,
+                        password_confirmation: @password
+    mail to: @coordinador.email,
+         subject: 'Has sido validado como coordinador de puesto'
   end
 
   def validate(testigo_id)
