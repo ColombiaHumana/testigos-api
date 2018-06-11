@@ -4,7 +4,7 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :role, presence: true
-  belongs_to :municipality
+  # belongs_to :municipality
 
   ROLES = %w[municipal lector moderador administrador].freeze
 
