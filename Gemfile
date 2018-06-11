@@ -5,8 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+gem 'active_admin_flat_skin', git: 'https://github.com/ayann/active_admin_flat_skin.git'
 gem 'activeadmin'
-gem 'active_admin_flat_skin', git: "https://github.com/ayann/active_admin_flat_skin.git"
+gem 'activerecord_json_validator'
 gem 'autoprefixer-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -16,20 +17,19 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'fat_fingers'
 gem 'font-awesome-rails'
-gem 'foundation_emails'
 gem 'foundation-rails'
+gem 'foundation_emails'
 gem 'inky-rb', require: 'inky'
 gem 'jbuilder', '~> 2.5'
-gem 'activerecord_json_validator'
 gem 'knock'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'premailer-rails'
 gem 'postal-rails', '~> 1.0'
+gem 'premailer-rails'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'rest-client'
-gem 'sidekiq'
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
@@ -37,9 +37,9 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
   gem 'factory_bot_rails', '~> 4.0'
+  gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
   gem 'rspec-rails', '~> 3.7'
   gem 'rubocop', '~> 0.55.0', require: false
-  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do
@@ -49,7 +49,7 @@ group :development do
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-rvm'
   gem 'capistrano-sidekiq'
-  gem "letter_opener"
+  gem 'letter_opener'
   gem 'letter_opener_web', '~> 1.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
