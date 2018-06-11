@@ -2,7 +2,17 @@
 
 # Confirmation controller for acceptance of witnesses
 class ConfirmationController < ApplicationController
-  before_action :set_user, only: %i[accept edit reject thanks coordinator update_coordinator update]
+  before_action :set_user,
+                only: %i[
+                  accept
+                  coordinator
+                  edit
+                  reject
+                  thanks
+                  update
+                  update_coordinator
+                ]
+
   def accept
     @user.update! confirmation: :aceptada
     redirect_to :confirmation_thanks
@@ -47,6 +57,7 @@ class ConfirmationController < ApplicationController
       :post_id
     )
   end
+
   def coordinator_params
     params.require(:user).permit(
       :gestion
