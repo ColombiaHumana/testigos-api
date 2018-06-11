@@ -70,5 +70,7 @@ ActiveAdmin.register User do
     column('Zona') { |u| u.zone.cod_zone }
     column('Puesto') { |u| u.post.name }
     column('PP') { |u| u.post.cod_post }
+    column :phone
+    column :email
   end
 end
