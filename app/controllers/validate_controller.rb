@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Controller for user validations
 class ValidateController < ApplicationController
   before_action :authenticate_coordinador!
   layout 'app'
@@ -6,7 +9,7 @@ class ValidateController < ApplicationController
   def show
     @user = current_coordinador.user.post.users.where(
       enabled: false,
-      rejected: false,
+      rejected: false
     ).where.not(phone: nil).sample
     if @user
       redirect_to edit_user_path(@user)
