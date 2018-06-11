@@ -7,9 +7,11 @@ module Api
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
     rescue_from CanCan::AccessDenied, with: :unauthorized
     include Knock::Authenticable
+
     before_action :authenticate_user
     protect_from_forgery with: :null_session
     load_and_authorize_resource
+
     check_authorization
 
     def record_not_found

@@ -18,21 +18,21 @@ module Api
     end
 
     def result_params
-      params.require(:result).permit(:table_id, :image, votes: [
-        :total_mesa,
-        :petro,
-        :promotores,
-        :duque,
-        :la_calle,
-        :trujillo,
-        :fajardo,
-        :morales,
-        :vargas,
-        :votos_validos,
-        :votos_blancos,
-        :votos_nulos,
-        :votos_no_marcados,
-        :total
+      params.require(:result).permit(:table_id, :image, votes: %i[
+        total_mesa
+        petro
+        promotores
+        duque
+        la_calle
+        trujillo
+        fajardo
+        morales
+        vargas
+        votos_validos
+        votos_blancos
+        votos_nulos
+        votos_no_marcados
+        total
       ]).merge(user_id: current_user.id)
     end
   end

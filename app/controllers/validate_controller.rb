@@ -11,7 +11,7 @@ class ValidateController < ApplicationController
     if @user
       redirect_to edit_user_path(@user)
     else
-      flash[:notice] = "Todos los testigos disponibles para este puesto han sido verificados, si requieres de más testigos, pide a conocidos y amigos llenar el formulario para tú puesto."
+      flash[:notice] = 'Todos los testigos disponibles para este puesto han sido verificados, si requieres de más testigos, pide a conocidos y amigos llenar el formulario para tú puesto.'
       redirect_to root_path
     end
   end
@@ -31,7 +31,7 @@ class ValidateController < ApplicationController
       CoordinadorMailer.validate(@user.id).deliver_later
       redirect_to root_path
     else
-      flash[:alert] = "Error en el formulario, por favor completa todos los campos requeridos"
+      flash[:alert] = 'Error en el formulario, por favor completa todos los campos requeridos'
       render :edit_user
     end
   end
@@ -43,7 +43,7 @@ class ValidateController < ApplicationController
       flash[:notice] = "El testigo #{@user.name} ha sido descartado exitosamente!"
       redirect_to root_path
     else
-      flash[:alert] = "Error en el formulario, por favor completa todos los campos requeridos"
+      flash[:alert] = 'Error en el formulario, por favor completa todos los campos requeridos'
       render :edit_user
     end
   end

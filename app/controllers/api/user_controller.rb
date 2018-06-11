@@ -3,7 +3,8 @@
 module Api
   # GET user details
   class UserController < Api::ApiController
-    before_action :set_user, only: %i{update}
+    before_action :set_user, only: %i[update]
+
     # GET user details /api/user
     def show
       @user = current_user

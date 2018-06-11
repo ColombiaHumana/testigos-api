@@ -5,6 +5,7 @@ module Api
   class PasswordController < ApplicationController
     protect_from_forgery with: :null_session
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
     # Generate ResetToken to user by email POST /api/password_reset
     def create
       user = User.find_by!(email_params)
