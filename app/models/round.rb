@@ -29,6 +29,7 @@ class Round < ApplicationRecord
 
   private
 
+  # TODO: send data to securevote
   def send_to_secure_vote
   end
 end
