@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_07_043247) do
+ActiveRecord::Schema.define(version: 2018_06_12_200956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,9 @@ ActiveRecord::Schema.define(version: 2018_06_07_043247) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "role", limit: 20, default: "lector"
+    t.bigint "municipality_id"
     t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["municipality_id"], name: "index_admin_users_on_municipality_id"
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
@@ -186,6 +188,17 @@ ActiveRecord::Schema.define(version: 2018_06_07_043247) do
     t.index ["user_id"], name: "index_results_on_user_id"
   end
 
+  create_table "rounds", force: :cascade do |t|
+    t.bigint "table_id"
+    t.bigint "user_id"
+    t.jsonb "votes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
+    t.index ["table_id"], name: "index_rounds_on_table_id"
+    t.index ["user_id"], name: "index_rounds_on_user_id"
+  end
+
   create_table "statistics", force: :cascade do |t|
     t.jsonb "result"
     t.datetime "created_at", null: false
@@ -253,6 +266,7 @@ ActiveRecord::Schema.define(version: 2018_06_07_043247) do
     t.index ["municipality_id"], name: "index_zones_on_municipality_id"
   end
 
+  add_foreign_key "admin_users", "municipalities"
   add_foreign_key "coordinadores", "users"
   add_foreign_key "coordinators", "users"
   add_foreign_key "municipalities", "departments"
@@ -264,6 +278,8 @@ ActiveRecord::Schema.define(version: 2018_06_07_043247) do
   add_foreign_key "reset_tokens", "users"
   add_foreign_key "results", "tables"
   add_foreign_key "results", "users"
+  add_foreign_key "rounds", "tables"
+  add_foreign_key "rounds", "users"
   add_foreign_key "tables", "posts"
   add_foreign_key "tables", "users"
   add_foreign_key "users", "posts"

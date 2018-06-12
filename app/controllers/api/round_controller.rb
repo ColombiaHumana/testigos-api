@@ -13,15 +13,11 @@ module Api
     private
 
     def set_table
-      @table = Table.find(table_params[:table_id])
+      @table = Table.find(round_params[:table_id])
     end
 
     def set_result
       @result = @table.round || Round.create(round_params)
-    end
-
-    def table_params
-      params.require(:round).permit(:table_id)
     end
 
     def round_params

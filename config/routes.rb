@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     post 'user_token' => 'user_token#create', as: :user_token
     post 'user' => 'api/user#update', as: :user_online
     post 'user/email' => 'api/user#email', as: :user_email
-    post 'results' => 'api/results#create', as: :create_result
+    post 'results' => 'api/round#create', as: :create_result
   end
   post '/' => 'application#index', format: 'html'
   get '/token/:token' => 'reset_mail#update', as: :token_show

@@ -1,0 +1,2 @@
+json.array @tables.each do |table|
+end

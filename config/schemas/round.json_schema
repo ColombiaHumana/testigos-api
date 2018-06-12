@@ -1,0 +1,52 @@
+{
+	"type": "object",
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"properties": {
+		"petro": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"duque": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"blanco": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"nulos": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"no_marcados": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"total_e11": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"total_urna": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"total_incinerados": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
+		"total_validos": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		}
+	},
+	"required": ["petro", "duque", "blanco", "nulos", "no_marcados", "total_e11", "total_urna", "total_incinerados", "total_validos"]
+}

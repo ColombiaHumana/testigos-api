@@ -3,6 +3,7 @@ class Table < ApplicationRecord
   belongs_to :user, required: false
   has_many :reports
   has_one :result
+  has_one :round
   delegate :zone, to: :post
   delegate :municipality, to: :zone
   delegate :department, to: :municipality
