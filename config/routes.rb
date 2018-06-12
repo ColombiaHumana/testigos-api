@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   scope '/api', defaults: { format: 'json' } do
     get 'news' => 'api/news#index', as: :news_index
     get 'user' => 'api/user#show', as: :user_show
+    get 'tables', to: 'api/tables#show', as: :tables_show
     post 'issue' => 'api/reports#create', as: :create_issue
     post 'password_reset' => 'api/password#create', as: :password_reset
     post 'user_token' => 'user_token#create', as: :user_token

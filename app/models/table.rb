@@ -7,8 +7,13 @@ class Table < ApplicationRecord
   delegate :municipality, to: :zone
   delegate :department, to: :municipality
 
-  scope :muestreo, -> { where(sample: true)}
+  scope :orden, -> { order(cod_table: 'asc') }
+  scope :muestreo, -> { where(sample: true) }
   def to_s
-    "Mesa #{self.cod_table}"
+    "Mesa #{cod_table}"
+  end
+
+  def name
+    "Mesa #{cod_table}"
   end
 end
