@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Abilities for users
 class Ability
   include CanCan::Ability
 
@@ -16,9 +19,9 @@ class Ability
 #     end
 
     # if user.online?
-    can :create, Report, table: { id: user.table_ids }
-    can :create, Result, table: { id: user.table_ids }
+    can :create, Report, table: { id: user.post.table_ids }
+    can :create, Result, table: { id: user.post.table_ids }
+    can :create, Round, table: { id: user.post.table_ids }
     # end
-
   end
 end
