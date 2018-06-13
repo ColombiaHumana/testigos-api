@@ -16,6 +16,7 @@
  *= require errors.scss
  *= require register
  *= require validate
+ *= require panel
  *= require font-awesome
 */
 .logo{

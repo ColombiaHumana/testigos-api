@@ -1,0 +1,17 @@
+<%= render 'header' %>
+<%= form_for @round, url: "" do |f| %>
+  <div class="grid-container">
+    <hr />
+    <div class="grid-x grid-padding-x">
+      <div class="small-12 medium-10 cell">
+        <%= f.label :total_urna %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= f.number_field :total_urna, class: 'masq tvm' %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= f.number_field :petro %>
+      </div>
+    </div>
+  </div>
+<% end %>

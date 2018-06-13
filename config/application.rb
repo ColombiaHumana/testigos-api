@@ -35,6 +35,8 @@ module TestigosApi
       'X-Frame-Options' => 'ALLOW-FROM https://petro.com.co'
     }
     config.active_job.queue_adapter = :sidekiq
-    config.exceptions_app = self.routes
+    config.exceptions_app = routes
+
+    config.autoload_paths += %W[#{config.root}/config/routes]
   end
 end
