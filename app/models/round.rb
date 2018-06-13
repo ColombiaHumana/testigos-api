@@ -26,10 +26,8 @@ class Round < ApplicationRecord
                  :total_mesa,
                  :total_validos
 
-
   private
 
   # TODO: send data to securevote
-  def send_to_secure_vote
-  end
+  def send_to_secure_vote; end
 end
