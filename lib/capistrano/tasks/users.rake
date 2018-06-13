@@ -10,6 +10,7 @@ namespace :users do
     mautic
     phones
     confirmation
+    registraduria
   ]
 
   task_lists.each do |task_name|

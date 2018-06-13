@@ -209,7 +209,44 @@ namespace :users do
         surname: row['surname'],
         second_surname: row['second_surname']
       ) if user&.first_name.nil?
-    rescue
+
+    end
+  end
+
+  desc 'load registraduria users'
+  task registraduria: :environment do
+    registraduria_csv = File.read(
+      Rails.root.join(
+        'vendor',
+        'divipol',
+        'registraduria_user.csv'
+      )
+    )
+    CSV.parse(registraduria_csv, headers: true).each do |row|
+      puts row['dd']
+      department = Department.find_by(cod_department: row['dd'])
+      municipality = department.municipalities.find_by(cod_municipality: row['mm'])
+      zone = municipality.zones.find_by(cod_zone: row['zz'])
+      post = zone.posts.find_by(cod_post: row['pp'])
+      user = User.find_by(document: row['cedula']) || User.new(
+        name: row['nombre'],
+        document: row['cedula'],
+        phone: row['telefono'],
+        post: post,
+        password: row['cedula'],
+        uploaded: true,
+        enabled: true
+      )
+      user&.assign_attributes(
+        post: post,
+        phone: row['telefono'],
+        uploaded: true,
+        enabled: true
+      )
+      user.save(validate: false)
+      table = post.tables.find_by(cod_table: row['mesa']).id
+      user.table_ids = [table]
+
     end
   end
 end
