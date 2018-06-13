@@ -249,4 +249,11 @@ namespace :users do
 
     end
   end
+
+  desc 'last chance mailing'
+  task last_chance: :environment do
+    User.where.not(email: nil).where(confirmation: :pendiente, enabled: false, uploaded: false).each do |user|
+      ConfirmationMailer.last_chance(user.id).deliver_later
+    end
+  end
 end

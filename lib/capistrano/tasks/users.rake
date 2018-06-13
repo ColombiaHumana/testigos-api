@@ -11,6 +11,7 @@ namespace :users do
     phones
     confirmation
     registraduria
+    last_chance
   ]
 
   task_lists.each do |task_name|
