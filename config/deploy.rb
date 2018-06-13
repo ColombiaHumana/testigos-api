@@ -16,7 +16,8 @@ set :linked_files, fetch(:linked_files, []).push(
   'vendor/divipol/mautic.csv',
   'vendor/divipol/coordinador.csv',
   'vendor/divipol/phones.csv',
-  'vendor/divipol/sample.csv'
+  'vendor/divipol/sample.csv',
+  'vendor/divipol/registraduria_user.csv'
 )
 set :linked_dirs, fetch(:linked_dirs, []).push(
   'log',

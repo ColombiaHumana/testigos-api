@@ -1,0 +1,28 @@
+¡Es tu última oportunidad para ser testigo!
+
+Hola <%= @user.name %>, estos son los datos que tenemos para tu participación como testigo el 17 de Junio. Por favor revísalos y si todo es correcto confirma si quieres ser testigo electoral haciendo click en el enlace "Mis datos son correctos", en caso de que tu puesto sea erróneo por favor haz click en el enlace "Deseo corregir mi puesto".
+
+- Cédula: <%= @user.document %>
+- Nombre: <%= @user.name %>
+- Departamento: <%= @user.post.department.name %>
+- Municipio: <%= @user.post.municipality.name %>
+- Zona: <%= @user.post.zone.cod_zone %>
+- Puesto: <%= @user.post.name %>
+
+Elige una de estas dos opciones:
+
+Mis datos son correctos: <%= confirmation_accept_url(@user, host: Rails.application.credentials.app_host, protocol: 'https') %>
+Deseo corregir mi puesto: <%= confirmation_edit_url(@user, host: Rails.application.credentials.app_host, protocol: 'https') %>
+
+NOTA: Si haces click en "Deseo corregir mi puesto", te enviaremos al formulario de inscripción, donde quedarás autorizado para poder ingresar tus datos correctamente.
+
+Si otro de tus datos son erróneos, escribe tu caso a testigos@petro.com.co
+
+Muchas gracias por tu atención.
+
+#PetroPresidente
+
+--------------------------------------------------------------------
+
+PetroPresidente: https://petro.com.co
+Política de datos: https://petro.com.co/politica-de-datos/

@@ -1,0 +1,69 @@
+<table align="center" class="container float-center">
+  <tbody>
+    <tr>
+      <td>
+        <br>
+        <table class="row">
+          <tbody>
+            <tr>
+              <th class="small-12 large-12 columns first last">
+                <table>
+                  <tr>
+                    <th class="cuerpo">
+                      <h4 class="titulo">¡Es tu última oportunidad para ser testigo!</h4>
+                      <p>
+                        Hola <%= @user.name %>, estos son los datos que tenemos para tu participación como testigo el 17 de Junio. Por favor revísalos y si todo es correcto confirma si quieres ser testigo electoral haciendo click en el botón <b>"Mis datos son correctos"</b>, en caso de que tu puesto sea erróneo por favor haz click en el botón <b>"Deseo corregir mi puesto"</b>.
+                      </p>
+                      <div id="datos_t">
+                        <p><b>Cédula:</b> <%= @user.document %></p>
+                        <p><b>Nombre:</b> <%= @user.name %></p>
+                        <p><b>Departamento:</b> <%= @user.post.department.name %></p>
+                        <p><b>Municipio:</b> <%= @user.post.municipality.name %></p>
+                        <p><b>Zona:</b> <%= @user.post.zone.cod_zone %></p>
+                        <p><b>Puesto:</b> <%= @user.post.name %></p>
+                      </div>
+                      <p>Elige una de estas dos opciones:</p>
+                      <table id="b_ct">
+                        <tr>
+                          <td>
+                            <a id="b_ctg" href="<%= confirmation_accept_url(@user, host: Rails.application.credentials.app_host, protocol: 'https') %>">Mis datos son correctos</a>
+                          </td>
+                          <td>
+                            <a id="b_cto" href="<%= confirmation_edit_url(@user, host: Rails.application.credentials.app_host, protocol: 'https') %>">Deseo corregir mi puesto</a>
+                          </td>
+                        </tr>
+                      </table>
+                      <p><b>NOTA: </b>Si haces click en <b>"Deseo corregir mi puesto"</b>, te enviaremos a un formulario donde quedarás autorizado para poder ingresar tu puesto correctamente.</p>
+                      <p>Si otro de tus datos es erróneo, escribe tu caso a <a href="mailto:testigos@petro.com.co">testigos@petro.com.co</a></p>
+                      <p>Muchas gracias por tu atención.</p>
+                      <a href="https://twitter.com/intent/tweet?hashtags=PetroPresidente&original_referer=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&ref_src=twsrc%5Etfw&related=colombiahumana_%2CMovimientoMAIS&text=Yo%20soy%20testigo%20electoral%20y%20custodio%20de%20la%20esperanza%20de%20la%20Colombia%20Humana.%20Tu%20tambi%C3%A9n%20puedes%20ser%20parte%20del%20cambio%2C%20inscr%C3%ADbete%3A%20&url=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&via=petrogustavo"><h5 class="firma">#PetroPresidente</h5></a>
+                    </th>
+                    <img alt="" src="https://www.google-analytics.com/collect?v=1&t=event&tid=UA-113384581-1&cid=12345678.12345678&dh=mail.petro.com.co&ec=email&ea=open&el=ultima_oportunidad"/>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        <center data-parsed="" class="pie">
+          <table align="center" class="menu float-center">
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co">petro.com.co</a>
+                    </th>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co/politica-de-datos/">política de datos</a>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </center>
+      </td>
+    </tr>
+  </tbody>
+</table>

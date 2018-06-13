@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_155515) do
     t.string "token"
     t.integer "confirmation", default: 1
     t.integer "gestion"
+    t.boolean "uploaded", default: false
     t.index ["document"], name: "index_users_on_document"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["post_id"], name: "index_users_on_post_id"
