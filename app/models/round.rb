@@ -13,6 +13,13 @@ class Round < ApplicationRecord
   ).to_s
 
   validates :votes, presence: true, json: { schema: ROUND_JSON_SCHEMA }
+  validates :image, presence: true
+
+  scope :total_blancos, -> { sum("(votes ->> 'blanco')::int") }
+  scope :total_duque, -> { sum("(votes ->> 'duque')::int") }
+  scope :total_nulos, -> { sum("(votes ->> 'nulos')::int") }
+  scope :total_petro, -> { sum("(votes ->> 'petro')::int") }
+  scope :total_validos, -> { sum("(votes ->> 'total_validos')::int") }
 
   store_accessor :votes,
                  :petro,

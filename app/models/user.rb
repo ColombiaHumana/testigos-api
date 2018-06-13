@@ -90,7 +90,7 @@ class User < ApplicationRecord
   private
 
   def clean_name
-    self.name = "#{first_name} #{second_name}"\
+    self.name = "#{first_name} #{second_name} "\
       "#{surname} #{second_surname}".titleize
   end
 
