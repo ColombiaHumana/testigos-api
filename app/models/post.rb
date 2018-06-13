@@ -6,10 +6,10 @@ class Post < ApplicationRecord
   belongs_to :zone
   delegate :department, to: :municipality
   delegate :municipality, to: :zone
-  has_many :results, through: :tables
-  has_many :rounds, through: :tables
   has_many :tables
   has_many :users
+  has_many :results, through: :tables
+  has_many :rounds, through: :tables
 
   def to_s
     name
