@@ -4,6 +4,6 @@
 class PanelController < ApplicationController
   layout 'app'
   def index
-    @round = Table.find(236).build_round
+    @round = Table.find(233).build_round
   end
 end

@@ -1,8 +1,14 @@
-<%= render 'header' %>
+<%= render 'header', user: @round.table.user %>
 <%= form_for @round, url: "" do |f| %>
   <div class="grid-container">
     <hr />
     <div class="grid-x grid-padding-x">
+      <div class="small-12 medium-10 cell">
+        <%= f.label :total_e11 %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= f.number_field :total_e11, class: 'masq tvm' %>
+      </div>
       <div class="small-12 medium-10 cell">
         <%= f.label :total_urna %>
       </div>
@@ -10,8 +16,55 @@
         <%= f.number_field :total_urna, class: 'masq tvm' %>
       </div>
       <div class="small-12 medium-10 cell">
-        <%= f.number_field :petro %>
+        <%= f.label :petro %>
       </div>
+      <div class="small-12 medium-2 cell">
+        <%= f.number_field :petro, class: 'masq campos cvv' %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= f.label :duque %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= f.number_field :duque, class: 'masq campos cvv' %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= f.label :blanco %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= f.number_field :blanco, class: 'masq campos cvv' %>
+      </div>
+      <div class="small-9 medium-10 cell">
+        <h4>Votos Válidos</h4>
+      </div>
+      <div class="small-3 medium-2 cell">
+        <%= f.number_field :total_validos, class: 'cond tvv', readonly: true %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= f.label :nulos %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= f.number_field :nulos, class: 'masq campos ctv' %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= f.label :no_marcados %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= f.number_field :no_marcados, class: 'masq campos ctv' %>
+      </div>
+      <div class="small-9 medium-10 cell">
+        <h4>Total E-11</h4>
+      </div>
+      <div class="small-3 medium-2 cell">
+        <%= f.number_field :total_e11, class: 'cond tvt', readonly: true %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x fbot">
+    
+      <%= f.submit 'Guardar',
+          class: 'success button small-12 large-4 cell large-offset-4',
+          id: 'b_env'
+      %>
     </div>
   </div>
 <% end %>
+<%= javascript_include_tag "panel" %>

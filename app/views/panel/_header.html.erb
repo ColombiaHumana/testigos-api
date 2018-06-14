@@ -1,14 +1,14 @@
 <div class="cabecera grid-container">
-  <h2>Mesa 32</h2>
-  <h5>Puesto Nro. 360, Corferias</h5>
+  <h2><%= @round.table.name %></h2>
+  <h5><%= user.post.name.titleize %></h5>
   <div class="grid-x grid-padding-x">
     <div class="medium-6 cell fm_dt">
-      <p><b>Testigo: </b>Mijail Rondón</p>
-      <p><b>Teléfono: </b>(307) 305-7865</p>
+      <p><b>Testigo: </b><%= user.name.titleize %></p>
+      <p><b>Teléfono: </b><%= user.phone %></p>
     </div>
     <div class="medium-6 cell fm_dm">
-      <p><b>Departamento: </b>Antioquia</p>
-      <p><b>Mesa de muestreo: </b>207</p>
+      <p><b>Departamento: </b><%= user.post.department.name.titleize %></p>
+      <p><b>Mesa de muestreo: </b><%= @round.table.order %></p>
     </div>
   </div>
 </div>
