@@ -7,6 +7,12 @@ class PanelController < ApplicationController
   before_action :set_round, only: %i[new edit create update]
   layout 'panel'
 
+  CANDIDATOS = [
+    ['petro', 'Gustavo Petro'],
+    ['duque', 'Ivan Duque'],
+    ['blancos', 'Voto Blanco']
+  ]
+
   def index
     @tables = Table.muestreo.pendiente.orden_muestreo.page params[:page]
   end
@@ -37,6 +43,10 @@ class PanelController < ApplicationController
       flash[:alert] = 'Error en los campos, por favor verifique'
       render :edit
     end
+  end
+
+  def proyeccion
+    @candidatos = CANDIDATOS
   end
 
   private

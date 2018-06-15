@@ -1,0 +1,7 @@
+<tr>
+  <td><%= candidato.last %></td>
+  <td><%= Round.muestreo.public_send("total_#{candidato.first}") %></td>
+  <td><%= number_to_percentage( ((Round.muestreo.public_send("total_#{candidato.first}") * 100) / Round.muestreo.total_validos.to_f), precision: 2) %></td>
+  <td>0</td>
+  <td>0</td>
+</tr>
