@@ -63,3 +63,19 @@ form .cond{
   color: #191936;
   border-bottom: 2px solid #2A9E55;
 }
+/************* tabla ************/
+
+#lista_mesas{
+  margin-top: 30px;
+  border-radius: 3px !important;
+}
+#lista_mesas thead, #lista_mesas thead tr:hover{
+  background: #58006f;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+}
+#lista_mesas tr td{
+  cursor: pointer;
+}

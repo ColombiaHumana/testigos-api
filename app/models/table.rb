@@ -12,8 +12,10 @@ class Table < ApplicationRecord
   has_one :round
 
   scope :orden, -> { order(cod_table: 'asc') }
+  scope :orden_muestreo, -> { order(order: 'asc') }
   scope :muestreo, -> { where(sample: true) }
   scope :escrutado, -> { joins(:round) }
+  scope :pendiente, -> { left_joins(:round).where('rounds.id IS null') }
 
   def to_s
     "Mesa #{cod_table}"
@@ -21,5 +23,9 @@ class Table < ApplicationRecord
 
   def name
     to_s
+  end
+
+  def to_param
+    order.to_s
   end
 end

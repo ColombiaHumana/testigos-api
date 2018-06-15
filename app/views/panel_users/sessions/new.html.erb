@@ -1,0 +1,29 @@
+<%= provide :stylesheets do %>
+  <%= stylesheet_link_tag    "validate" %>
+<% end %>
+
+<div class="grid-container cuerpo">
+  <div class="grid-x grid-padding-x">
+    <div class="small-12 medium-8 cell float-center">
+      <br>
+      <h3>Sistema de validación de coordinadores de testigos electorales</h3>
+    </div>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="small-12 medium-8 large-4 cell float-center">
+      <br>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+        </div>
+        <div class="password-wrapper">
+          <%= f.password_field :password, autocomplete: "off", id: 'contra', class: 'password', placeholder: 'Contraseña' %>
+          <button id="ver_contra" class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
+        </div>
+
+        <p><%= f.submit "Iniciar Sesión", class: 'button expanded' %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,16 @@
 <div class="cabecera grid-container">
   <h2><%= @round.table.name %></h2>
-  <h5><%= user.post.name.titleize %></h5>
+  <h5><%= @round.table.post.name.titleize %></h5>
   <div class="grid-x grid-padding-x">
     <div class="medium-6 cell fm_dt">
-      <p><b>Testigo: </b><%= user.name.titleize %></p>
-      <p><b>Teléfono: </b><%= user.phone %></p>
+      <p><b>Testigo: </b><%= @round.table.user&.name&.titleize || 'No asignado' %></p>
+      <p><b>Teléfono: </b><%= number_to_phone(@round.table.user&.phone, area_code: true) %></p>
+      <p><b>Mesa de muestreo: </b><%= @round.table.order %></p>
     </div>
     <div class="medium-6 cell fm_dm">
-      <p><b>Departamento: </b><%= user.post.department.name.titleize %></p>
-      <p><b>Mesa de muestreo: </b><%= @round.table.order %></p>
+      <p><b>Departamento: </b><%= @round.table.post.department.name.titleize %></p>
+      <p><b>Municipio: </b><%= @round.table.municipality.name.titleize %></p>
+      <p><b>Zona: </b><%= @round.table.zone.cod_zone %></p>
     </div>
   </div>
 </div>
