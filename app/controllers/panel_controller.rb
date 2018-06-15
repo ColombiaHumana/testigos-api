@@ -48,7 +48,7 @@ class PanelController < ApplicationController
   def proyeccion
     @candidatos = CANDIDATOS
   end
-
+  
   private
 
   def set_round

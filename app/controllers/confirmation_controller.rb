@@ -14,7 +14,8 @@ class ConfirmationController < ApplicationController
                 ]
 
   def accept
-    @user.update! confirmation: :aceptada
+    @user.assign_attributes confirmation: :aceptada
+    @user.save(validate: false)
     redirect_to :confirmation_thanks
   end
 
