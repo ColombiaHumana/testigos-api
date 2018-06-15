@@ -3,6 +3,7 @@
 # Second round votes model
 class Round < ApplicationRecord
   after_commit :send_to_secure_vote
+  after_commit :calculate_coefficient
   belongs_to :table
   belongs_to :user
 
@@ -20,6 +21,7 @@ class Round < ApplicationRecord
   scope :total_nulos, -> { sum("(votes ->> 'nulos')::int") }
   scope :total_petro, -> { sum("(votes ->> 'petro')::int") }
   scope :total_validos, -> { sum("(votes ->> 'total_validos')::int") }
+  scope :muestreo, -> { joins(:table).where('tables.sample = true') }
 
   store_accessor :votes,
                  :petro,
@@ -38,4 +40,15 @@ class Round < ApplicationRecord
 
   # TODO: send data to securevote
   def send_to_secure_vote; end
+
+  def calculate_coefficient
+    scrutinized = self.table.department.scrutinized + self.total_mesa
+    self.table.department.update scrutinized: scrutinized
+    total_scrutinized = Department.sum(:scrutinized)
+    Department.all.each do | d |
+      percentage = (d.scrutinized / total_scrutinized.to_f)
+      coefficient = (d.weight / percentage)
+      d.update! percentage: percentage, coefficient: coefficient
+    end
+  end
 end

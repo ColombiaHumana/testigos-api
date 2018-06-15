@@ -1,0 +1,18 @@
+<div class="small-12 medium-12 large-10 cell float-center">
+  <table id="lista_mesas" class="stack hover">
+    <thead>
+      <tr>
+        <th width="300">Candidato</th>
+        <th width="100">Votos directos</th>
+        <th width="100">% Votos directos</th>
+        <th width="100">Votos ponderados</th>
+        <th width="100">% Votos ponderados</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @candidatos.each do |candidato| %>
+        <%= render 'proyeccion_row', candidato: candidato %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
