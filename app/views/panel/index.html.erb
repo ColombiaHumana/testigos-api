@@ -1,0 +1,9 @@
+<div class="small-12 medium-12 large-10 cell float-center">
+  <h4>Mesas por escrutar <small><%= @tables.total_count %></small></h4>
+  <% if flash[:notice] %>
+    <%= render 'callout' %>
+  <% end %>
+  <%= paginate @tables %>
+  <%= render 'table' %>
+  <%= paginate @tables %>
+</div>

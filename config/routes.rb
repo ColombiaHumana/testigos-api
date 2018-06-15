@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  constraints subdomain: 'panel' do
+    devise_for :panel_user, path: '/'
+    root to: 'panel#index'
+    get '/escrutados', to: 'panel#escrutado', as: :escrutadas
+    get '/:order/resultado/nuevo', to: 'panel#new', as: :new_resultado
+    post '/:order/resultado/create', to: 'panel#create', as: :create_resultado
+    get '/:order/resultado/edit', to: 'panel#edit', as: :edit_resultado
+    patch '/:order/resultado/update', to: 'panel#update', as: :update_resultado
+  end
 
   constraints subdomain: 'coordinadores' do
     devise_for :coordinadores, path: '/'
@@ -10,7 +19,6 @@ Rails.application.routes.draw do
     get '/validacion/:token', to: 'validate#edit_user', as: :edit_user
     patch '/validacion/:token', to: 'validate#update_user', as: :update_user
     patch '/descartado/:token', to: 'validate#reject_user', as: :reject_user
-
   end
 
   constraints subdomain: 'callcenter' do

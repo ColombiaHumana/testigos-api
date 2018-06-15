@@ -1,0 +1,18 @@
+<div class="small-12 medium-12 large-10 cell float-center">
+  <table id="lista_mesas" class="stack hover">
+    <thead>
+      <tr>
+        <th width="40">Nro.</th>
+        <th width="200">Departamento</th>
+        <th width="200">Municipio</th>
+        <th width="100">Zona</th>
+        <th width="40">Mesa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tables.each do |table| %>
+        <%= render 'row', table: table %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

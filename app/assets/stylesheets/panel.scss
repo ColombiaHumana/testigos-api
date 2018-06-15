@@ -1,0 +1,81 @@
+.fbot{
+  margin-top: 0px;
+}
+.cabecera{
+  text-align: center;
+  color: #191936;
+}
+.cabecera p{
+  margin: 0;
+}
+.cabecera h2{
+  color: #570070;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  font-size: 2rem;
+}
+.cabecera h5{
+  color: #767c97;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+.fm_dt{
+  text-align: left;
+}
+.fm_dm{
+  text-align: right;
+}
+@media screen and (max-width: 39.9375em) {
+  .fm_dm{
+    text-align: left;
+  }
+}
+form label{
+  font-weight: bold;
+  color: #191936;
+}
+form input{
+  color: #191936 !important;
+  font-weight: bold !important;
+  text-align: right;
+  border-radius: 3px !important;
+}
+form h4{
+  font-weight: bold;
+  color: #622066;
+}
+form .cond{
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #622066 !important;
+  font-size: 1.5rem;
+  cursor: default;
+}
+#warn_suma{
+  display: none;
+}
+#b_env{
+  border-radius: 3px;
+  font-weight: bold;
+  color: #191936;
+  border-bottom: 2px solid #2A9E55;
+}
+/************* tabla ************/
+
+#lista_mesas{
+  margin-top: 30px;
+  border-radius: 3px !important;
+}
+#lista_mesas thead, #lista_mesas thead tr:hover{
+  background: #58006f;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.8rem;
+}
+#lista_mesas tr td{
+  cursor: pointer;
+}

@@ -1,0 +1,90 @@
+<div class="small-12 medium-10 large-6 cell float-center">
+<%= render 'header', user: @round.table.user %>
+<%= form_for @round, url: create_resultado_path(@round.table) do |f| %>
+  <div class="grid-container">
+    <hr />
+    <%= f.simple_fields_for :votes do |cf| %>
+    <div class="grid-x grid-padding-x">
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :total_e11 %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :total_e11, class: 'masq', min: 0, max: 350 %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :total_urna %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :total_urna, class: 'masq', min: 0, max: 350  %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :total_incinerados %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :total_incinerados, class: 'masq', min: 0, max: 350  %>
+      </div>
+    </div>
+      <hr />
+    <div class="grid-x grid-padding-x">
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :petro %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :petro, class: 'masq campos votos_validos', min: 0, max: 350  %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :duque %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :duque, class: 'masq campos votos_validos', min: 0, max: 350  %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :blanco %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :blanco, class: 'masq campos votos_validos', min: 0, max: 350  %>
+      </div>
+      <div class="small-9 medium-10 cell">
+        <h4>Votos Válidos</h4>
+      </div>
+      <div class="small-3 medium-2 cell">
+        <%= cf.number_field :total_validos, class: 'cond total_validos', readonly: true, min: 0, max: 350  %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :nulos %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :nulos, class: 'masq campos ctv', min: 0, max: 350  %>
+      </div>
+      <div class="small-12 medium-10 cell">
+        <%= cf.label :no_marcados %>
+      </div>
+      <div class="small-12 medium-2 cell">
+        <%= cf.number_field :no_marcados, class: 'masq campos ctv' , min: 0, max: 350 %>
+      </div>
+      <div class="small-9 medium-10 cell">
+        <h4>Total mesa</h4>
+      </div>
+      <div class="small-3 medium-2 cell">
+        <%= cf.number_field :total_mesa, class: 'cond total_mesa', readonly: true, min: 0, max: 350 %>
+      </div>
+    </div>
+    <div class="grid-x grid-margin-x fbot">
+      <div id="warn_suma" class="callout warning large" data-closable>
+	<h4>Importante</h4>
+        <p>El <b>total de votos</b> de la mesa no concuerda con el total de votos sumados. Por favor verifique nuevamente los datos introducidos.</p>
+	<button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+	  <span aria-hidden="true">&times;</span>
+	</button>
+      </div>
+      <%= f.submit 'Guardar',
+          class: 'success button small-12 large-4 cell large-offset-4',
+          id: 'b_env',
+          disabled: true
+      %>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+</div>
+<%= javascript_include_tag "panel" %>

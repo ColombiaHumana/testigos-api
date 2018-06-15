@@ -22,4 +22,6 @@ Rails.application.config.assets.precompile += %w(
   alidate.css
   validate.js
   validate.css
+  panel.js
+  panel.css
 )

@@ -32,6 +32,7 @@ class Round < ApplicationRecord
                  :total_incinerados,
                  :total_mesa,
                  :total_validos
+  attr_reader :total_check
 
   private
 
