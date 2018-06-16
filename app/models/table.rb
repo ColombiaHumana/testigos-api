@@ -26,6 +26,6 @@ class Table < ApplicationRecord
   end
 
   def to_param
-    order
+    order.to_s
   end
 end
