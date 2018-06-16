@@ -95,11 +95,11 @@ class User < ApplicationRecord
   end
 
   def clean_phone
-    self.phone = phone.scan(/\d/).join('')
+    self.phone = phone.scan(/\d/).join('') unless phone.nil?
   end
 
   def clean_email
-    self.email = email.downcase.strip.clean_up_typoed_email
+    self.email = email.downcase.strip.clean_up_typoed_email unless email.nil?
   end
 
   def post_available

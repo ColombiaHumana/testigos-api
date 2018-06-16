@@ -8,7 +8,8 @@ module Api
     # GET user details /api/user
     def show
       @user = current_user
-      @user.update online: true
+      @user.assign_attributes online: true
+      @user.save(validate: false)
     end
 
     def update
