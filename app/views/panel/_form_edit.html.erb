@@ -9,19 +9,19 @@
         <%= cf.label :total_e11 %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :total_e11, class: 'masq', min: 0, max: 350, value: @round.total_e11  %>
+        <%= cf.number_field :total_e11, class: 'masq', min: 0, value: @round.total_e11  %>
       </div>
       <div class="small-12 medium-10 cell">
         <%= cf.label :total_urna %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :total_urna, class: 'masq', min: 0, max: 350, value: @round.total_urna  %>
+        <%= cf.number_field :total_urna, class: 'masq', min: 0, value: @round.total_urna  %>
       </div>
       <div class="small-12 medium-10 cell">
         <%= cf.label :total_incinerados %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :total_incinerados, class: 'masq', min: 0, max: 350, value: @round.total_incinerados  %>
+        <%= cf.number_field :total_incinerados, class: 'masq', min: 0, value: @round.total_incinerados  %>
       </div>
     </div>
       <hr />
@@ -30,43 +30,43 @@
         <%= cf.label :petro %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :petro, class: 'masq campos votos_validos', min: 0, max: 350, value: @round.petro  %>
+        <%= cf.number_field :petro, class: 'masq campos votos_validos', min: 0, value: @round.petro  %>
       </div>
       <div class="small-12 medium-10 cell">
         <%= cf.label :duque %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :duque, class: 'masq campos votos_validos', min: 0, max: 350, value: @round.duque  %>
+        <%= cf.number_field :duque, class: 'masq campos votos_validos', min: 0, value: @round.duque  %>
       </div>
       <div class="small-12 medium-10 cell">
         <%= cf.label :blanco %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :blanco, class: 'masq campos votos_validos', min: 0, max: 350, value: @round.blanco  %>
+        <%= cf.number_field :blanco, class: 'masq campos votos_validos', min: 0, value: @round.blanco  %>
       </div>
       <div class="small-9 medium-10 cell">
         <h4>Votos Válidos</h4>
       </div>
       <div class="small-3 medium-2 cell">
-        <%= cf.number_field :total_validos, class: 'cond total_validos', readonly: true, min: 0, max: 350, value: @round.total_validos  %>
+        <%= cf.number_field :total_validos, class: 'cond total_validos', readonly: true, min: 0, value: @round.total_validos  %>
       </div>
       <div class="small-12 medium-10 cell">
         <%= cf.label :nulos %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :nulos, class: 'masq campos ctv', min: 0, max: 350, value: @round.nulos  %>
+        <%= cf.number_field :nulos, class: 'masq campos ctv', min: 0, value: @round.nulos  %>
       </div>
       <div class="small-12 medium-10 cell">
         <%= cf.label :no_marcados %>
       </div>
       <div class="small-12 medium-2 cell">
-        <%= cf.number_field :no_marcados, class: 'masq campos ctv' , min: 0, max: 350, value: @round.no_marcados %>
+        <%= cf.number_field :no_marcados, class: 'masq campos ctv' , min: 0, value: @round.no_marcados %>
       </div>
       <div class="small-9 medium-10 cell">
         <h4>Total mesa</h4>
       </div>
       <div class="small-3 medium-2 cell">
-        <%= cf.number_field :total_mesa, class: 'cond total_mesa', readonly: true, min: 0, max: 350, value: @round.total_mesa %>
+        <%= cf.number_field :total_mesa, class: 'cond total_mesa', readonly: true, min: 0, value: @round.total_mesa %>
       </div>
     </div>
     <div class="grid-x grid-margin-x fbot">

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post '/:order/resultado/create', to: 'panel#create', as: :create_resultado
     get '/:order/resultado/edit', to: 'panel#edit', as: :edit_resultado
     patch '/:order/resultado/update', to: 'panel#update', as: :update_resultado
+    get '/proyeccion', to: 'panel#proyeccion', as: :proyeccion
   end
 
   constraints subdomain: 'coordinadores' do

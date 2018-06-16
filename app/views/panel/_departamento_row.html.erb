@@ -1,0 +1,7 @@
+<tr>
+  <td><%= row[:department].titleize %></td>
+  <td><%= number_to_percentage((row[:petro_ponderado] * 100 / row[:total_ponderado]), precision: 2) %></td>
+  <td><%= number_to_percentage((row[:duque_ponderado] * 100 / row[:total_ponderado]), precision: 2) %></td>
+  <td><%= number_to_percentage((row[:blancos_ponderado] * 100 / row[:total_ponderado]), precision: 2) %></td>
+  <td><%= number_to_percentage((row[:total_ponderado] * 100 / row[:total_ponderado]), precision: 2) %></td>
+</tr>

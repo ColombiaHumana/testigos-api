@@ -79,3 +79,38 @@ form .cond{
 #lista_mesas tr td{
   cursor: pointer;
 }
+.top-bar{
+  padding: 0 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+.top-bar, .top-bar ul, .title-bar{
+  background: #58006f;
+}
+
+.top-bar ul li{
+  padding: 12px 0 8px 0;
+}
+.top-bar ul li.is-active{
+  border-bottom: 4px solid #16eb86;
+}
+.dropdown.menu .is-active > a{
+  color: #fff;
+}
+.dropdown.menu i{
+  margin-right: 6px;
+}
+.top-bar ul a{
+  color: #ADADAD;
+}
+.top-bar ul a:hover{
+  color: #fff;
+}
+.logo{
+  width: 110px;
+}
+.menu{
+  background: #622066;
+}
+.title-bar{
+  padding: 12px;
+}

@@ -1,0 +1,7 @@
+<tr>
+  <td><%= candidato.last %></td>
+  <td><%= Round.muestreo.public_send("total_#{candidato.first}") %></td>
+  <td><%= number_to_percentage( ((Round.muestreo.public_send("total_#{candidato.first}") * 100) / Round.muestreo.total_validos.to_f), precision: 2) %></td>
+  <td><%= @totales[candidato.first.to_sym].round %></td>
+  <td><%= number_to_percentage((@totales[candidato.first.to_sym] * 100 / @totales[:total].to_f), precision: 2) %></td>
+</tr>

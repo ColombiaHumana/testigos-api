@@ -9,5 +9,9 @@ class PanelAbility
     if user.role == :callcenter
       can :read, User
     end
+
+    if user.role == "report"
+      can :read, :proyeccion
+    end
   end
 end

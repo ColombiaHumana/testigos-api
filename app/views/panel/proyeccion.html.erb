@@ -1,0 +1,8 @@
+<div class="small-12 medium-12 large-10 cell float-center">
+  <h4>Proyecciones <small><%=  %></small></h4>
+  <% if flash[:notice] %>
+    <%= render 'callout' %>
+  <% end %>
+  <%= render 'proyeccion_table' %>
+  <%= render 'departamentos' %>
+</div>

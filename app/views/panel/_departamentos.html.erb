@@ -1,0 +1,18 @@
+<div class="small-12 medium-12 large-10 cell float-center">
+  <table id="lista_mesas" class="stack hover">
+    <thead>
+      <tr>
+        <th width="300">Departamento</th>
+        <th width="100">Gustavo Petro</th>
+        <th width="100">Ivan Duque</th>
+        <th width="100">Voto Blanco</th>
+        <th width="100">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @computed.each do |row| %>
+        <%= render 'departamento_row', row: row %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

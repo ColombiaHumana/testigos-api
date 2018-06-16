@@ -39,12 +39,14 @@
               Mesas Escrutadas
             <% end %>
           </li>
-          <li class="<%= active_class(escrutadas_path) %>">
-            <%= link_to escrutadas_path do %>
-              <%= fa_icon "question-circle-o", class: 'hide-for-small-only' %>
-              Ayuda
-            <% end %>
-          </li>
+          <% if can? :read, :proyeccion %>
+            <li class="<%= active_class(proyeccion_path) %>">
+              <%= link_to proyeccion_path do %>
+                <%= fa_icon "line-chart", class: 'hide-for-small-only' %>
+                Proyecciones
+              <% end %>
+            </li>
+          <% end %>
           <li>
             <%= link_to destroy_panel_user_session_path, method: :delete do %>
               <%= fa_icon "sign-out", class: 'hide-for-small-only' %>

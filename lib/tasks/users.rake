@@ -223,30 +223,32 @@ namespace :users do
       )
     )
     CSV.parse(registraduria_csv, headers: true).each do |row|
-      puts row['dd']
-      department = Department.find_by(cod_department: row['dd'])
-      municipality = department.municipalities.find_by(cod_municipality: row['mm'])
-      zone = municipality.zones.find_by(cod_zone: row['zz'])
-      post = zone.posts.find_by(cod_post: row['pp'])
-      user = User.find_by(document: row['cedula']) || User.new(
-        name: row['nombre'],
-        document: row['cedula'],
-        phone: row['telefono'],
-        post: post,
-        password: row['cedula'],
-        uploaded: true,
-        enabled: true
-      )
-      user&.assign_attributes(
-        post: post,
-        phone: row['telefono'],
-        uploaded: true,
-        enabled: true
-      )
-      user.save(validate: false)
-      table = post.tables.find_by(cod_table: row['mesa']).id
-      user.table_ids = [table]
-
+      begin
+        department = Department.find_by(cod_department: row['dd'])
+        municipality = department.municipalities.find_by(cod_municipality: row['mm'])
+        zone = municipality.zones.find_by(cod_zone: row['zz'])
+        post = zone.posts.find_by(cod_post: row['pp'])
+        user = User.find_by(document: row['cedula']) || User.new(
+          name: row['nombre'],
+          document: row['cedula'],
+          phone: row['telefono'],
+          post: post,
+          password: row['cedula'],
+          uploaded: true,
+          enabled: true
+        )
+        user&.assign_attributes(
+          post: post,
+          phone: row['telefono'],
+          uploaded: true,
+          enabled: true
+        )
+        user.save(validate: false)
+        table = post.tables.find_by(cod_table: row['mesa']).id
+        user.table_ids = [table]
+      rescue
+        puts row
+      end
     end
   end
 
