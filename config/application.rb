@@ -32,7 +32,9 @@ module TestigosApi
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'ALLOWALL'
+      'X-Frame-Options' => 'ALLOWALL',
+      'Access-Control-Allow-Origin' => '*',
+      'Access-Control-Request-Method' => 'GET'
     }
     config.active_job.queue_adapter = :sidekiq
     config.exceptions_app = routes
