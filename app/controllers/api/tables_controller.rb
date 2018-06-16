@@ -5,7 +5,7 @@
 module Api
   class TablesController < ApiController
     def show
-      @tables = current_user.post.tables.where(user: nil).orden
+      @tables = current_user.post.tables.orden.pendiente
     end
   end
 end

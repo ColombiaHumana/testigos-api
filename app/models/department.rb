@@ -12,6 +12,7 @@ class Department < ApplicationRecord
   has_many :zones, through: :municipalities
 
   scope :escrutadas, -> { joins(:rounds).count }
+  scope :orden, -> { order(name: :asc) }
 
   def to_s
     name

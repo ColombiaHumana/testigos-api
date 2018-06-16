@@ -3,6 +3,7 @@
 # Controller for panel
 class PanelController < ApplicationController
   before_action :authenticate_panel_user!
+  before_action :compute_data, only: %i[proyeccion muestreo resultados departamentos]
   before_action :set_table, except: %i[index escrutado]
   before_action :set_round, only: %i[new edit create update]
   layout 'panel'
@@ -53,6 +54,68 @@ class PanelController < ApplicationController
 
   def proyeccion
     authorize! :read, :proyeccion
+  end
+
+  def muestreo; end
+
+  def resultados; end
+
+  def mapa
+    @departments = Department.where(id: 1..33)
+  end
+
+  def departamentos
+    @departments = computed_departments
+  end
+
+  private
+
+  def set_round
+    @round = @table.round || @table.build_round
+  end
+
+  def set_table
+    @table = Table.find_by(order: params[:order])
+  end
+
+  def votes_params
+    params.require(:round).permit(
+      votes: %i[
+        petro
+        duque
+        blanco
+        nulos
+        no_marcados
+        total_e11
+        total_urna
+        total_incinerados
+        total_mesa
+        total_validos
+      ]
+    )
+  end
+
+  def round_params
+    {
+      votes: votes_params[:votes].transform_values(&:to_i),
+      user_id: 31_448,
+      image: 'http'
+    }
+  end
+
+  def computed_departments
+    @candidatos.each.collect do |candidato|
+      departments = Department.where(id: 1..33).orden.collect do |department|
+        department.rounds.public_send("total_#{candidato.first}")
+      end
+      {
+        name: candidato.last,
+        data: departments
+      }
+    end
+  end
+
+  def compute_data
     @candidatos = CANDIDATOS
     @computed = Department.where(id: 1..33).order(name: :asc).collect do |department|
       resultados = department.rounds.muestreo
@@ -92,44 +155,13 @@ class PanelController < ApplicationController
       petro: @computed.map { |s| s[:petro_ponderado] }.reduce(0, :+),
       duque: @computed.map { |s| s[:duque_ponderado] }.reduce(0, :+),
       blancos: @computed.map { |s| s[:blancos_ponderado] }.reduce(0, :+),
-      total: @computed.map { |s| s[:total_ponderado] }.reduce(0, :+),
+      total: @computed.map { |s| s[:total_ponderado] }.reduce(0, :+)
+    }
+    @totales_validas = {
+      petro: @computed.map { |s| s[:petro] }.reduce(0, :+),
+      duque: @computed.map { |s| s[:duque] }.reduce(0, :+),
+      blancos: @computed.map { |s| s[:blancos] }.reduce(0, :+),
+      total: @computed.map { |s| s[:total] }.reduce(0, :+)
     }
   end
-
-  private
-
-  def set_round
-    @round = @table.round || @table.build_round
-  end
-
-  def set_table
-    @table = Table.find_by(order: params[:order])
-  end
-
-  def votes_params
-    params.require(:round).permit(
-      votes: %i[
-        petro
-        duque
-        blanco
-        nulos
-        no_marcados
-        total_e11
-        total_urna
-        total_incinerados
-        total_mesa
-        total_validos
-      ]
-    )
-  end
-
-  def round_params
-    {
-      votes: votes_params[:votes].transform_values(&:to_i),
-      user_id: 31_448,
-      image: 'http'
-    }
-  end
-
-
 end

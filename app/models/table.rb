@@ -15,7 +15,8 @@ class Table < ApplicationRecord
   scope :orden_muestreo, -> { order(order: 'asc') }
   scope :muestreo, -> { where(sample: true) }
   scope :escrutado, -> { joins(:round) }
-  scope :pendiente, -> { left_joins(:round).where('rounds.id IS null').where.not(cod_table: %w[901 902 903]) }
+  scope :validas, -> { where.not(cod_table: %w[901 902 903]) }
+  scope :pendiente, -> { left_joins(:round).where('rounds.id IS null').validas }
 
   def to_s
     "Mesa #{cod_table}"

@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     get '/:order/resultado/edit', to: 'panel#edit', as: :edit_resultado
     patch '/:order/resultado/update', to: 'panel#update', as: :update_resultado
     get '/proyeccion', to: 'panel#proyeccion', as: :proyeccion
+    get '/panel/resultados', to: 'panel#resultados', as: :resultados
+    get '/panel/muestreo', to: 'panel#muestreo', as: :muestreo_index
+    get '/panel/incidencias', to: 'panel#incidencias', as: :incidencias
+    get '/panel/mapa', to: 'panel#mapa', as: :mapa
+    get '/panel/departamentos', to: 'panel#departamentos', as: :departamentos
   end
 
   constraints subdomain: 'coordinadores' do
