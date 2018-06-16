@@ -2,7 +2,7 @@
 
 # Controller for panel
 class PanelController < ApplicationController
-  before_action :authenticate_panel_user!
+  before_action :authenticate_panel_user!, only: %i[index escrutado new create edit update proyeccion]
   before_action :compute_data, only: %i[proyeccion muestreo resultados departamentos]
   before_action :set_table, except: %i[index escrutado]
   before_action :set_round, only: %i[new edit create update]
