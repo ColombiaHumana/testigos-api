@@ -3,7 +3,7 @@
 # Controller for panel
 class PanelController < ApplicationController
   before_action :authenticate_panel_user!, only: %i[index escrutado new create edit update proyeccion]
-  before_action :compute_data, only: %i[muestreo proyeccion departamentos]
+  before_action :compute_data, only: %i[muestreo proyeccion departamentos mapa_muestreo]
   before_action :res, only: :resultados
   before_action :set_table, except: %i[index escrutado]
   before_action :set_round, only: %i[new edit create update]
@@ -65,6 +65,8 @@ class PanelController < ApplicationController
     @departments = Department.where(id: 1..33)
   end
 
+  def mapa_muestreo; end
+  
   def departamentos
     @departments = computed_departments
   end
