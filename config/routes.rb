@@ -18,15 +18,15 @@ Rails.application.routes.draw do
     get '/panel/testigos', to: 'panel#testigos', as: :testigos
   end
 
-  constraints subdomain: 'coordinadores' do
-    devise_for :coordinadores, path: '/'
-    root to: 'validate#index'
-    get '/validacion', to: 'validate#show', as: :validacion
-    get '/ayuda', to: 'validate#help', as: :help
-    get '/validacion/:token', to: 'validate#edit_user', as: :edit_user
-    patch '/validacion/:token', to: 'validate#update_user', as: :update_user
-    patch '/descartado/:token', to: 'validate#reject_user', as: :reject_user
-  end
+  # constraints subdomain: 'coordinadores' do
+  #   devise_for :coordinadores, path: '/'
+  #   root to: 'validate#index'
+  #   get '/validacion', to: 'validate#show', as: :validacion
+  #   get '/ayuda', to: 'validate#help', as: :help
+  #   get '/validacion/:token', to: 'validate#edit_user', as: :edit_user
+  #   patch '/validacion/:token', to: 'validate#update_user', as: :update_user
+  #   patch '/descartado/:token', to: 'validate#reject_user', as: :reject_user
+  # end
 
   constraints subdomain: 'callcenter' do
     devise_for :callcenter_users, path: '/'
@@ -38,13 +38,13 @@ Rails.application.routes.draw do
     patch '/descartado/:token', to: 'callcenter#reject_user', as: :callcenter_reject_user
   end
 
-  get '/' => 'register#new', as: :user
-  get '/iframe' => 'register#iframe', as: :iframe
-  get '/departments' => 'register#get_department'
-  get '/municipalities/:department_id' => 'register#get_municipality'
-  get '/zones/:municipality_id' => 'register#get_zone'
-  get '/posts/:zone_id' => 'register#get_post'
-  post '/' => 'register#create', as: :users
+  # get '/' => 'register#new', as: :user
+  # get '/iframe' => 'register#iframe', as: :iframe
+  # get '/departments' => 'register#get_department'
+  # get '/municipalities/:department_id' => 'register#get_municipality'
+  # get '/zones/:municipality_id' => 'register#get_zone'
+  # get '/posts/:zone_id' => 'register#get_post'
+  # post '/' => 'register#create', as: :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope '/api', defaults: { format: 'json' } do
@@ -72,16 +72,16 @@ Rails.application.routes.draw do
        to: 'webhook#handle'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get '/t/:token/accept', to: 'confirmation#accept', as: :confirmation_accept
-  get '/t/:token/reject', to: 'confirmation#reject', as: :confirmation_reject
-  get '/t/:token/edit', to: 'confirmation#edit', as: :confirmation_edit
-  get '/t/:token/coordinador',
-      to: 'confirmation#coordinator', as: :confirmation_coordinator
-  patch '/t/:token', to: 'confirmation#update', as: :confirmation_update
-  patch '/t/:token/coordinador', to: 'confirmation#update_coordinator',
-        as: :confirmation_update_coordinator
-  get '/t/:token/gracias', to: 'confirmation#thanks', as: :confirmation_thanks
-  get '/t/gracias_coordinador',
-      to: 'confirmation#thanks_coordinator',
-      as: :confirmation_thanks_coordinator
+  # get '/t/:token/accept', to: 'confirmation#accept', as: :confirmation_accept
+  # get '/t/:token/reject', to: 'confirmation#reject', as: :confirmation_reject
+  # get '/t/:token/edit', to: 'confirmation#edit', as: :confirmation_edit
+  # get '/t/:token/coordinador',
+      # to: 'confirmation#coordinator', as: :confirmation_coordinator
+  # patch '/t/:token', to: 'confirmation#update', as: :confirmation_update
+  # patch '/t/:token/coordinador', to: 'confirmation#update_coordinator',
+  #       as: :confirmation_update_coordinator
+  # get '/t/:token/gracias', to: 'confirmation#thanks', as: :confirmation_thanks
+  # get '/t/gracias_coordinador',
+  #     to: 'confirmation#thanks_coordinator',
+  #     as: :confirmation_thanks_coordinator
 end
