@@ -1,7 +1,32 @@
+<%
+votos = Round.muestreo.public_send("total_#{candidato.first}")
+proyeccion = @totales[candidato.first.to_sym].round
+if @totales[:total] != 0 && Round.muestreo.total_validos != 0
+  porcentaje = number_to_percentage(
+    (
+      (
+        Round.muestreo.public_send(
+          "total_#{candidato.first}"
+        ) * 100
+      ) / Round.muestreo.total_validos
+    ), precision: 2
+  ) || "0%"
+
+  porcentaje_proyeccion = number_to_percentage(
+    (
+      @totales[candidato.first.to_sym] * 100 / @totales[:total].to_f
+      ), precision: 2
+    )
+  else
+    porcentaje = "0%"
+    porcentaje_proyeccion = "0%"
+  end
+%>
+
 <tr>
   <td><%= candidato.last %></td>
-  <td><%= Round.muestreo.public_send("total_#{candidato.first}") %></td>
-  <td><%= number_to_percentage( ((Round.muestreo.public_send("total_#{candidato.first}") * 100) / Round.muestreo.total_validos.to_f), precision: 2) %></td>
-  <td><%= @totales[candidato.first.to_sym].round %></td>
-  <td><%= number_to_percentage((@totales[candidato.first.to_sym] * 100 / @totales[:total].to_f), precision: 2) %></td>
+  <td><%= votos %></td>
+  <td><%= porcentaje %></td>
+  <td><%= proyeccion  %></td>
+  <td><%= porcentaje_proyeccion %></td>
 </tr>

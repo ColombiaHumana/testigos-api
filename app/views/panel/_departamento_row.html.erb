@@ -1,7 +1,32 @@
+<%
+if row[:total_ponderado] != 0
+  porcentaje_petro = number_to_percentage(
+    (
+      row[:petro_ponderado] * 100 / row[:total_ponderado]
+    ), precision: 2
+  )
+  porcentaje_duque = number_to_percentage(
+    (
+      row[:duque_ponderado] * 100 / row[:total_ponderado]
+    ), precision: 2
+  )
+  porcentaje_blanco = number_to_percentage(
+    (
+      row[:blancos_ponderado] * 100 / row[:total_ponderado]
+    ), precision: 2
+  )
+else
+  porcentaje_petro = '0%'
+  porcentaje_duque = '0%'
+  porcentaje_blanco = '0%'
+end
+
+%>
+
 <tr>
   <td><%= row[:department].titleize %></td>
-  <td><%= number_to_percentage((row[:petro_ponderado] * 100 / row[:total_ponderado]), precision: 2) %></td>
-  <td><%= number_to_percentage((row[:duque_ponderado] * 100 / row[:total_ponderado]), precision: 2) %></td>
-  <td><%= number_to_percentage((row[:blancos_ponderado] * 100 / row[:total_ponderado]), precision: 2) %></td>
+  <td><%= porcentaje_petro %></td>
+  <td><%= porcentaje_duque %></td>
+  <td><%= porcentaje_blanco %></td>
   <td><%= number_to_percentage(row[:escrutado], precision: 2) %></td>
 </tr>
