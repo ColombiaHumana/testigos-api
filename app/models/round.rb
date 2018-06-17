@@ -3,7 +3,7 @@
 # Second round votes model
 class Round < ApplicationRecord
   after_commit :send_to_secure_vote
-  after_commit :calculate_coefficient
+  after_commit :calculate_coefficient, on: %i[create update]
   belongs_to :table
   belongs_to :user
 
