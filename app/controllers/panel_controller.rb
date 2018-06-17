@@ -3,7 +3,8 @@
 # Controller for panel
 class PanelController < ApplicationController
   before_action :authenticate_panel_user!, only: %i[index escrutado new create edit update proyeccion]
-  before_action :compute_data, only: %i[proyeccion muestreo resultados departamentos]
+  before_action :compute_data, only: %i[muestreo resultados departamentos]
+  before_action :res, only: :proyeccion
   before_action :set_table, except: %i[index escrutado]
   before_action :set_round, only: %i[new edit create update]
   layout 'panel'
@@ -113,6 +114,18 @@ class PanelController < ApplicationController
         data: departments
       }
     end
+  end
+
+  def res
+    @candidatos = CANDIDATOS
+    @totales_validas = {
+      petro: Round.total_petro,
+      duque: Round.total_duque,
+      blancos: Rount.total_blanco,
+      no_marcados: Round.total_no_marcados,
+      nulos: Round.total_nulos,
+      total: Round.total_votos
+    }
   end
 
   def compute_data
