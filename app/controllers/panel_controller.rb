@@ -121,9 +121,10 @@ class PanelController < ApplicationController
     @totales_validas = {
       petro: Round.total_petro,
       duque: Round.total_duque,
-      blancos: Round.total_blanco,
+      blancos: Round.total_blancos,
       no_marcados: Round.total_no_marcados,
       nulos: Round.total_nulos,
+      total_validos: Round.total_validos,
       total: Round.total_votos
     }
   end
