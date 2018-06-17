@@ -118,14 +118,20 @@ class PanelController < ApplicationController
 
   def res
     @candidatos = CANDIDATOS
+    petro = Round.total_petro
+    duque = Round.total_duque
+    blancos = Round.total_blancos
+    no_marcados = Round.total_no_marcados
+    nulos = Round.total_nulos
+    total = petro + duque + blancos + no_marcados + nulos
     @totales_validas = {
-      petro: Round.total_petro,
-      duque: Round.total_duque,
-      blancos: Round.total_blancos,
-      no_marcados: Round.total_no_marcados,
-      nulos: Round.total_nulos,
+      petro: petro,
+      duque: duque,
+      blancos: blancos,
+      no_marcados: no_marcados,
+      nulos: nulos,
       total_validos: Round.total_validos,
-      total: Round.total_votos
+      total: total
     }
   end
 
