@@ -13,17 +13,15 @@ class SpekJob < ApplicationJob
       },
       conteo: [
         { numero: 1, nombre: "GUSTAVO PETRO", votos: result.petro },
-        { numero: 2, nombre: "PROMOTORES VOTO EN BLANCO", votos: result.promotores },
         { numero: 3, nombre: "IVÁN DUQUE", votos: result.duque },
-        { numero: 4, nombre: "HUMBERTO DE LA CALLE", votos: result.la_calle },
-        { numero: 5, nombre: "JORGE ANTONIO TRUJILLO SARMIENTO", votos: result.trujillo },
-        { numero: 6, nombre: "SERGIO FAJARDO", votos: result.fajardo },
-        { numero: 7, nombre: "VIVIANE MORALES", votos: result.morales },
-        { numero: 8, nombre: "GERMÁN VARGAS LLERAS", votos: result.vargas },
-        { numero: 996, nombre: "VOTOS EN BLANCO", votos: result.votos_blancos },
-        { numero: 997, nombre: "VOTOS NULOS", votos: result.votos_nulos },
-        { numero: 998, nombre: "VOTOS NO MARCADOS", votos: result.votos_no_marcados }
+        { numero: 996, nombre: "VOTOS EN BLANCO", votos: result.blanco },
+        { numero: 997, nombre: "VOTOS NULOS", votos: result.nulos },
+        { numero: 998, nombre: "VOTOS NO MARCADOS", votos: result.no_marcados }
       ],
+      "TOTAL SUFRAGANTES": result.total_e11,
+    	"TOTAL VOTOS EN LA URNA": result.total_urna,
+    	"TOTAL VOTOS INCINERADOS": result.total_incinerados,
+    	"TOTAL VOTOS DE LA MESA": result.total_mesa,
       clave: Rails.application.credentials.spek_password,
       imagen: result.image
     }.to_json

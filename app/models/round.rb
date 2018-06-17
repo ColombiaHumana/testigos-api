@@ -39,8 +39,9 @@ class Round < ApplicationRecord
 
   private
 
-  # TODO: send data to securevote
-  def send_to_secure_vote; end
+  def send_to_secure_vote
+    SpekJob.perform_later(self)
+  end
 
   def calculate_coefficient
     scrutinized = self.table.department.scrutinized + self.total_mesa
