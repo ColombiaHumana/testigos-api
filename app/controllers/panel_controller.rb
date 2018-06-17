@@ -133,6 +133,10 @@ class PanelController < ApplicationController
       # porcentaje_blanco = blancos / total
       blanco_ponderado = blancos * department.coefficient rescue 0
       # porcentaje_blanco_ponderado = blanco_ponderado / total_ponderado
+      nulos = resultados.total_nulos
+      nulos_ponderado = nulos * department.coefficient
+      no_marcados = resultados.total_no_marcados
+      no_marcados_ponderado = no_marcados * department.coefficient
       {
         department: department.name,
         petro: petro,
@@ -149,6 +153,10 @@ class PanelController < ApplicationController
         # porcentaje_blanco_ponderado: porcentaje_blanco_ponderado,
         total: total,
         total_ponderado: total_ponderado.nan? ? 0 : total_ponderado,
+        nulos: nulos,
+        nulos_ponderado: nulos_ponderado.nan? ? 0 : nulos_ponderado,
+        no_marcados: no_marcados,
+        no_marcados_ponderado: no_marcados_ponderado.nan? ? 0 : no_marcados_ponderado,
         escrutado: department.tables.muestreo.escrutado.count * 100.0 / department.tables.muestreo.count
       }
     end
@@ -156,12 +164,16 @@ class PanelController < ApplicationController
       petro: @computed.map { |s| s[:petro_ponderado] }.reduce(0, :+),
       duque: @computed.map { |s| s[:duque_ponderado] }.reduce(0, :+),
       blancos: @computed.map { |s| s[:blancos_ponderado] }.reduce(0, :+),
+      no_marcados: @computed.map { |s| s[:no_marcados_ponderado] }.reduce(0, :+),
+      nulos: @computed.map { |s| s[:nulos_ponderado] }.reduce(0, :+),
       total: @computed.map { |s| s[:total_ponderado] }.reduce(0, :+)
     }
     @totales_validas = {
       petro: @computed.map { |s| s[:petro] }.reduce(0, :+),
       duque: @computed.map { |s| s[:duque] }.reduce(0, :+),
       blancos: @computed.map { |s| s[:blancos] }.reduce(0, :+),
+      no_marcados: @computed.map { |s| s[:no_marcados] }.reduce(0, :+),
+      nulos: @computed.map { |s| s[:nulos] }.reduce(0, :+),
       total: @computed.map { |s| s[:total] }.reduce(0, :+)
     }
   end

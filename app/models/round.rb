@@ -19,6 +19,7 @@ class Round < ApplicationRecord
   scope :total_blancos, -> { sum("(votes ->> 'blanco')::int") }
   scope :total_duque, -> { sum("(votes ->> 'duque')::int") }
   scope :total_nulos, -> { sum("(votes ->> 'nulos')::int") }
+  scope :total_no_marcados, -> { sum("(votes ->> 'no_marcados')::int") }
   scope :total_petro, -> { sum("(votes ->> 'petro')::int") }
   scope :total_validos, -> { sum("(votes ->> 'total_validos')::int") }
   scope :muestreo, -> { joins(:table).where('tables.sample = true') }

@@ -11,4 +11,8 @@ json.votes do
   json.duquePercent (@totales[:duque] * 100.0 / @totales[:total]).round(2)
   json.blanco @totales[:blancos].round
   json.blancoPercent (@totales[:blancos] * 100.0 / @totales[:total]).round(2)
+  json.nulls @totales[:nulos].round
+  json.nullsPercent (@totales[:nulos] * 100.0 / @totales[:total]).round(2)
+  json.invalids @totales[:no_marcados].round
+  json.invalidsPercent (@totales[:no_marcados] * 100.0 / @totales[:total]).round(2)
 end
