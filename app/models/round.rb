@@ -45,13 +45,14 @@ class Round < ApplicationRecord
   end
 
   def calculate_coefficient
-    scrutinized = self.table.department.scrutinized + self.total_mesa
-    self.table.department.update scrutinized: scrutinized
-    total_scrutinized = Department.sum(:scrutinized)
-    Department.all.each do | d |
-      percentage = (d.scrutinized / total_scrutinized.to_f)
-      coefficient = (d.weight / percentage)
-      d.update! percentage: percentage, coefficient: coefficient
+    if table.sample
+      scrutinized = table.department.rounds.total_validos
+      self.table.department.update scrutinized: scrutinized
+      Department.all.each do | d |
+        percentage = (d.rounds.total_votos / Round.total_validos.to_f) * 100
+        coefficient = (d.weight / percentage)
+        d.update! percentage: percentage, coefficient: coefficient
+      end
     end
   end
 end
