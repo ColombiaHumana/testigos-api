@@ -120,7 +120,6 @@ class PanelController < ApplicationController
     @computed = Department.where(id: 1..33).order(name: :asc).collect do |department|
       resultados = department.rounds.muestreo
       total = resultados.total_validos
-      total_ponderado = total * department.coefficient rescue 0
       petro = resultados.total_petro
       # porcentaje_petro = petro / total.nonzero? || 0
       petro_ponderado =  petro * department.coefficient rescue 0
@@ -137,6 +136,8 @@ class PanelController < ApplicationController
       nulos_ponderado = nulos * department.coefficient
       no_marcados = resultados.total_no_marcados
       no_marcados_ponderado = no_marcados * department.coefficient
+      total_ponderado = petro_ponderado + duque_ponderado + blanco_ponderado
+      total_ponderado_s = total_ponderado + nulos_ponderado + nulos_ponderado
       {
         department: department.name,
         petro: petro,
@@ -153,6 +154,7 @@ class PanelController < ApplicationController
         # porcentaje_blanco_ponderado: porcentaje_blanco_ponderado,
         total: total,
         total_ponderado: total_ponderado.nan? ? 0 : total_ponderado,
+        total_ponderado_s: total_ponderado_s.nan? ? 0 : total_ponderado_s,
         nulos: nulos,
         nulos_ponderado: nulos_ponderado.nan? ? 0 : nulos_ponderado,
         no_marcados: no_marcados,
@@ -166,7 +168,8 @@ class PanelController < ApplicationController
       blancos: @computed.map { |s| s[:blancos_ponderado] }.reduce(0, :+),
       no_marcados: @computed.map { |s| s[:no_marcados_ponderado] }.reduce(0, :+),
       nulos: @computed.map { |s| s[:nulos_ponderado] }.reduce(0, :+),
-      total: @computed.map { |s| s[:total_ponderado] }.reduce(0, :+)
+      total: @computed.map { |s| s[:total_ponderado] }.reduce(0, :+),
+      total_s: @computed.map { |s| s[:total_ponderado_s] }.reduce(0, :+)
     }
     @totales_validas = {
       petro: @computed.map { |s| s[:petro] }.reduce(0, :+),
