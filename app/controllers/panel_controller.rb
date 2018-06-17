@@ -69,6 +69,15 @@ class PanelController < ApplicationController
     @departments = computed_departments
   end
 
+  def testigos
+    users = User.where(enabled: true, uploaded: true)
+    @total = users.count
+    @reported = users.joins(:rounds).count
+    @reported_percent = (@reported * 100.0 / @total).round(2)
+    @logged = users.where(online: true).count
+    @logged_percent = (@logged * 100.0 / @total).round(2)
+  end
+
   private
 
   def set_round

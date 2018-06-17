@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/panel/incidencias', to: 'panel#incidencias', as: :incidencias
     get '/panel/mapa', to: 'panel#mapa', as: :mapa
     get '/panel/departamentos', to: 'panel#departamentos', as: :departamentos
+    get '/panel/testigos', to: 'panel#testigos', as: :testigos
   end
 
   constraints subdomain: 'coordinadores' do

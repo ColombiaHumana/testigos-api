@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   has_many :reset_tokens, dependent: :destroy
   has_many :tables
+  has_many :rounds
 
   attr_accessor :validate_user
   attr_accessor :validate_coordinator
