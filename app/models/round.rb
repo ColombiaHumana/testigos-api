@@ -48,8 +48,8 @@ class Round < ApplicationRecord
     if table.sample
       scrutinized = table.department.rounds.total_validos
       self.table.department.update scrutinized: scrutinized
-      Department.all.each do | d |
-        percentage = (d.rounds.total_votos / Round.total_validos.to_f) * 100
+      Department.where(id: 1..33).each do | d |
+        percentage = (d.rounds.total_votos * 100.0 / Round.total_validos)
         coefficient = (d.weight / percentage)
         d.update! percentage: percentage, coefficient: coefficient
       end
