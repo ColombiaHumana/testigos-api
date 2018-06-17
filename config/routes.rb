@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/panel/muestreo', to: 'panel#muestreo', as: :muestreo_index
     get '/panel/incidencias', to: 'panel#incidencias', as: :incidencias
     get '/panel/mapa', to: 'panel#mapa', as: :mapa
-    get '/panel/mapa_muestreo', to: 'panel#mapa_muestreo', as: :mapa_muestreo
+    get '/panel/mapa-muestreo', to: 'panel#mapa_muestreo', as: :mapa_muestreo
     get '/panel/departamentos', to: 'panel#departamentos', as: :departamentos
     get '/panel/testigos', to: 'panel#testigos', as: :testigos
   end
