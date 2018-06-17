@@ -7,14 +7,14 @@ if @totales[:total] != 0 && Round.muestreo.total_validos != 0
       (
         Round.muestreo.public_send(
           "total_#{candidato.first}"
-        ) * 100
+        ) * 100.0
       ) / Round.muestreo.total_validos
     ), precision: 2
   ) || "0%"
 
   porcentaje_proyeccion = number_to_percentage(
     (
-      @totales[candidato.first.to_sym] * 100 / @totales[:total].to_f
+      @totales[candidato.first.to_sym] * 100.0 / @totales[:total]
       ), precision: 2
     )
   else
