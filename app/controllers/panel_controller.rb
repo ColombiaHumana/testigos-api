@@ -148,7 +148,8 @@ class PanelController < ApplicationController
         blancos_ponderado: blanco_ponderado.nan? ? 0 : blanco_ponderado,
         # porcentaje_blanco_ponderado: porcentaje_blanco_ponderado,
         total: total,
-        total_ponderado: total_ponderado.nan? ? 0 : total_ponderado
+        total_ponderado: total_ponderado.nan? ? 0 : total_ponderado,
+        escrutado: department.tables.muestreo.escrutado.count * 100.0 / department.tables.muestreo.count
       }
     end
     @totales = {
