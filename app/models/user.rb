@@ -22,9 +22,11 @@ class User < ApplicationRecord
   attr_accessor :validate_coordinator
 
   validates_presence_of :first_name, :surname,
-    unless: ->(user) { user.validate_coordinator || user.validate_user }
+    unless: ->(user) { user.validate_coordinator || user.validate_user },
+    on: :create
   validates :document, presence: true, uniqueness: true
-  validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ }
+  validates :phone, presence: true, format: { with: /\A3[0-9]{9}\z/ },
+  on: :create
   validates :email, uniqueness: true, presence: true, format: {
     with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   }, on: :create
@@ -33,7 +35,7 @@ class User < ApplicationRecord
                         on: :update,
                         if: ->(user) { user.validate_user? }
 
-  validate :post_available, if: ->(user) { user.coordinator? && user.enabled? }
+  validate :post_available, if: ->(user) { user.coordinator? && user.enabled? }, on: :create
 
   validates :email, uniqueness: true, presence: true, format: {
     with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
