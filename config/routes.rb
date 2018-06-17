@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: 'panel#index'
     get '/escrutados', to: 'panel#escrutado', as: :escrutadas
     get '/:order/resultado/nuevo', to: 'panel#new', as: :new_resultado
-    post '/:order/resultado/create', to: 'panel#create', as: :create_resultado
+    match '/:order/resultado/create', to: 'panel#create', as: :create_resultado, via: %i[post patch]
     get '/:order/resultado/edit', to: 'panel#edit', as: :edit_resultado
     patch '/:order/resultado/update', to: 'panel#update', as: :update_resultado
     get '/proyeccion', to: 'panel#proyeccion', as: :proyeccion
