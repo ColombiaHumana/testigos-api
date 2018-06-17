@@ -1,0 +1,57 @@
+<table align="center" class="container float-center">
+  <tbody>
+    <tr>
+      <td>
+        <br>
+        <table class="row">
+          <tbody>
+            <tr>
+              <th class="small-12 large-12 columns first last">
+                <table>
+                  <tr>
+                    <th class="cuerpo">
+                      <h4 class="titulo">Has sido inscrito en Registraduría como testigo</h4>
+                      <p>
+                        Hola <%= @user.name %>, confirmamos que has sido inscrito en Registraduría como testigo electoral de la Colombia Humana para las elecciones de mañana domingo 17 de junio. Los datos de tu puesto son:
+                      </p>
+                      <div id="datos_t">
+                        <p><b>Departamento:</b> <%= @user.post.department.name %></p>
+                        <p><b>Municipio:</b> <%= @user.post.municipality.name %></p>
+                        <p><b>Zona:</b> <%= @user.post.zone.cod_zone %></p>
+                        <p><b>Puesto:</b> <%= @user.post.name %></p>
+                        <p><b>Mesa:</b> <%= @user.tables.first.cod_table %></p>
+                      </div>
+                      <p>Presentate a las 7:00 a.m. en tu puesto electoral.</p>
+                      <p>Contacta con tu coordinador de puesto y con tu coordinador de localidad o municipio para conseguir tu credencial.</p>
+                      <p>Revisa las instrucciones en <a href="https://petro.com.co/testigos">petro.com.co/testigos</a> e instálate la app.</p>
+                      <a href="https://twitter.com/intent/tweet?hashtags=PetroPresidente&original_referer=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&ref_src=twsrc%5Etfw&related=colombiahumana_%2CMovimientoMAIS&text=Yo%20soy%20testigo%20electoral%20y%20custodio%20de%20la%20esperanza%20de%20la%20Colombia%20Humana.%20Tu%20tambi%C3%A9n%20puedes%20ser%20parte%20del%20cambio%2C%20inscr%C3%ADbete%3A%20&url=https%3A%2F%2Fpetro.com.co%2Fingreso-testigos%2F&via=petrogustavo"><h5 class="firma">#PetroPresidente</h5></a>
+                    </th>
+                    <img alt="" src="https://www.google-analytics.com/collect?v=1&t=event&tid=UA-113384581-1&cid=12345678.12345678&dh=mail.petro.com.co&ec=email&ea=open&el=inscripcion_registraduria"/>
+                  </tr>
+                </table>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+        <center data-parsed="" class="pie">
+          <table align="center" class="menu float-center">
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co">petro.com.co</a>
+                    </th>
+                    <th class="menu-item float-center">
+                      <a class="enlace-foo" href="https://petro.com.co/politica-de-datos/">política de datos</a>
+                    </th>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </center>
+      </td>
+    </tr>
+  </tbody>
+</table>

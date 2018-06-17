@@ -12,6 +12,7 @@ namespace :users do
     confirmation
     registraduria
     last_chance
+    inscrito
   ]
 
   task_lists.each do |task_name|

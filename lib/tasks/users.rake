@@ -258,4 +258,11 @@ namespace :users do
       ConfirmationMailer.last_chance(user.id).deliver_later
     end
   end
+
+  desc 'inscrito'
+  task inscrito: :environment do
+    User.where.not(email: nil).where(uploaded: true).joins(:tables).pluck(:id).each do |user|
+      ConfirmationMailer.confirm(user).deliver_later
+    end
+  end
 end

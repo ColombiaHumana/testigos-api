@@ -1,0 +1,22 @@
+Has sido inscrito en Registraduría como testigo
+
+Hola <%= @user.name %>, confirmamos que has sido inscrito en Registraduría como testigo electoral de la Colombia Humana para las elecciones de mañana domingo 17 de junio. Los datos de tu puesto son:
+
+- Departamento: <%= @user.post.department.name %>
+- Municipio: <%= @user.post.municipality.name %>
+- Zona: <%= @user.post.zone.cod_zone %>
+- Puesto: <%= @user.post.name %>
+- Mesa: <%= @user.tables.first.cod_table %>
+
+Presentate a las 7:00 a.m. en tu puesto electoral.
+
+Contacta con tu coordinador de puesto y con tu coordinador de localidad o municipio para conseguir tu credencial.
+
+Revisa las instrucciones en https://petro.com.co/testigos e instálate la app.
+
+#PetroPresidente
+
+--------------------------------------------------------------------
+
+PetroPresidente: https://petro.com.co
+Política de datos: https://petro.com.co/politica-de-datos/
