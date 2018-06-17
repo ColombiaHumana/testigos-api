@@ -37,6 +37,11 @@
 			"minimum": 0,
 			"maximum": 3000
 		},
+		"total_mesa": {
+			"type": "integer",
+			"minimum": 0,
+			"maximum": 3000
+		},
 		"total_incinerados": {
 			"type": "integer",
 			"minimum": 0,
@@ -48,5 +53,5 @@
 			"maximum": 3000
 		}
 	},
-	"required": ["petro", "duque", "blanco", "nulos", "no_marcados", "total_e11", "total_urna", "total_incinerados", "total_validos"]
+	"required": ["petro", "duque", "blanco", "nulos", "no_marcados", "total_e11", "total_urna", "total_mesa", "total_incinerados", "total_validos"]
 }

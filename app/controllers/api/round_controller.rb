@@ -30,6 +30,7 @@ module Api
           blanco
           nulos
           no_marcados
+          total_mesa
           total_e11
           total_urna
           total_incinerados
